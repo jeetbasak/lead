@@ -25,3 +25,11 @@ Route::group(['namespace' => 'Admin'], function() {
     // Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('admin.verification.verify');
 
 });
+
+
+Route::group(['namespace' => 'Admin','middleware' => ['admin.auth:admin']], function() {  
+
+/*dashboard start*/
+Route::get('/dashboard', 'Modules\Dashboard\DashboardController@dashboard')->name('admin.dashboard.home');
+
+});

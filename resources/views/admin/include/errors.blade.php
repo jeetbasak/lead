@@ -1,0 +1,1 @@
+errors.blade.php

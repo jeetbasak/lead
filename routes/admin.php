@@ -32,4 +32,9 @@ Route::group(['namespace' => 'Admin','middleware' => ['admin.auth:admin']], func
 /*dashboard start*/
 Route::get('/dashboard', 'Modules\Dashboard\DashboardController@dashboard')->name('admin.dashboard.home');
 
+
+//notification
+Route::get('/notifications', 'Modules\Notification\NotificationController@notification_list')->name('notification.list');
+
+
 });

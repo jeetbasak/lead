@@ -8,8 +8,14 @@
 	<div class="sidebar-heading"><span>TaskAffix  <a class="menuclose"><i class="fa fa-close"></i></a></span></div>
 	
 	<div class="list-group list-group-flush">
-		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-home-b"></i> <span>Home</span></a>
-		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-bell-n"></i><span>Notifications</span></a>
+		<a class="{{request()->segment(2)=='dashboard'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('admin.dashboard.home')}}"><i class="fa fa-home-b"></i> <span>Home</span></a>
+
+
+
+		<a class="{{request()->segment(2)=='notifications'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('notification.list')}}"><i class="fa fa-bell-n"></i><span>Notifications</span></a>
+
+
+
 		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-users-mng"></i><span>Users Management</span></a>
 		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-target"></i><span>Target Management</span></a>
 		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-users-achiv"></i><span>Users Achivement</span></a>
@@ -85,5 +91,5 @@
 				</div>
 			</div>
 					
-		</div>
+		</div> 
 	</nav>

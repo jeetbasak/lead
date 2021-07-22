@@ -1171,3 +1171,11 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     width: 100%;
   }
 }
+
+
+.custom_active{
+ z-index: 1;
+    color: #cfcfcf !important;
+    text-decoration: none;
+    background-color: #27344b;
+}

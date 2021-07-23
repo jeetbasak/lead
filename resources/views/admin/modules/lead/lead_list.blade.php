@@ -4,6 +4,8 @@
 @endsection
 @section('left_part')
 @include('admin.include.left_part')
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 @endsection
 @section('content')
 
@@ -28,7 +30,7 @@
 			</div>
 		</div>
 		<div class="top-row">
-			<table>
+			<table id="example">
 				<thead>
 					<tr>
 						<th scope="col"><input type="checkbox"></th>
@@ -74,4 +76,13 @@
 {{-- end content --}}
 @section('script')
 @include('admin.include.script')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+<script>
+oTable = $('#example').DataTable();  
+$('#myInputTextField').keyup(function(){
+      oTable.search($(this).val()).draw() ;
+})
+</script>
 @endsection

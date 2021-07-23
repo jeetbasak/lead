@@ -1365,3 +1365,8 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     text-decoration: none;
     background-color: #27344b;
 }
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: right;
+    display: none;
+}

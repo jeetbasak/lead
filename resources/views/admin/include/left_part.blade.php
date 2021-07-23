@@ -78,7 +78,7 @@
                                             <li><a href="#" class="share-btn"><i class="fa fa-lock"></i>Share</a></li>
                                             <li class="search">
                                                 <form>
-                                                    <input name="search" placeholder="Search" type="text">
+                                                    <input type="text" id="myInputTextField">
                                                 </form>
                                             </li>
                                             <li><a href="#" class="plus-icon">+</a></li>                                            

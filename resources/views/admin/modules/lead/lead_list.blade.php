@@ -39,76 +39,19 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($leads as $key=> $value)
 					<tr>
 						<td data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Karishma Begam</td>
-						<td data-label="Mail ID">contact@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 789</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td scope="row" data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Piyush Sircar</td>
-						<td data-label="Mail ID">piyushsircar@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 456</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td scope="row" data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Aman Nahar</td>
-						<td data-label="Mail ID">amannahar@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 123</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td scope="row" data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Jayanta Karmakar</td>
-						<td data-label="Mail ID">jkarmakar@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 159</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Karishma Begam</td>
-						<td data-label="Mail ID">contact@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 789</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td scope="row" data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Piyush Sircar</td>
-						<td data-label="Mail ID">piyushsircar@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 456</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td scope="row" data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Aman Nahar</td>
-						<td data-label="Mail ID">amannahar@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 123</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td scope="row" data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Jayanta Karmakar</td>
-						<td data-label="Mail ID">jkarmakar@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 159</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Karishma Begam</td>
-						<td data-label="Mail ID">contact@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 789</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
-					<tr>
-						<td scope="row" data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">Piyush Sircar</td>
-						<td data-label="Mail ID">piyushsircar@gmail.com</td>
-						<td data-label="Phone Number">+91 234 4566 456</td>
-						<td data-label="Action"><a href="#"><i class="fa add-round">+</i></a> <a href="#"><i class="fa fa-edit edit-round"></i></a> <a href="#"><i class="fa fa-trash-o del-round"></i></a></td>
-					</tr>
+						<td data-label="Name">{{@$value->user_name}}</td>
+						<td data-label="Mail ID">{{@$value->user_email}}</td>
+						<td data-label="Phone Number">{{@$value->ph}}</td>
+						<td data-label="Action">
+							<a href="#"><i class="fa add-round">+</i></a>
+							<a href="#"><i class="fa fa-edit edit-round"></i></a>
+							<a href="#"><i class="fa fa-trash-o del-round"></i></a>
+						</td>
+				 	</tr>
+				    @endforeach
 					
 				</tbody>
 			</table>

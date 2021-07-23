@@ -32,9 +32,18 @@ Route::group(['namespace' => 'Admin','middleware' => ['admin.auth:admin']], func
 /*dashboard start*/
 Route::get('/dashboard', 'Modules\Dashboard\DashboardController@dashboard')->name('admin.dashboard.home');
 
+/*dashboard end*/
+
+
 
 //notification
 Route::get('/notifications', 'Modules\Notification\NotificationController@notification_list')->name('notification.list');
+
+
+//lead manage start
+Route::get('/lead', 'Modules\Lead\LeadController@lead_list')->name('lead.list');
+Route::get('/lead/add', 'Modules\Lead\LeadController@lead_add_form')->name('lead.add.form');
+//lead manage end
 
 
 });

@@ -16,6 +16,7 @@
 
 <!-- Start right Content here -->
 <!-- ============================================================== -->
+@include('admin.include.errors')
 <div class="container-fluid">
 	<div class="body-main">
 		<div class="top-row">
@@ -49,8 +50,8 @@
 						<td data-label="Phone Number">{{@$value->ph}}</td>
 						<td data-label="Action">
 							<a href="#"><i class="fa add-round">+</i></a>
-							<a href="#"><i class="fa fa-edit edit-round"></i></a>
-							<a href="#"><i class="fa fa-trash-o del-round"></i></a>
+							<a href="{{route('lead.edit',$value->id)}}"><i class="fa fa-edit edit-round"></i></a>
+							<a href="{{route('lead.delete',$value->id)}}"><i class="fa fa-trash-o del-round"></i></a>
 						</td>
 				 	</tr>
 				    @endforeach
@@ -80,8 +81,11 @@
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
 <script>
-oTable = $('#example').DataTable();  
+oTable = $('#example').DataTable({
+    "bSort": false
+  });  
 $('#myInputTextField').keyup(function(){
+
       oTable.search($(this).val()).draw() ;
 })
 </script>

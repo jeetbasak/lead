@@ -14,6 +14,7 @@
 
 <!-- Start right Content here -->
 <!-- ============================================================== -->
+ @include('admin.include.errors')
   <div class="container-fluid">
                     <div class="body-main">
                         <div class="top-row">
@@ -39,60 +40,27 @@
                           </div>
                         </div>
             
-                       
+                       <form action="{{route('insert.lead')}}" method="post" id="frm">
+                        @csrf
                         <div class="top-row">
                             <div class="flx-row my-3">
                                 <div class="flx-col">
                                     <label class="form-label">Name</label>
-                                    <input class="form-control" placeholder="Enter your name" type="text">
+                                    <input class="form-control" placeholder="Enter name" type="text" name="name">
                                 </div>
                                 <div class="flx-col">
                                     <label class="form-label">Email</label>
-                                    <input class="form-control" placeholder="Enter your email" type="text">
+                                    <input class="form-control" placeholder="Enter email" type="text" name="email">
                                 </div>
                                 <div class="flx-col">
                                     <label class="form-label">Phone Number</label>
-                                    <input class="form-control" placeholder="Enter your phone number" type="text">
+                                    <input class="form-control" placeholder="Enter phone number" type="text" name="ph">
                                 </div>
                             </div>
                             <div class="flx-row my-3">
                                 <div class="flx-col">
-                                    <label class="form-label">Month</label>
-                                    <div class="flx-row">
-                                        <select class="form-select form-control">
-                                            <option>Select Month</option>
-                                        </select>
-                                        <div class="dd">To</div>
-                                        <select class="form-select form-control">
-                                            <option>Select Month</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="flx-col">
-                                    <label class="form-label">Year</label>
-                                    <div class="flx-row">
-                                        <select class="form-select form-control">
-                                            <option>Select Year</option>
-                                        </select>
-                                        <div class="dd">To</div>
-                                        <select class="form-select form-control">
-                                            <option>Select Year</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="flx-col">
-                                    <label class="form-label">Salary</label>
-                                    <div class="flx-row">
-                                        <div class="product-dtl-quantity">
-                                            <input class="form-control" type="text" value="1">
-                                            <button class="increase">+</button>
-                                        </div>                                       
-                                        <div class="dd">To</div>
-                                        <div class="product-dtl-quantity">
-                                            <input class="form-control" type="text" value="100">
-                                            <button class="decrease">-</button>
-                                        </div>
-                                    </div>                                                                        
+                                    <label class="form-label">Address</label>
+                                    <input class="form-control" placeholder="Enter address" type="text" name="address">
                                 </div>
                             </div>
 
@@ -100,6 +68,7 @@
                                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
                             </div>
                         </div>
+                    </form>
             
                        
             
@@ -125,4 +94,57 @@
 {{-- end content --}}
 @section('script')
 @include('admin.include.script')
+ <script type="text/javascript">
+   
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+
+    jQuery.validator.addMethod("emailonly", function(value, element) {
+    return this.optional(element) || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(value.toLowerCase());
+    }, "Enter valid email");
+
+$('#frm').validate({
+rules:{
+name:{
+required:true,
+minlength:3,
+},
+email:{
+required:true,
+minlength:3,
+emailonly: true,
+},
+ph:{
+required:true,
+minlength:10,
+
+},
+address:{
+required:true,
+minlength:3,
+},
+
+},
+messages:{
+/*   old_password:{
+required:" Old password is mandatory",
+min:"Enter minimum 6 characters"
+},
+newPassword:{
+required:" New password is mandatory",
+min:"Enter minimum 6 characters"
+},
+confirm:{
+required:" Confirm password is mandatory",
+min:"Enter minimum 6 characters",
+equalTo :"New password and confirm password are not matching"
+},*/
+}
+});
+});
+</script>
 @endsection

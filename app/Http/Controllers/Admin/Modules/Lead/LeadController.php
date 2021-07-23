@@ -21,4 +21,26 @@ class LeadController extends Controller
        return view('admin.modules.lead.lead_add');
     }
 
+
+
+
+    public function lead_insert(Request $request){
+    	$request->validate([
+            'name' => 'required|min:3',
+            'address' => 'required',
+            'ph' => 'required|min:10',
+            'email' => 'required|min:3'            
+        ]);
+
+        $lead_ins=new ManageLead();
+        $lead_ins->user_name=$request->name;      
+        $lead_ins->user_email=$request->email;
+        $lead_ins->ph=$request->ph;
+        $lead_ins->user_address=$request->address;
+        $lead_ins->application_date=date('Y-m-d H:i:s');
+       
+        $lead_ins->save();
+       return back()->with('success','The lead added successfully..!');
+    }
+
 }

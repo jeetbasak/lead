@@ -19,7 +19,7 @@
                     <div class="body-main">
                         <div class="top-row">
                             <div class="task-mg-row">
-                                <h2 class="my-1">Add User</h2>
+                                <h2 class="my-1">Add Lead</h2>
             
                                 <div class="right-sec">
                                    <ul>

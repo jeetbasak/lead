@@ -1,31 +1,25 @@
 @if(Session::has('success'))
-    <div class="alert alert-success">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <div class="alert alert-success" >
+     
         <strong>
             {!!Session::get('success')!!}
         </strong>
-    </div>              
+         <a href="#" class="close" data-dismiss="alert" style="float: right !important ;">&times;</a>
+    </div>
 @endif
-{{-- @if(Session::has('success2'))
-    <div class="alert alert-success">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
-        <strong>
-            {!!Session::get('success2')!!}
-        </strong>
-    </div>              
-@endif --}}
 @if(Session::has('error'))
-    <div class="alert alert-danger">
-      <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <div class="alert alert-danger" >
+     
         <strong>
             {{Session::get('error')}}
         </strong>
+         <a href="#" class="close" data-dismiss="alert" style="float: right !important ;">&times;</a>
     </div>
 @endif
 @if ($errors->any())
 {{-- @dd($errors->all()) --}}
-    <div class="alert alert-danger alert-dismissible" style="text-align: center;">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <div class="alert alert-danger alert-dismissible" style="text-align: center;" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close" style="float: left !important ;">&times;</a>
         <ul>
             @foreach ($errors->all() as $error)
                 <li style="list-style: none;">{{ $error }}</li>

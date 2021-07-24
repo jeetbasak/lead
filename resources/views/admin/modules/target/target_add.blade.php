@@ -89,12 +89,12 @@
                             <div class="flx-row my-3">
                                 <div class="flx-col">
                                     <label class="form-label">From Target</label>
-                                    <input class="form-control" placeholder="From target" type="text" name="from" id="from">
+                                    <input class="form-control" placeholder="From target" type="number" name="from" id="from">
                                 </div>
 
                                 <div class="flx-col">
                                     <label class="form-label">To Target</label>
-                                    <input class="form-control" placeholder="To target" type="text" name="to" id="to">
+                                    <input class="form-control" placeholder="To target" type="number" name="to" id="to">
                                 </div>
                                 
                                 <div class="flx-col">
@@ -171,11 +171,16 @@ messages:{
 
 },
 submitHandler:function(form){
-  var from = $('#from').val();
-  var to = $('#to').val();
-  if (from>to || from==to) {
-    alert('From target should be less than to target');
-  }else{
+  var from = parseInt($('#from').val());
+  var to = parseInt($('#to').val());
+  console.log(from);
+  console.log(to);
+  if (from>to) {
+    alert('From target should be less than to target1');
+  } else if(from == to){
+        alert('From target should be less than to target2');
+  }
+  else{
     form.submit();
   }
 } 

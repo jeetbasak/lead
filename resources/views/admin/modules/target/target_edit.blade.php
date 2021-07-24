@@ -170,11 +170,16 @@ messages:{
 
 },
 submitHandler:function(form){
-  var from = $('#from').val();
-  var to = $('#to').val();
-  if (from>to || from==to) {
-    alert('From target should be less than to target');
-  }else{
+  var from = parseInt($('#from').val());
+  var to = parseInt($('#to').val());
+  console.log(from);
+  console.log(to);
+  if (from>to) {
+    alert('From target should be less than to target1');
+  } else if(from == to){
+        alert('From target should be less than to target2');
+  }
+  else{
     form.submit();
   }
 } 

@@ -25,5 +25,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+         // $month=array('jan','feb','mar','apl','may','jun','jul','aug','sep','oct','nov','dec');
+         //                        $date=date('m');
+         //                        $newDate=explode("0", $date);
+         //                        dd($date);
     }
 }

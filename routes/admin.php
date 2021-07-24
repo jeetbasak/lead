@@ -53,4 +53,15 @@ Route::get('/lead/completed', 'Modules\Lead\LeadController@completed')->name('le
 //lead manage end
 
 
+
+
+// target-management
+Route::get('/target', 'Modules\Target\TargetManageController@taregetList')->name('admin.target.list');
+Route::get('/target/add','Modules\Target\TargetManageController@addView')->name('admin.target.add.view');
+Route::post('/target/insert','Modules\Target\TargetManageController@insertTarget')->name('admin.target.insert');
+Route::get('/get-months','Modules\Target\TargetManageController@getMonth')->name('admin.get.months');
+Route::get('/target/delete/{id}','Modules\Target\TargetManageController@delTarget')->name('admin.del.tagets');
+Route::get('/target/edit/{id}','Modules\Target\TargetManageController@editTargetView')->name('admin.edit.targets-view');
+Route::post('/target/update','Modules\Target\TargetManageController@updateTraget')->name('admin.edit.targets-update');
+
 });

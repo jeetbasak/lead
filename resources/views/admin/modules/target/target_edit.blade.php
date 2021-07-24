@@ -69,11 +69,11 @@
                                       <option selected value="">Select month</option>
                                        @if(date('Y')==$data->year)
                                         @for($i=(date('m'))-1;$i<=count($month)-1;$i++)
-                                         <option value="{{@$month[$i]}}" @if(@$data->month==@$month[$i])selected @endif>{{@$month[$i]}}</option>
+                                         <option value="{{$i}}-{{@$month[$i]}}" @if(@$data->month==@$month[$i])selected @endif>{{@$month[$i]}}</option>
                                       @endfor
                                       @else
                                       @for($i=0;$i<=count($month)-1;$i++)
-                                      <option value="{{@$month[$i]}}" @if(@$data->month==@$month[$i])selected @endif>{{@$month[$i]}}</option>
+                                      <option value="{{$i}}-{{@$month[$i]}}" @if(@$data->month==@$month[$i])selected @endif>{{@$month[$i]}}</option>
                                       @endfor
                                       @endif
                                     </select>

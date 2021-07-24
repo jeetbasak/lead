@@ -3,5 +3,5 @@
                                 @endphp
 
 @for($i=0;$i<=count($month)-1;$i++)
-<option value="{{@$month[$i]}}">{{@$month[$i]}}</option>
+<option value="{{$i}}-{{@$month[$i]}}">{{@$month[$i]}}</option>
 @endfor

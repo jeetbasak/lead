@@ -23,6 +23,7 @@
 
 <!-- Start right Content here -->
 <!-- ============================================================== -->
+@include('admin.include.errors')
 <div class="container-fluid">
 	<div class="body-main">
 		<div class="top-row">
@@ -32,7 +33,11 @@
 				</a>
 					<span class="caret"></span></button>
 				</div>
-				
+				{{-- @if(count(@$foo)>0)
+				     @foreach(@$foo as $user)
+					  {{@$user}}
+					 @endforeach
+					@endif --}}
 				
 			</div>
 		</div>
@@ -50,6 +55,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					
 					@foreach($targets as $key=> $value)
 					<tr>
 						<td data-label="Select"><input type="checkbox"></td>
@@ -80,24 +86,24 @@
 							</div>
 							<!-- Modal body -->
 							<div class="modal-body">
+
 								
 								<form method="post" action="{{route('target.assing')}}">
 									@csrf
 									<input type="hidden" name="target_id" value="{{@$value->id}}">
+									<input type="hidden" name="month" value="{{@$value->month_id}}">
+									<input type="hidden" name="year" value="{{@$value->year}}">
 									<div class="form-group">
 										<label for="search">Select to assing</label>
 										<select class="form-control rm06" name="user_id[]" multiple id="slct1{{@$value->id}}" >
 											
-											@foreach($users as $key=> $user)
-											<option value="{{$user->id}}" @if($user->id==@$value->tagging_id)selected @endif>{{$user->name}}</option>
+											@foreach(@$users as $key=> $user)
+
+											<option value="{{$user->id}}" >{{$user->name}}</option>
 											@endforeach
 										</select>
 
-										{{-- <select data-placeholder="Select Addons" id="slct1" name="addon_id[]" class="select  form-control" multiple>
-                                        @foreach($users as $key=> $user)
-                                       <option value="{{$user->id}}" @if($user->id==@$value->tagging_id)selected @endif>{{$user->name}}</option>
-                                        @endforeach
-                                        </select> --}}
+										
 									</div>
 									<button type="submit" class="btn btn-primary mb-2" style="text-align:  left !important;">Submit</button>
 									
@@ -157,7 +163,7 @@ $('#myInputTextField').keyup(function(){
 	function abc($id){
 		//alert($id);
 		$('#slct1'+$id).select2({
-		placeholder: 'Select an item'/*+$id*/,
+		placeholder: 'Select an user'/*+$id*/,
 	}); 
 	}
 </script>

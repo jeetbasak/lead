@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Target;
 use App\User;
-
+use App\Models\UserToTarget;
 class TargetManageController extends Controller
 {
     
@@ -19,8 +19,11 @@ class TargetManageController extends Controller
     public function taregetList()
     {
     	 $data = [];
-    	 $data['targets'] = Target::orderBy('id','desc')->where('status','A')->get();
-          $data['users']=User::where('status','!=','D')->get(); 	
+         
+    	 $data['targets'] = Target::orderBy('id','desc')/*->with('users_to_target')*/->where('status','A')->get();
+        
+         // dd($data['black']);
+         $data['users']=User::where('status','!=','D')->get(); 	
     	 return view('admin.modules.target.target_list',$data);
     }
 
@@ -83,7 +86,10 @@ class TargetManageController extends Controller
         }
         $target = new Target;
         $target->year = $request->year;
-        $target->month = $request->month;
+        $m=explode('-',$request->month);
+        // dd($m);
+        $target->month_id = @$m[0]+1;
+        $target->month = @$m[1];
         $target->salary = $request->salary;
         $target->from_target= $request->from;
         $target->to_target = $request->to;
@@ -184,7 +190,10 @@ class TargetManageController extends Controller
 
         $upd = [];
         $upd['year'] = $request->year;
-        $upd['month'] = $request->month;
+        $m=explode('-',$request->month);
+        // dd($m);
+        $upd['month_id'] = @$m[0]+1;
+        $upd['month'] = @$m[1];
         $upd['salary'] = $request->salary;
         $upd['from_target'] = $request->from;
         $upd['to_target'] = $request->to;
@@ -201,7 +210,67 @@ class TargetManageController extends Controller
 
 
     public function assing(Request $request){
-        dd($request->all());
+        $data = []; 
+        $uniq = [];
+        $data2=[];
+        $uniq2 = [];
+        if (@$request->user_id) {
+           foreach (@$request->user_id as $key => $value) {
+               $src = UserToTarget::where('user_id',$value)->where('target_month',$request->month)->first();
+               if ($src) {
+                 array_push($data,$value);
+               }else{
+               $target = new UserToTarget;
+               $target->user_id = $value;
+               $target->target_id = $request->target_id;
+               $target->target_month = $request->month;
+               $target->target_year = $request->year;
+               $target->save();
+                array_push($data2,$value);
+             }
+           }
+           // if (count(@$data)>0) {
+               foreach (@$data as  $value) {
+                   $user = User::where('id',$value)->first();
+                   array_push($uniq, $user->name);
+               }
+                  // $a=count($uniq);
+                  // $values[] = implode(' , ', array_splice($uniq, -$a));
+                  // $str = implode(', ', $values);
+                  //return back()->with('error',$str.' are already added');
+           // }
+           // else{
+                $a=count($uniq);
+                  $values[] = implode(' , ', array_splice($uniq, -$a));
+                  $str1 = implode(', ', $values);
+                   //dd(count($str1));
+
+            foreach (@$data2 as  $value) {
+                   $user = User::where('id',$value)->first();
+                   array_push($uniq2, $user->name);
+               }
+              
+
+                  $ab=count($uniq2);
+                  $values2[] = implode(' , ', array_splice($uniq2, -$ab));
+                  $str2 = implode(', ', $values2);
+                     // dd($str1,$str2);
+                  if(@$str2!='' && @$str1==''){
+                    return back()->with('success',@$str2.' are added successfully');
+                  }
+                  elseif (@$str2!='' && @$str1!='') {
+                      return back()->with('success',@$str2.' are added successfully and '. @$str1. " exists");
+                  }
+                  else{
+                     return back()->with('error', @$str1. " exists");
+                  }
+
+
+             //return back()->with('success','target assinged to users');
+           // }
+           // dd($uniq);
+          
+        }
     }
 
 }

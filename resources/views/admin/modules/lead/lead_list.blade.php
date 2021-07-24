@@ -18,11 +18,9 @@
 		<div class="top-row">
 			<div class="task-mg-row b-b-n">
 				<div class="dropdown">
-<<<<<<< HEAD
-				<a href="{{route('lead.add.form')}}" class="add-btn dropdown-toggle" style=" color: white; "><span class="plus">+</span> <div class="br-r">Add Lead</div>
-=======
+
 					<a href="{{route('lead.add.form')}}" class="add-btn dropdown-toggle" style=" color: white; ">	{{-- <button class="add-btn dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" type="button"> --}}<span class="plus">+</span> <div class="br-r">Add Lead</div>
->>>>>>> 2d3afc4c344fd8903c957b488af273f4993f8768
+
 				</a>
 				<span class="caret"></span></button>
 			</div>

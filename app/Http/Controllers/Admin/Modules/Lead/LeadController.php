@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Admin\Modules\Lead;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ManageLead;
-
+use App\User;
 class LeadController extends Controller
 {
 
 
     public function lead_list(Request $request){
-       $data['leads']=ManageLead::where('status','!=','D')->get();
+       $data['leads']=ManageLead::where('status','!=','D')->/*where('application_status','!=','C')->*/with('user')->get();
+       //dd($data['leads']);
+       $data['users']=User::get();
        return view('admin.modules.lead.lead_list')->with($data);
     }
 
@@ -81,6 +83,52 @@ class LeadController extends Controller
     	//dd($id);
     	ManageLead::where('id',$id)->update(['status'=>'D']);
         return back()->with('success','Lead deleted..!');
+    }
+
+
+
+
+    public function assing(Request $request){
+      //dd($request->all());
+      $srch=ManageLead::where('id',$request->lead_id)->where('tagging_id','!=','')->count();
+      if($srch>0){
+         return back()->with('error','Lead already assigned..!');
+      }
+      if(@$request->user_id){
+      ManageLead::where('id',$request->lead_id)->update(['tagging_id'=>$request->user_id]);
+      return back()->with('success','This lead is successfully assigned..!');
+      }
+      else{
+        return back()->with('error','Please select user..!');
+      }
+    }
+
+
+
+
+
+
+
+
+    public function reassing(Request $request){
+      //dd($request->all());
+     
+      if(@$request->user_id){
+      ManageLead::where('id',$request->lead_id)->update(['tagging_id'=>$request->user_id]);
+      return back()->with('success','This lead is successfully assigned..!');
+      }
+      else{
+        return back()->with('error','Please select user..!');
+      }
+    }
+
+
+
+
+
+     public function completed(Request $request){
+        $data['leads']=ManageLead::where('status','!=','D')->where('application_status','C')->with('user')->get();
+     return view('admin.modules.lead.completed_lead')->with($data);
     }
 
 }

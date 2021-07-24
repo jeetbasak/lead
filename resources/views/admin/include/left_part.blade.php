@@ -65,9 +65,20 @@
                                     </div>
                 
                                     <ul>
+                                          {{-- for lead start --}}
+                                       {{--  @if(request()->segment(2)=='lead')
+                                        <li><a href="{{route('lead.list')}}" @if(!request()->segment(3)) class="active"  @endif>List</a></li>
+                                        @endif
+
+                                        @if(request()->segment(2)=='lead')
+                                        <li><a href="{{route('lead.completed')}}" @if(request()->segment(3)=='completed') class="active" @endif>Completed </a></li>
+                                        @endif --}}
+                                        {{-- for lead end --}}
+
+                                        {{-- <li><a href="#">Target</a></li> --}}
                                         <li><a href="#" class="active">List</a></li>
-                                        <li><a href="#">Pending</a></li>
-                                        <li><a href="#">Target</a></li>                                        
+                                        {{-- <li><a href="#">Pending</a></li>
+                                        <li><a href="#">Target</a></li> --}}                                        
                                     </ul>
                                 </div>
                             </div>

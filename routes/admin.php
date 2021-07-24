@@ -44,6 +44,12 @@ Route::get('/notifications', 'Modules\Notification\NotificationController@notifi
 Route::get('/lead', 'Modules\Lead\LeadController@lead_list')->name('lead.list');
 Route::get('/lead/add', 'Modules\Lead\LeadController@lead_add_form')->name('lead.add.form');
 Route::post('/lead/insert', 'Modules\Lead\LeadController@lead_insert')->name('insert.lead');
+Route::get('/lead/edit/{id}', 'Modules\Lead\LeadController@lead_edit_form')->name('lead.edit');
+Route::post('/lead/update', 'Modules\Lead\LeadController@update')->name('lead.update');
+Route::get('/lead/delete/{id}', 'Modules\Lead\LeadController@delete_lead')->name('lead.delete');
+Route::post('/lead/assing', 'Modules\Lead\LeadController@assing')->name('lead.assing');
+Route::post('/lead/reassing', 'Modules\Lead\LeadController@reassing')->name('lead.reassing');
+Route::get('/lead/completed', 'Modules\Lead\LeadController@completed')->name('lead.completed');
 //lead manage end
 
 

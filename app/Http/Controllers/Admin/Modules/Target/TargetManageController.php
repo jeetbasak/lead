@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\Modules\Target;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Target;
+use App\User;
+
 class TargetManageController extends Controller
 {
     
@@ -17,9 +19,16 @@ class TargetManageController extends Controller
     public function taregetList()
     {
     	 $data = [];
-    	 $data['targets'] = Target::orderBy('id','desc')->where('status','A')->get(); 	
+    	 $data['targets'] = Target::orderBy('id','desc')->where('status','A')->get();
+          $data['users']=User::where('status','!=','D')->get(); 	
     	 return view('admin.modules.target.target_list',$data);
     }
+
+
+
+
+
+
 
     /**
      *   Method      : addView
@@ -31,6 +40,12 @@ class TargetManageController extends Controller
     {
     	return view('admin.modules.target.target_add');
     }
+
+
+
+
+
+
 
     /**
      *   Method      : insertTarget
@@ -78,6 +93,14 @@ class TargetManageController extends Controller
     }
 
 
+
+
+
+
+
+
+
+
     public function getMonth(Request $request)
     {
      	if (date('Y')==$request->year) {
@@ -88,6 +111,13 @@ class TargetManageController extends Controller
     	}
 		
 	}
+
+
+
+
+
+
+
 
     public function delTarget($id)
     {
@@ -100,6 +130,13 @@ class TargetManageController extends Controller
     }
 
 
+
+
+
+
+
+
+
     public function editTargetView($id)
     {
         $data = Target::where('id',$id)->where('status','!=','D')->first();
@@ -108,6 +145,12 @@ class TargetManageController extends Controller
         }
         return view('admin.modules.target.target_edit',compact('data'));
     }
+
+
+
+
+
+
 
 
     public function updateTraget(Request $request)
@@ -152,5 +195,13 @@ class TargetManageController extends Controller
     }
 
 
+
+
+
+
+
+    public function assing(Request $request){
+        dd($request->all());
+    }
 
 }

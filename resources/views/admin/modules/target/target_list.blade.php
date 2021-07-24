@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-<title>Admin | Lead list</title>
+<title>Admin | Target list</title>
 @endsection
 @section('left_part')
 @include('admin.include.left_part')
@@ -21,7 +21,7 @@
 		<div class="top-row">
 			<div class="task-mg-row b-b-n">
 				<div class="dropdown">
-				<a href="{{route('lead.add.form')}}" class="add-btn dropdown-toggle" style=" color: white; "><span class="plus">+</span> <div class="br-r">Add Lead</div>
+				<a href="{{route('admin.target.add.view')}}" class="add-btn dropdown-toggle" style=" color: white; "><span class="plus">+</span> <div class="br-r">Add Target</div>
 				</a>
 					<span class="caret"></span></button>
 				</div>
@@ -34,23 +34,27 @@
 				<thead>
 					<tr>
 						<th scope="col"><input type="checkbox"></th>
-						<th scope="col">Name</th>
-						<th scope="col">Mail ID</th>
-						<th scope="col">Phone Number</th>
+						<th scope="col">Year</th>
+						<th scope="col">Month</th>
+						<th scope="col">From Target</th>
+						<th scope="col">To Target</th>
+						<th scope="col">Salary</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($leads as $key=> $value)
+					@foreach($targets as $key=> $value)
 					<tr>
 						<td data-label="Select"><input type="checkbox"></td>
-						<td data-label="Name">{{@$value->user_name}}</td>
-						<td data-label="Mail ID">{{@$value->user_email}}</td>
-						<td data-label="Phone Number">{{@$value->ph}}</td>
+						<td data-label="Name">{{@$value->year}}</td>
+						<td data-label="Mail ID">{{@$value->month}}</td>
+						<td data-label="Phone Number">{{@$value->from_target}}</td>
+						<td data-label="Phone Number">{{@$value->to_target}}</td>
+						<td data-label="Phone Number">{{@$value->salary}}</td>
 						<td data-label="Action">
-							<a href="#"><i class="fa add-round">+</i></a>
-							<a href="#"><i class="fa fa-edit edit-round"></i></a>
-							<a href="#"><i class="fa fa-trash-o del-round"></i></a>
+							{{-- <a href="#"><i class="fa add-round">+</i></a> --}}
+							<a href="{{route('admin.edit.targets-view',['id'=>@$value->id])}}"><i class="fa fa-edit edit-round"></i></a>
+							<a href="{{route('admin.del.tagets',['id'=>@$value->id])}}" onclick="return confirm('Do you want to delete this target?')"><i class="fa fa-trash-o del-round"></i></a>
 						</td>
 				 	</tr>
 				    @endforeach

@@ -96,10 +96,11 @@
 									<div class="form-group">
 										<label for="search">Select to assing</label>
 										<select class="form-control rm06" name="user_id[]" multiple id="slct1{{@$value->id}}" >
-											
+											{{--  --}}
 											@foreach(@$users as $key=> $user)
-
-											<option value="{{$user->id}}" >{{$user->name}}</option>
+                          
+											<option {{-- selected --}} value="{{$user->id}}" @foreach(@$targetTo as $tt) @if( ($tt->target_month==$value->month_id) && ($tt->user_id==$user->id) && ($tt->target_id==$value->id))selected  @endif @endforeach>{{$user->name}}</option>
+											
 											@endforeach
 										</select>
 

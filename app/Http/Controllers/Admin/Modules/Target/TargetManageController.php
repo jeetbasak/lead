@@ -21,6 +21,8 @@ class TargetManageController extends Controller
     	 $data = [];
          
     	 $data['targets'] = Target::orderBy('id','desc')/*->with('users_to_target')*/->where('status','A')->get();
+         $data['targetTo']=UserToTarget::get();
+         //dd($data['targetTo']);
         
          // dd($data['black']);
          $data['users']=User::where('status','!=','D')->get(); 	
@@ -216,7 +218,7 @@ class TargetManageController extends Controller
         $uniq2 = [];
         if (@$request->user_id) {
            foreach (@$request->user_id as $key => $value) {
-               $src = UserToTarget::where('user_id',$value)->where('target_month',$request->month)->first();
+               $src = UserToTarget::where('user_id',$value)->where('target_month',$request->month)->where('target_id',$request->target_id)->first();
                if ($src) {
                  array_push($data,$value);
                }else{

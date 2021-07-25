@@ -3,7 +3,7 @@
 <title>User | Login</title>
 @endsection
 @section('head')
-@include('admin.include.head')
+@include('frontend.include.head')
 @endsection
 @section('content')
 {{-- <div class="container">

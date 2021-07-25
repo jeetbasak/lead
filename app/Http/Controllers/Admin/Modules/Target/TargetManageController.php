@@ -221,12 +221,16 @@ class TargetManageController extends Controller
         $uniq = [];
         $data2=[];
         $uniq2 = [];
+       
+
+        if (!@$request->user_id) {
+          return back()->with('error','Please select user');
+        }
 
         $target_d=UserToTarget::where('target_id',$request->target_id)->get();
         foreach($target_d as $dlt){
           UserToTarget::where('target_id',$dlt->target_id)->delete();
         }
-
 
         if (@$request->user_id) {
            foreach (@$request->user_id as $key => $value) {

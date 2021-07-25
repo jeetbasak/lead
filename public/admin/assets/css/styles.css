@@ -1911,3 +1911,10 @@ div.dataTables_wrapper div.dataTables_filter {
 .error{
   color: red !important;
 }
+/*sayan*/
+.custom_active{
+    z-index: 1;
+    color: #cfcfcf;
+    text-decoration: none;
+     background-color: #27344b;
+}

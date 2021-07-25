@@ -211,14 +211,26 @@ class TargetManageController extends Controller
 
 
 
+
+
+
+
+
     public function assing(Request $request){
         $data = []; 
         $uniq = [];
         $data2=[];
         $uniq2 = [];
+
+        $target_d=UserToTarget::where('target_id',$request->target_id)->get();
+        foreach($target_d as $dlt){
+          UserToTarget::where('target_id',$dlt->target_id)->delete();
+        }
+
+
         if (@$request->user_id) {
            foreach (@$request->user_id as $key => $value) {
-               $src = UserToTarget::where('user_id',$value)->where('target_month',$request->month)->where('target_id',$request->target_id)->first();
+               $src = UserToTarget::where('user_id',$value)->where('target_month',$request->month)->/*where('target_id',$request->target_id)->*/where('target_year',$request->year)->first();
                if ($src) {
                  array_push($data,$value);
                }else{
@@ -258,13 +270,13 @@ class TargetManageController extends Controller
                   $str2 = implode(', ', $values2);
                      // dd($str1,$str2);
                   if(@$str2!='' && @$str1==''){
-                    return back()->with('success',@$str2.' are added successfully');
+                    return back()->with('success',@$str2.' added successfully');
                   }
                   elseif (@$str2!='' && @$str1!='') {
-                      return back()->with('success',@$str2.' are added successfully and '. @$str1. " exists");
+                      return back()->with('success',@$str2.' added successfully and '. @$str1. " exists under this year and month");
                   }
                   else{
-                     return back()->with('error', @$str1. " exists");
+                     return back()->with('error', @$str1. " exists under this year and month");
                   }
 
 

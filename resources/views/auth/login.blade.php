@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
+
+@section('title')
+<title>Landing page</title>
+@endsection
+@section('head')
+@include('admin.include.head')
+@endsection
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +76,91 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+ <div class="container-fluid p-0">            
+            <div class="d-flex signup-bg">
+                <div class="left-panel">
+                    <div class="logo-col text-center"><h2>TaskAffix</h2></div>                    
+                    
+                    <div class="log-text">
+                        <h2>Welcome Back!</h2>
+                        <p>Enter your personal details and start journey with us</p>
+                        <a href="{{ route('register') }}">Sign Up</a>
+                    </div>
+                    
+                </div>
+                <div class="right-panel">
+                    <div class="login-info">
+                        <ul>
+                            <li>Doesn't have an account yet?</li>
+                            <li><a class="share-btn" href="{{ route('register') }}">Sign Up</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="welcome-col">
+                        <h2>Sign In to TaskAffix</h2>
+                        <p>Please login in to your account</p>
+                         <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        {{-- email --}}
+                        <div class="e-col">                            
+                           <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter your email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror                           
+                        </div> 
+
+                        {{-- password --}}
+                        <div class="e-col">    
+                            <div class="input-group" id="show_hide_password">
+                                <input id="password" placeholder="Enter your password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <div class="input-group-addon">
+                                  <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                </div>
+                              </div> 
+                        </div>
+                        {{-- remember me --}} 
+                        <div class="e-col">                            
+                            <div class="flx-row">
+                                <div class="custom-checkbox"> 
+                                     <input class="custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="custom-control-label">Remember me</label> </div> 
+                         
+                            {{-- fp --}} 
+                             @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>                         
+                        </div>                       
+                        <div class="e-col"> 
+                         <button type="submit" class="next-btn next-button">
+                                    Login
+                                </button>                           
+                                                     
+                        </div>  
+                        </form>                     
+                    </div>                   
+
+
+                </div>
+            </div>
+            
+                            
+        </div>
+@endsection
+
+@section('script')
+@include('frontend.include.script')
 @endsection

@@ -12,13 +12,13 @@
 */
 
 Route::get('/', function () {
-    return redirect()->route('dashboard.home');
+     return view('welcome');
 });
 
 
 Auth::routes();
 
-/*Route::get('/home', 'HomeController@index2')->name('home');*/
+//Route::get('/', 'HomeController@index')->name('landing.page');
 
  Route::group(['middleware'=>'auth'],function(){
   Route::get('/home','Frontend\Modules\Dashboard\DashboardController@home')->name('dashboard.home');	

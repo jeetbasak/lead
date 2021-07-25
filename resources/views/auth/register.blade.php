@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
+@section('title')
+<title>User | Login</title>
+@endsection
+
+@section('head')
+@include('frontend.include.head')
+@endsection
+
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +81,106 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+ <div class="container-fluid p-0">            
+            <div class="d-flex signup-bg">
+                <div class="left-panel">
+                    <div class="logo-col"><h2>TaskAffix</h2></div>                    
+                    
+                    <div class="card1">
+                        <p class="up-title">Set up your TaskAffix account</p>
+                        <ul id="progressbar" class="text-center">
+                            <li class="step0 active"><h2>Create your Profile <span>Fill out some quick details</span></h2></li>
+                            <li class="step0"><h2>Tell us about Yourself <span>You have a new workplace</span></h2></li>
+                            <li class="step0"><h2>Account Verification <span>Collaborate with your team</h2></span></li>                            
+                        </ul>                                            
+                    </div>
+
+                    <p class="prev"><span class="fa fa-long-arrow-left"> Go Back</span>
+                    </p id="back">
+                </div>
+                <div class="right-panel">
+                    <div class="login-info">
+                        <ul>
+                            <li>Already have an account?</li>
+                            <li><a class="share-btn" href="#">Sign In</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="welcome-col card2 first-screen show">
+                        <h2>Welcome to TaskAffix</h2>
+                        <p>Let's get started by creating your TaskAffix account</p>
+                        <div class="e-col">                            
+                            <input class="form-control" placeholder="Your Full Name" type="text">                           
+                        </div> 
+                        <div class="e-col">                            
+                            <input class="form-control" placeholder="Access ID" type="text">                           
+                        </div>
+                        <div class="e-col">                            
+                            <input class="form-control" placeholder="Zip code /Pin" type="text"> 
+                            <small>6 digit Pin</small>                          
+                        </div>
+                        <div class="e-col">                            
+                            <div class="custom-checkbox"> <input class="custom-control-input" type="checkbox"> <label class="custom-control-label">I agree with Terms & Condiotion</label> </div>                         
+                        </div>
+                        <div class="e-col">                            
+                            <a  class="next-btn next-button" href="#">Next Step</a>                           
+                        </div>                       
+                    </div>
+
+
+                    <div class="welcome-col card2">
+                        <h2>Welcome to TaskAffix</h2>
+                        <p>Let's get started by creating your TaskAffix account</p>
+                        <div class="e-col">                            
+                            <input class="form-control" placeholder="Your work Location?" type="text">  
+                            <small>City, State, Pin Code</small>                          
+                        </div> 
+                        <div class="e-col"> 
+                            <select class="form-control form-select">
+                                <option selected>Your Last Qualification?</option>
+                            </select>                                       
+                        </div>
+                        <div class="e-col">                            
+                            <input class="form-control" placeholder="Your current Mobile Number" type="text">                          
+                        </div>
+                        <div class="e-col"> 
+                            <label>Any work experience?</label>
+                            <div class="d-flex">
+                                <div class="custom-redio">
+                                    <input class="custom-control-input" type="radio"> <label>Yes</label>
+                                </div> 
+                                <div class="custom-redio">
+                                    <input class="custom-control-input" type="radio"> <label>No</label>
+                                </div>
+                            </div>                                                     
+                        </div>
+                        
+                        <div class="e-col">                            
+                            <a  class="next-btn next-button" href="#">Next Step</a>                           
+                        </div>                       
+                    </div>
+
+                    <div class="welcome-col card2">
+                        <h2>Welcome to TaskAffix</h2>
+                        <p>Let's get started by creating your TaskAffix account</p>
+                        <div class="e-col">                            
+                            <input class="form-control" placeholder="Get an email code from company" type="text"> 
+                            <small>(ex: 568596) for account verification</small>                          
+                        </div> 
+                        <div class="e-col">                            
+                            <a  class="next-btn next-button" href="#">Submit</a>                           
+                        </div>                       
+                    </div>
+
+
+                </div>
+            </div>
+            
+                            
+        </div>
 @endsection
+
+ @section('script')
+    @include('frontend.include.script')
+    @endsection

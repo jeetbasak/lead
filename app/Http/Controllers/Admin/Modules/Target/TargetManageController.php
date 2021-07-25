@@ -216,6 +216,9 @@ class TargetManageController extends Controller
         $uniq = [];
         $data2=[];
         $uniq2 = [];
+        if (!@$request->user_id) {
+          return back()->with('error','Please select user');
+        }
         if (@$request->user_id) {
            foreach (@$request->user_id as $key => $value) {
                $src = UserToTarget::where('user_id',$value)->where('target_month',$request->month)->where('target_id',$request->target_id)->first();

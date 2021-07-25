@@ -16,7 +16,9 @@
 
 
 
-		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-users-mng"></i><span>Users Management</span></a>
+		<a class="{{request()->segment(2)=='user'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('admin.user.list')}}"><i class="fa fa-users-mng"></i><span>Users Management</span></a>
+
+
 		<a class="{{request()->segment(2)=='target'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('admin.target.list')}}"><i class="fa fa-target"></i><span>Target Management</span></a>
 		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-users-achiv"></i><span>Users Achivement</span></a>
 

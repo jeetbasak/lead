@@ -65,6 +65,9 @@ Route::get('/target/edit/{id}','Modules\Target\TargetManageController@editTarget
 Route::post('/target/update','Modules\Target\TargetManageController@updateTraget')->name('admin.edit.targets-update');
 Route::post('/target/assing', 'Modules\Target\TargetManageController@assing')->name('target.assing');
 
+
+
+
 // user-management
 Route::get('/user','Modules\ManageUser\ManageUserController@userList')->name('admin.user.list');
 Route::get('/user/delete/{id}','Modules\ManageUser\ManageUserController@deleteUser')->name('admin.user.delete');

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<title>Landing page</title>
+<title>User | Login</title>
 @endsection
 @section('head')
 @include('admin.include.head')

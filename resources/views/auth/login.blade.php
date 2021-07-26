@@ -87,6 +87,7 @@
             <div class="welcome-col">
                 <h2>Sign In to TaskAffix</h2>
                 <p>Please login in to your account</p>
+                @include('admin.include.errors')
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     {{-- email --}}

@@ -169,7 +169,7 @@ $country=DB::table('countries')->get();
                         </div>
                         <div class="e-col">                            
                           {{--   <a  class="next-btn next-button" href="#">Next Step</a> --}}
-                          <input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to delete this lead?');">                          
+                          <input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to register with this email id?');">                          
                         </div>                       
                     </div>
                 </form>

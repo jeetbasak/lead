@@ -38,7 +38,7 @@ $otp_status=$user->otp_status;
         </div>
         @include('admin.include.errors')
         {{-- 1-////////////////////////////////////////////// --}}
-        <form method="POST" action="{{route('verification.reg')}}" style="margin-left: 120px">
+        <form method="POST" action="{{route('verification.reg')}}" style="margin-left: 120px" id="frm">
             @csrf
             <div class="welcome-col card2 first-screen show">
                 <h2>Welcome to TaskAffix</h2>
@@ -61,7 +61,7 @@ $otp_status=$user->otp_status;
                     <small>(ex: 700098)</small>
                 </div>
                 <div class="e-col">
-                    <input class="form-control" placeholder="Get an email code from company" type="number" name="code" minlength="6">
+                    <input class="form-control" placeholder="Get an email code from company" type="number" name="code">
                     <small>(ex: 568596) for account verification</small>
                 </div>
                 
@@ -90,4 +90,44 @@ $(".rm").hide();;
 
 
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+     jQuery.validator.addMethod("emailonly", function(value, element) {
+    return this.optional(element) || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(value.toLowerCase());
+    }, "Enter valid email");
+     
+$('#frm').validate({
+rules:{
+pin:{
+required:true,
+minlength:6,
+},
+code:{
+required:true,
+minlength:6,
+},
+
+},
+messages:{
+   /*chk:{
+required:" Please accept terms and conditions",
+
+},*/
+/*
+newPassword:{
+required:" New password is mandatory",
+min:"Enter minimum 6 characters"
+},
+confirm:{
+required:" Confirm password is mandatory",
+min:"Enter minimum 6 characters",
+equalTo :"New password and confirm password are not matching"
+},*/
+}
+});
+});
+</script>
+
 @endsection

@@ -68,7 +68,7 @@
                                 <div class="task-img">DE</div>
                                 <div class="task-nemu">
                                     <div class="dropdown">
-                                        <p class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">{{ucfirst(request()->segment(2))}} Management</p>                                                      
+                                        <p class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">{{ucfirst(request()->segment(1))}} Management</p>                                                      
                                         <ul class="dropdown-menu">
                                             <li><a href="#">Phantom</a></li>
                                             <li><a href="#">Cluster</a></li>

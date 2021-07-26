@@ -18,7 +18,7 @@
 
 
 
-		<a class="{{request()->segment(2)=='target'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href=""><i class="fa fa-target"></i><span>My Target</span></a>
+		<a class="{{request()->segment(1)=='target'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.target')}}"><i class="fa fa-target"></i><span>My Target</span></a>
 
 
 		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-users-achiv"></i><span>My Monthly Salary</span></a>

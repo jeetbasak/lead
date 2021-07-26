@@ -33,6 +33,10 @@ Auth::routes();
 
  Route::group(['middleware'=>'auth'],function(){
   Route::get('/home','Frontend\Modules\Dashboard\DashboardController@home')->name('dashboard.home');
+  Route::get('/target','Frontend\Modules\MyTarget\MyTargetController@target_list')->name('my.target');
+  Route::get('/target/future','Frontend\Modules\MyTarget\MyTargetController@future_target_list')->name('my.target.future');
+
+  Route::get('/target/past','Frontend\Modules\MyTarget\MyTargetController@past_target_list')->name('my.target.past');
 
  });
 

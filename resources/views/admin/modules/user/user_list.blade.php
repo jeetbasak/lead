@@ -35,6 +35,7 @@
 					<th scope="col"><input type="checkbox"></th>
 					<th scope="col">Name</th>
 					<th scope="col">Email</th>
+					<th>Status</th>
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
@@ -44,15 +45,36 @@
 					<td data-label="Select"><input type="checkbox"></td>
 					<td data-label="Name">{{@$value->name}}</td>
 					<td data-label="Name">{{@$value->email}}</td>
-					
+					<td>
+						@if(@$value->status=="AA")
+						Awating Approval
+						@elseif(@$value->status=="A")
+						Active
+						@elseif(@$value->status=="I")
+						Inactive
+						@endif
+					</td>
 					<td data-label="Action">
 					
 
 					<a href="{{route('admin.user.edit',$value->id)}}"><i class="fa fa-edit edit-round"></i></a>
 
 					<a onclick="return confirm('Are you sure want to delete this user?');" href="{{route('admin.user.delete',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
+					
+					@if(@$value->status=="AA")
+					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px;">Accept</a>
+					@endif
 
-					<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
+					@if(@$value->status=="I")
+					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px;">Active</a>
+					@endif
+
+					@if(@$value->status=="A")
+					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px;">Inactive</a>
+					@endif
+					
+					
+					<a href="{{route('admin.user.view',['id'=>@$value->id])}}" type="button"  style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
 						
 					</td>
 				</tr>
@@ -76,8 +98,6 @@
 							</div>
 							<!-- Modal footer -->
 							<div class="modal-footer">
-								
-								
 								<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 							</div>
 						</div>

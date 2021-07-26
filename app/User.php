@@ -5,7 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Models\Country;
+use App\Models\State;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -37,4 +38,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function country_user()
+    {
+        return $this->hasOne(Country::class, 'id', 'country_id');
+    }
+
+    public function state_user()
+    {
+        return $this->hasOne(State::class, 'id', 'country_id');
+    }
 }

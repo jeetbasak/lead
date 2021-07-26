@@ -54,6 +54,11 @@
                                     <label class="form-label">Email</label>
                                     <input class="form-control" placeholder="Enter email" id="email" type="text" name="email" value="{{@$data->email}}">
                                 </div>
+
+                                <div class="flx-col">
+                                    <label class="form-label">Phone Number</label>
+                                    <input class="form-control" placeholder="Enter email" id="number" type="text" name="number" value="{{@$data->ph}}">
+                                </div>
                                 <div class="flx-col"></div>
                             </div>
                                 

@@ -74,4 +74,6 @@ Route::get('/user/delete/{id}','Modules\ManageUser\ManageUserController@deleteUs
 Route::get('/user/edit-user/{id}','Modules\ManageUser\ManageUserController@editView')->name('admin.user.edit');
 Route::post('/user/update-user','Modules\ManageUser\ManageUserController@updateUser')->name('admin.user.update');
 Route::post('/user/check-email','Modules\ManageUser\ManageUserController@checkEmail')->name('admin.user.check.email');
+Route::get('/user/status/{id}','Modules\ManageUser\ManageUserController@changeStatus')->name('admin.user.change.status');
+Route::get('/user/view/{id}','Modules\ManageUser\ManageUserController@viewUser')->name('admin.user.view');
 });

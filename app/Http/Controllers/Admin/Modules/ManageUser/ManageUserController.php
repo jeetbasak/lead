@@ -38,9 +38,14 @@ class ManageUserController extends Controller
 
     public function updateUser(Request $request)
     {
+        $check = User::where('id','!=',$request->id)->where('ph',$request->number)->where('status','!=','D')->first();
+        if ($check!="") {
+          return redirect()->back()->with('error','Email Already Exists.Try Another');
+        }
         $upd = [];
         $upd['name'] = $request->name;
         $upd['email'] = $request->email;
+        $upd['ph'] = $request->number;
         $update = User::where('id',$request->id)->update($upd);
         return redirect()->back()->with('success','User Updated Successfully');
     }
@@ -56,4 +61,35 @@ class ManageUserController extends Controller
           }
         }
     }
+
+    public function changeStatus($id)
+    {
+      // return $id;
+       $data = User::where('id',$id)->where('status','!=','D')->first();
+       if ($data==null) {
+            return redirect()->back();
+       }
+       if ($data->status=="AA") {
+         $update =  User::where('id',$id)->where('status','!=','D')->update(['status'=>'A']);
+         return redirect()->back()->with('success','User Activated Successfully');
+       }
+        if ($data->status=="A") {
+         $update =  User::where('id',$id)->where('status','!=','D')->update(['status'=>'I']);
+         return redirect()->back()->with('success','User Deactivated Successfully');
+       }
+       if ($data->status=="I") {
+         $update =  User::where('id',$id)->where('status','!=','D')->update(['status'=>'A']);
+         return redirect()->back()->with('success','User Activated Successfully');
+    }
+   }
+
+
+   public function viewUser($id)
+   {
+    $data = User::where('id',$id)->where('status','!=','D')->first();
+    if ($data==null) {
+            return redirect()->back();
+    }
+    return view('admin.modules.user.view_user',compact('data'));
+   }
 }

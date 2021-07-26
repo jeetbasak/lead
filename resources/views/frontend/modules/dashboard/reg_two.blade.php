@@ -98,7 +98,7 @@ $country=DB::table('countries')->get();
                         <p class="up-title">Set up your TaskAffix account</p>
                         <ul id="progressbar" class="text-center">
                             <li class="step0 active"><h2>Create your Profile <span>Fill out some quick details</span></h2></li>
-                            <li class="step0"><h2>Tell us about Yourself <span>You have a new workplace</span></h2></li>
+                            <li class="step0 active"><h2>Tell us about Yourself <span>You have a new workplace</span></h2></li>
                             <li class="step0"><h2>Account Verification <span>Collaborate with your team</h2></span></li>                            
                         </ul>                                            
                     </div>
@@ -113,63 +113,38 @@ $country=DB::table('countries')->get();
                             <li><a class="share-btn" href="#">Sign In</a></li>
                         </ul>
                     </div>
-                   
-
                     {{-- 1-////////////////////////////////////////////// --}}
-                    <form method="POST" action="{{ route('register.one') }}" style="margin-left: 120px">
+                    <form method="POST" action="{{ route('register.two') }}" style="margin-left: 120px">
                         @csrf
                     <div class="welcome-col card2 first-screen show">
                         <h2>Welcome to TaskAffix</h2>
                         <p>Let's get started by creating your TaskAffix account</p>
-                         @include('admin.include.errors')
+
+                        <input type="text" name="id" value="{{$id}}">
 
 
-                        <div class="e-col">                            
-                            <input class="form-control" placeholder="Your Full Name" type="text" name="name" id="name">                           
-                        </div> 
 
                          <div class="e-col">                            
-                            <input class="form-control" placeholder="Your Full Email" type="text" name="email" id="email">                           
+                            <input class="form-control" placeholder="Your Full phone number" type="tel" name="ph" id="ph">                           
                         </div> 
                         
 
-                        <div class="e-col"> 
-                            <select class="form-control form-select" name="qualification" >
-                                <option selected value="">Your Last Qualification?</option>
-                                <option value="Class 10">Class 10?</option>
-                                <option value="Class 12">Class 12?</option>
-                                <option value="Graduated?">Graduated?</option>
-                            </select>                                       
+                            <div class="e-col"> 
+                            <label>Any work experience?</label>
+                            <div class="d-flex">
+                                <div class="custom-redio">
+                                    <input class="custom-control-input" type="radio" name="work_exp" value="Y"> <label>Yes</label>
+                                </div> 
+                                <div class="custom-redio">
+                                    <input class="custom-control-input" type="radio" name="work_exp" value="N"> <label>No</label>
+                                </div>
+                            </div>                                                     
                         </div>
 
-                        <div class="e-col"> 
-                            <select class="form-control form-select" name="country" id="country">
-                                <option selected>Select Country</option>
-                                @foreach(@$country as $value)
-                                <option value="{{@$value->id}}">{{@$value->name}}</option>
-                                @endforeach
-                            </select>                                       
-                        </div>
-
-                        <div class="e-col"> 
-                            <select class="form-control form-select" id="states" name="state">
-                                <option selected>Select State</option>
-                                {{-- @foreach(@$country as $value)
-                                <option value="{{@$value->id}}">{{@$value->name}}</option>
-                                @endforeach --}}
-                            </select>                                       
-                        </div>
-                       
-                        {{-- <div class="e-col">                            
-                            <input class="form-control" placeholder="Zip code /Pin" type="text"> 
-                            <small>6 digit Pin</small>                          
-                        </div> --}}
-                        <div class="e-col">                            
-                            <div class="custom-checkbox"> <input class="custom-control-input" type="checkbox" required="required"> <label class="custom-control-label" >I agree with Terms & Condiotion</label> </div>                         
-                        </div>
+                    
                         <div class="e-col">                            
                           {{--   <a  class="next-btn next-button" href="#">Next Step</a> --}}
-                          <input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to delete this lead?');">                          
+                          <input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to go ahead?');">                          
                         </div>                       
                     </div>
                 </form>

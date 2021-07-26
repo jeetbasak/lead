@@ -29,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
          //                        $date=date('m');
          //                        $newDate=explode("0", $date);
          //                        dd($date);
-        // dd(date('F'));
+        //dd(date('F'));
     }
 }

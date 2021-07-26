@@ -27,6 +27,8 @@ Route::get('/', function () {
 
   Route::post('register-thired-step','Frontend\Modules\Dashboard\DashboardController@update')->name('go.back.upd');
 
+   Route::get('register-reffer/{email}/{id}','Frontend\Modules\Dashboard\DashboardController@reffer_reg')->name('register.reffer');
+
 Auth::routes();
 
 //Route::get('/', 'HomeController@index')->name('landing.page');
@@ -37,6 +39,7 @@ Auth::routes();
   Route::get('/target/future','Frontend\Modules\MyTarget\MyTargetController@future_target_list')->name('my.target.future');
 
   Route::get('/target/past','Frontend\Modules\MyTarget\MyTargetController@past_target_list')->name('my.target.past');
+  Route::get('/reffer','Frontend\Modules\Share\ShareController@share')->name('my.share');
 
  });
 

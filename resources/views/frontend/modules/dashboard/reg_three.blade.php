@@ -57,7 +57,11 @@ $otp_status=$user->otp_status;
                 @endif
                 <input type="text" name="id" value="{{@$id}}">
                 <div class="e-col">
-                    <input class="form-control" placeholder="Get an email code from company" type="text" name="code" value="code">
+                    <input class="form-control" placeholder="Enter your city pin" type="text" name="pin" >
+                    <small>(ex: 700098)</small>
+                </div>
+                <div class="e-col">
+                    <input class="form-control" placeholder="Get an email code from company" type="number" name="code" minlength="6">
                     <small>(ex: 568596) for account verification</small>
                 </div>
                 

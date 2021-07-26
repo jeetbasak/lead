@@ -33,7 +33,7 @@
 
 		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-tutorials"></i><span>Tutorials</span></a>
 
-        <a class="list-group-item-action left-nav" href="#"><i class="fa fa-tutorials"></i><span>Share</span></a>
+        <a class="{{request()->segment(1)=='reffer'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.share')}}"><i class="fa fa-tutorials"></i><span>Share</span></a>
 
 
 <a class="list-group-item-action left-nav" href="{{ route('logout') }}"

@@ -55,7 +55,7 @@ class DashboardController extends Controller
 
     public function reg_one(Request $request){
     	
-	    
+	    //dd($request->all());
        
         //Not submit the form once it submitted and if someone get out after 1st step the redirect to 2nd step
     	$srch=User::where('email',$request->email)->where('reg_status',1)->where('status','IP')->first();
@@ -105,6 +105,19 @@ class DashboardController extends Controller
         //$user_ins->application_date=date('Y-m-d H:i:s');
        
         $user_ins->save();
+
+        //reffer id insert with unique month and year
+        if($request->reffer_by_email && $request->reffer_by_id){
+            $upd=array(
+                'reference_by'=>$request->reffer_by_id,
+                'year'=>date('Y'),
+                'month_id'=>date('m')+1-1,
+                'month'=>date('F')
+            );
+
+            User::where('id',$user_ins->id)->update($upd);
+        }
+
         $w=array(
         	'id'=>$user_ins->id
         );
@@ -173,7 +186,8 @@ class DashboardController extends Controller
         ); 
     		return view('frontend.modules.dashboard.reg_three')->with($w);
     	}else{
-    		$update = User::where('id',$request->id)->update(['reg_status'=>3,'otp'=>0,'status'=>'AA','otp_status'=>'Y']);
+    		$update = User::where('id',$request->id)->update(['reg_status'=>3,'otp'=>0,'status'=>'AA','otp_status'=>'Y','pin_code'=>$request->pin]);
+              //$this->guard()->logout();
     		return redirect()->route('login');
     	}
 
@@ -202,5 +216,20 @@ class DashboardController extends Controller
         );
 
     	 return view('frontend.modules.dashboard.reg_three')->with($w);
+    }
+
+
+
+
+
+    public function reffer_reg($email,$id){
+        // echo"jj";
+       // return $id;
+        //return $name;
+        $w=array(
+            'email'=>$email,
+            'reffer_id'=>$id
+        );
+        return view('frontend.modules.dashboard.ref_reg')->with($w);
     }
 }

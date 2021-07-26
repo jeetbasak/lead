@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Modules\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Models\UserToTarget;
 use App\Models\Country;
 use App\Models\State;
 use App\User;
@@ -116,12 +117,29 @@ class DashboardController extends Controller
             );
 
             User::where('id',$user_ins->id)->update($upd);
+
+            // $referer_Details=UserToTarget::where('user_id',$request->reffer_by_id)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->first();
+            // if($referer_Details){
+            // $prv_target_achive=$referer_Details->user_target_achived;
+
+            // $new_achive=$prv_target_achive+1;
+            // $updt=array(
+            //     'user_target_achived'=>$new_achive
+            // );
+
+            // UserToTarget::where('user_id',$request->reffer_by_id)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->update($updt);
+            // }else{
+            //     return "Invalid link for login";
+            // }
+
+
+
         }
 
         $w=array(
         	'id'=>$user_ins->id
         );
-
+ 
         $data = [
            'name'=>$request->name,
            'email'=>$request->email,
@@ -179,14 +197,37 @@ class DashboardController extends Controller
     	}
     	$check = User::where('id',$request->id)->where('otp',$request->code)->first();
     	if ($check==null) {
-    		//User::where('id',$request->id)->update(['otp_status'=>'N']);
     		$w=array(
         	'id'=>$request->id,
         	'msg'=>'hhhh'
-        ); 
+            ); 
     		return view('frontend.modules.dashboard.reg_three')->with($w);
     	}else{
     		$update = User::where('id',$request->id)->update(['reg_status'=>3,'otp'=>0,'status'=>'AA','otp_status'=>'Y','pin_code'=>$request->pin]);
+
+
+            //-----------INCREMENT REFERAL TARGET OF REFERAL USER
+
+            $UserDetails=User::where('id',$request->id)->first();
+
+            $referalId=$UserDetails->reference_by;
+            if(@$referalId){
+
+                $referer_Details=UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->first();
+                if($referer_Details){
+                $prv_target_achive=$referer_Details->user_target_achived;
+
+                $new_achive=$prv_target_achive+1;
+                $updt=array(
+                    'user_target_achived'=>$new_achive
+                );
+
+                UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->update($updt);
+                }else{
+                    $UserDetails=User::where('id',$request->id)->delete();
+                    return view('frontend.modules.dashboard.reg_two')->with('error','Link was invalid');
+                }
+            }
               //$this->guard()->logout();
     		return redirect()->route('login');
     	}

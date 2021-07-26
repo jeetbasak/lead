@@ -69,5 +69,38 @@ $country=DB::table('countries')->get();
 @endsection
 @section('script')
 @include('frontend.include.script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+     jQuery.validator.addMethod("emailonly", function(value, element) {
+    return this.optional(element) || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(value.toLowerCase());
+    }, "Enter valid email");
+     
+$('#frm').validate({
+rules:{
+ph:{
+required:true,
+minlength:10,
+},
 
+},
+messages:{
+   /*chk:{
+required:" Please accept terms and conditions",
+
+},*/
+/*
+newPassword:{
+required:" New password is mandatory",
+min:"Enter minimum 6 characters"
+},
+confirm:{
+required:" Confirm password is mandatory",
+min:"Enter minimum 6 characters",
+equalTo :"New password and confirm password are not matching"
+},*/
+}
+});
+});
+</script>
 @endsection

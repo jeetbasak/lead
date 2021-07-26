@@ -116,7 +116,7 @@ $country=DB::table('countries')->get();
                    
 
                     {{-- 1-////////////////////////////////////////////// --}}
-                    <form method="POST" action="{{ route('register.one') }}" style="margin-left: 120px">
+                    <form method="POST" action="{{ route('register.one') }}" style="margin-left: 120px" id="frm">
                         @csrf
                     <div class="welcome-col card2 first-screen show">
                         <h2>Welcome to TaskAffix</h2>
@@ -165,8 +165,9 @@ $country=DB::table('countries')->get();
                             <small>6 digit Pin</small>                          
                         </div> --}}
                         <div class="e-col">                            
-                            <div class="custom-checkbox"> <input class="custom-control-input" type="checkbox" required="required"> <label class="custom-control-label" >I agree with Terms & Condiotion</label> </div>                         
+                            <div class="custom-checkbox"> <input class="custom-control-input" type="checkbox" id="chk"> <label class="custom-control-label" >I agree with Terms & Condiotion</label> </div>                         
                         </div>
+                        <label id="chk-error" class="error" for="chk"></label>
                         <div class="e-col">                            
                           {{--   <a  class="next-btn next-button" href="#">Next Step</a> --}}
                           <input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to register with this email id?');">                          
@@ -246,5 +247,59 @@ $country=DB::table('countries')->get();
       })
     })
   })
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+     jQuery.validator.addMethod("emailonly", function(value, element) {
+    return this.optional(element) || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(value.toLowerCase());
+    }, "Enter valid email");
+     
+$('#frm').validate({
+rules:{
+name:{
+required:true,
+minlength:3,
+},
+email:{
+required:true,
+emailonly: true,
+},
+qualification:{
+required:true,
+
+
+},
+country:{
+required:true,
+},
+state:{
+required:true,
+},
+
+chk:{
+required:true,
+},
+
+},
+messages:{
+   chk:{
+required:" Please accept terms and conditions",
+
+},
+/*
+newPassword:{
+required:" New password is mandatory",
+min:"Enter minimum 6 characters"
+},
+confirm:{
+required:" Confirm password is mandatory",
+min:"Enter minimum 6 characters",
+equalTo :"New password and confirm password are not matching"
+},*/
+}
+});
+});
 </script>
     @endsection

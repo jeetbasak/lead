@@ -114,7 +114,7 @@ $country=DB::table('countries')->get();
                         </ul>
                     </div>
                     {{-- 1-////////////////////////////////////////////// --}}
-                    <form method="POST" action="{{ route('register.two') }}" style="margin-left: 120px">
+                    <form method="POST" action="{{ route('register.two') }}" style="margin-left: 120px" id="frm">
                         @csrf
                     <div class="welcome-col card2 first-screen show">
                         <h2>Welcome to TaskAffix</h2>
@@ -133,13 +133,14 @@ $country=DB::table('countries')->get();
                             <label>Any work experience?</label>
                             <div class="d-flex">
                                 <div class="custom-redio">
-                                    <input class="custom-control-input" type="radio" name="work_exp" value="Y"> <label>Yes</label>
+                                    <input class="custom-control-input" checked type="radio" name="work_exp" value="Y"> <label>Yes</label>
                                 </div> 
                                 <div class="custom-redio">
                                     <input class="custom-control-input" type="radio" name="work_exp" value="N"> <label>No</label>
                                 </div>
                             </div>                                                     
                         </div>
+                        <label id="work_exp-error" class="error" for="work_exp"></label>
 
                     
                         <div class="e-col">                            
@@ -150,51 +151,7 @@ $country=DB::table('countries')->get();
                 </form>
 
 
-                    {{-- <div class="welcome-col card2">
-                        <h2>Welcome to TaskAffix</h2>
-                        <p>Let's get started by creating your TaskAffix account</p>
-                        <div class="e-col">                            
-                            <input class="form-control" placeholder="Your work Location?" type="text">  
-                            <small>City, State, Pin Code</small>                          
-                        </div> 
-                        <div class="e-col"> 
-                            <select class="form-control form-select">
-                                <option selected>Your Last Qualification?</option>
-                            </select>                                       
-                        </div>
-                        <div class="e-col">                            
-                            <input class="form-control" placeholder="Your current Mobile Number" type="text">                          
-                        </div>
-                        <div class="e-col"> 
-                            <label>Any work experience?</label>
-                            <div class="d-flex">
-                                <div class="custom-redio">
-                                    <input class="custom-control-input" type="radio"> <label>Yes</label>
-                                </div> 
-                                <div class="custom-redio">
-                                    <input class="custom-control-input" type="radio"> <label>No</label>
-                                </div>
-                            </div>                                                     
-                        </div>
-                        
-                        <div class="e-col">                            
-                            <a  class="next-btn next-button" href="#">Next Step</a>                           
-                        </div>                       
-                    </div> --}}
-
-                {{--     <div class="welcome-col card2">
-                        <h2>Welcome to TaskAffix</h2>
-                        <p>Let's get started by creating your TaskAffix account</p>
-                        <div class="e-col">                            
-                            <input class="form-control" placeholder="Get an email code from company" type="text"> 
-                            <small>(ex: 568596) for account verification</small>                          
-                        </div> 
-                        <div class="e-col">                            
-                            <a  class="next-btn next-button" href="#">Submit</a>                           
-                        </div>                       
-                    </div>
- --}}
-
+ 
                 </div>
             </div>
             
@@ -222,4 +179,39 @@ $country=DB::table('countries')->get();
     })
   })
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function(){
+     jQuery.validator.addMethod("emailonly", function(value, element) {
+    return this.optional(element) || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(value.toLowerCase());
+    }, "Enter valid email");
+     
+$('#frm').validate({
+rules:{
+ph:{
+required:true,
+minlength:10,
+},
+
+},
+messages:{
+   /*chk:{
+required:" Please accept terms and conditions",
+
+},*/
+/*
+newPassword:{
+required:" New password is mandatory",
+min:"Enter minimum 6 characters"
+},
+confirm:{
+required:" Confirm password is mandatory",
+min:"Enter minimum 6 characters",
+equalTo :"New password and confirm password are not matching"
+},*/
+}
+});
+});
+</script>
+
     @endsection

@@ -28,7 +28,7 @@
             
                                 <div class="right-sec">
                                    <ul>
-                                    <li>
+                                   {{--  <li>
                                         <a href="#"><i class="fa incomplete-icon"></i> Incomplete task</a>
                                     </li>
                                     <li>
@@ -36,9 +36,9 @@
                                     </li>
                                     <li>
                                         <a href="#"><i class="fa customize-icon"></i> Customize</a>
-                                    </li>
+                                    </li> --}}
                                     <li>
-                                        <a href="#" class="link">Send feedback</a>
+                                        <a href="{{route('admin.target.list')}}" class="link">Back</a>
                                     </li>
                                    </ul>
                                 </div>
@@ -89,12 +89,12 @@
                             <div class="flx-row my-3">
                                 <div class="flx-col">
                                     <label class="form-label">From Target</label>
-                                    <input class="form-control" placeholder="From target" type="number" name="from" id="from">
+                                    <input class="form-control" placeholder="From target" type="number" name="from" id="from" min="0">
                                 </div>
 
                                 <div class="flx-col">
                                     <label class="form-label">To Target</label>
-                                    <input class="form-control" placeholder="To target" type="number" name="to" id="to">
+                                    <input class="form-control" placeholder="To target" type="number" name="to" id="to" min="0">
                                 </div>
                                 
                                 <div class="flx-col">

@@ -67,6 +67,8 @@ class TargetManageController extends Controller
             'from' => 'required',
             'to'=>'required',            
         ]);
+       
+        
         $check = Target::where('status','!=','D')->where('year',$request->year)->where('month',$request->month)->where('from_target','<=',$request->from)->where('to_target','>=',$request->from)->first();
         $check2 = Target::where('status','!=','D')->where('year',$request->year)->where('month',$request->month)->where('from_target','<=',$request->to)->where('to_target','>=',$request->to)->first();
         $check3 = Target::where('status','!=','D')->where('year',$request->year)->where('month',$request->month)->where('from_target','<=',$request->to)->where('from_target','>=',$request->from)->where('to_target','<=',$request->to)->first();

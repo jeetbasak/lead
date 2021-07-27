@@ -13,7 +13,7 @@ class LeadController extends Controller
     public function lead_list(Request $request){
        $data['leads']=ManageLead::where('status','!=','D')->/*where('application_status','!=','C')->*/with('user')->get();
        //dd($data['leads']);
-       $data['users']=User::where('status','!=','D')->get();
+       $data['users']=User::where('status','A')->get();
        return view('admin.modules.lead.lead_list')->with($data);
     }
 

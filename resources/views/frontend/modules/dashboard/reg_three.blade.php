@@ -55,9 +55,9 @@ $otp_status=$user->otp_status;
                     <a href="#" class="close" data-dismiss="alert" style="float: right !important ;" onclick="rmv()">&times;</a>
                 </div>
                 @endif
-                <input type="text" name="id" value="{{@$id}}">
+                <input type="hidden" name="id" value="{{@$id}}">
                 <div class="e-col">
-                    <input class="form-control" placeholder="Enter your city pin" type="text" name="pin" >
+                    <input class="form-control" placeholder="Enter your city pin" type="number" name="pin" >
                     <small>(ex: 700098)</small>
                 </div>
                 <div class="e-col">
@@ -68,7 +68,7 @@ $otp_status=$user->otp_status;
                 
                 <div class="e-col">
                     {{--   <a  class="next-btn next-button" href="#">Next Step</a> --}}
-                    <input type="submit" value="Next Step" class="next-btn" @if(@$otp_status!='N')  onclick="return confirm('Are you sure want to go ahead?');" @endif >
+                    <input type="submit" value="Next Step" class="next-btn"{{--  @if(@$otp_status!='N')  onclick="return confirm('Are you sure want to go ahead?');" @endif  --}}>
                 </div>
             </div>
         </form>

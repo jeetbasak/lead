@@ -67,11 +67,17 @@ class TargetManageController extends Controller
             'from' => 'required',
             'to'=>'required',            
         ]);
-        $check = Target::where('status','!=','D')->where('year',$request->year)->where('month',$request->month)->where('from_target','<=',$request->from)->where('to_target','>=',$request->from)->first();
-        $check2 = Target::where('status','!=','D')->where('year',$request->year)->where('month',$request->month)->where('from_target','<=',$request->to)->where('to_target','>=',$request->to)->first();
-        $check3 = Target::where('status','!=','D')->where('year',$request->year)->where('month',$request->month)->where('from_target','<=',$request->to)->where('from_target','>=',$request->from)->where('to_target','<=',$request->to)->first();
+      // dd($request->month);
+      $explodeMonth=explode('-', $request->month);
+      //dd( $explodeMonth);
+      $month= $explodeMonth[0]+1;
+     //dd( $month);
+        $check = Target::where('status','!=','D')->where('year',$request->year)->where('month_id',$month)->where('from_target','<=',$request->from)->where('to_target','>=',$request->from)->first();
+       // dd($check);
+        $check2 = Target::where('status','!=','D')->where('year',$request->year)->where('month_id',$month)->where('from_target','<=',$request->to)->where('to_target','>=',$request->to)->first();
+        $check3 = Target::where('status','!=','D')->where('year',$request->year)->where('month_id',$month)->where('from_target','<=',$request->to)->where('from_target','>=',$request->from)->where('to_target','<=',$request->to)->first();
 
-         $check4 = Target::where('status','!=','D')->where('year',$request->year)->where('month',$request->month)->where('from_target','<',$request->from)->where('to_target','>',$request->to)->first();
+         $check4 = Target::where('status','!=','D')->where('year',$request->year)->where('month_id',$month)->where('from_target','<',$request->from)->where('to_target','>',$request->to)->first();
 
 
         if (@$check!="") {
@@ -167,11 +173,15 @@ class TargetManageController extends Controller
 
     public function updateTraget(Request $request)
     {
-        $check = Target::where('status','!=','D')->where('year',$request->year)->where('id','!=',$request->id)->where('month',$request->month)->where('from_target','<=',$request->from)->where('to_target','>=',$request->from)->first();
-        $check2 = Target::where('status','!=','D')->where('year',$request->year)->where('id','!=',$request->id)->where('month',$request->month)->where('from_target','<=',$request->to)->where('to_target','>=',$request->to)->first();
-         $check3 = Target::where('status','!=','D')->where('year',$request->year)->where('id','!=',$request->id)->where('month',$request->month)->where('from_target','<=',$request->to)->where('from_target','>=',$request->from)->where('to_target','<=',$request->to)->first();
+       $explodeMonth=explode('-', $request->month);
+      //dd( $explodeMonth);
+      $month= $explodeMonth[0]+1;
+      
+        $check = Target::where('status','!=','D')->where('year',$request->year)->where('id','!=',$request->id)->where('month_id',$month)->where('from_target','<=',$request->from)->where('to_target','>=',$request->from)->first();
+        $check2 = Target::where('status','!=','D')->where('year',$request->year)->where('id','!=',$request->id)->where('month_id',$month)->where('from_target','<=',$request->to)->where('to_target','>=',$request->to)->first();
+         $check3 = Target::where('status','!=','D')->where('year',$request->year)->where('id','!=',$request->id)->where('month_id',$month)->where('from_target','<=',$request->to)->where('from_target','>=',$request->from)->where('to_target','<=',$request->to)->first();
 
-          $check4 = Target::where('status','!=','D')->where('year',$request->year)->where('id','!=',$request->id)->where('month',$request->month)->where('from_target','<',$request->from)->where('to_target','>',$request->to)->first();
+          $check4 = Target::where('status','!=','D')->where('year',$request->year)->where('id','!=',$request->id)->where('month_id',$month)->where('from_target','<',$request->from)->where('to_target','>',$request->to)->first();
 
         if (@$check!="") {
             return redirect()->back()->with('error','This Target Already Exits In This Month');

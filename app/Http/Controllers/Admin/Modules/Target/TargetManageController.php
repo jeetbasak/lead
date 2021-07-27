@@ -25,7 +25,7 @@ class TargetManageController extends Controller
          //dd($data['targetTo']);
         
          // dd($data['black']);
-         $data['users']=User::where('status','!=','D')->get(); 	
+         $data['users']=User::where('status','A')->get(); 	
     	 return view('admin.modules.target.target_list',$data);
     }
 
@@ -132,6 +132,10 @@ class TargetManageController extends Controller
         $check = Target::where('id',$id)->where('status','!=','D')->first();
         if ($check==null) {
              return redirect()->back();
+        }
+        $check2=UserToTarget::where('target_id',$id)->first();
+        if($check2){
+          return redirect()->back()->with('error','Target already assing to user');
         }
         $delete = Target::where('id',$id)->update(['status'=>'D']);
         return redirect()->back()->with('success','Target Deleted Successfully');

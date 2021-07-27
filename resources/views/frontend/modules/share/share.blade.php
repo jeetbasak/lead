@@ -5,6 +5,10 @@
 @endsection
 @section('left_part')
 @include('frontend.include.left_part')
+
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
 @endsection
 @section('content')
 
@@ -32,6 +36,7 @@
                                 </p>
                                   <div id="collapseOne" class="accordion-collapse collapse show">
                                     <div class="t-mid-row b-0">
+                                      <div id="share"></div>
                                         
                                         <div class="pro-col"><span class="tean-bg"> {{url('/')}}/register-reffer/{{auth()->user()->email}}/{{auth()->user()->id}}</span></div>
                                     </div>
@@ -121,5 +126,14 @@
 
 @section('script')
 @include('frontend.include.script')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+
+<script>
+        $("#share").jsSocials({
+          url:"{{url('/')}}/register-reffer/{{auth()->user()->email}}/{{auth()->user()->id}}",
+          text:"\n Regester using this refferal link\n",
+            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+        });
+    </script>
 
 @endsection

@@ -211,6 +211,7 @@ class DashboardController extends Controller
             $UserDetails=User::where('id',$request->id)->first();
 
             $referalId=$UserDetails->reference_by;
+            //dd($referalId);
             if(@$referalId){
 
                 $referer_Details=UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->first();
@@ -218,11 +219,13 @@ class DashboardController extends Controller
                 $prv_target_achive=$referer_Details->user_target_achived;
 
                 $new_achive=$prv_target_achive+1;
+                //dd( $new_achive);
                 $updt=array(
                     'user_target_achived'=>$new_achive
                 );
 
                 UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->update($updt);
+                //dd(UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->first());
                 }else{
                     $UserDetails=User::where('id',$request->id)->delete();
                     return view('frontend.modules.dashboard.reg_two')->with('error','Link was invalid');

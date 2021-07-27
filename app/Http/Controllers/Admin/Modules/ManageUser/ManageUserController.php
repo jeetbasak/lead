@@ -11,7 +11,7 @@ class ManageUserController extends Controller
     public function userList()
     {
       $data = [];
-      $data['users'] = User::where('status','!=','D')->get();
+      $data['users'] = User::whereIn('status',['A','AA','I'])->orderBy('id','desc')->get();
       return view('admin.modules.user.user_list',$data);
     }
 

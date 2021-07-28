@@ -120,7 +120,7 @@ $country=DB::table('countries')->get();
                         <h2>Welcome to TaskAffix</h2>
                         <p>Let's get started by creating your TaskAffix account</p>
 
-                        <input type="text" name="id" value="{{$id}}">
+                        <input type="hidden" name="id" value="{{$id}}">
 
 
 
@@ -145,7 +145,7 @@ $country=DB::table('countries')->get();
                     
                         <div class="e-col">                            
                           {{--   <a  class="next-btn next-button" href="#">Next Step</a> --}}
-                          <input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to go ahead?');">                          
+                          <input type="submit" value="Next Step" class="next-btn" {{-- onclick="return confirm('Are you sure want to go ahead?');" --}}>                          
                         </div>                       
                     </div>
                 </form>

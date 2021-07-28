@@ -38,7 +38,7 @@ $country=DB::table('countries')->get();
             <div class="welcome-col card2 first-screen show">
                 <h2>Welcome to TaskAffix</h2>
                 <p>Let's get started by creating your TaskAffix account</p>
-                <input type="text" name="id" value="{{$user->id}}">
+                <input type="hidden" name="id" value="{{$user->id}}">
                 <div class="e-col">
                     <input class="form-control" placeholder="Your Full phone number" type="tel" name="ph" id="ph" value="{{$user->ph}}">
                 </div>

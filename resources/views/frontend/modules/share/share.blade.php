@@ -31,7 +31,7 @@
                                 <div class="accordion-item">
                                   <p class="panel-title" id="headingOne">
                                     <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
-                                        Recently assigned
+                                        Share 
                                     </a>
                                 </p>
                                   <div id="collapseOne" class="accordion-collapse collapse show">
@@ -43,7 +43,7 @@
                                   </div>
                                 </div>
 
-                                <div class="accordion-item">
+                        {{--         <div class="accordion-item">
                                     <p class="panel-title" id="headingOne">
                                       <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true">
                                         Do today
@@ -97,7 +97,7 @@
                                 <p><a href="#">+ Add section</a></p>
                             </div>
                         </div>
-            
+             --}}
                         
                       </div>
                 </div>

@@ -53,7 +53,7 @@
 				<th scope="col">Month</th>
 				<th scope="col">Target range</th>
 				<th scope="col">My achive</th>
-				<th scope="col">Action</th>
+				{{-- <th scope="col">Action</th> --}}
 			</tr>
 		</thead>
 		<tbody>
@@ -75,7 +75,7 @@
 				<td data-label="Phone Number">( {{@$value->targett->from_target}} - {{@$value->targett->to_target}} )</td>
 				<td data-label="Name">{{@$value->user_target_achived}}</td>
 				
-				<td data-label="Action">
+				{{-- <td data-label="Action">
 					@if(@$value->tagging_id && @$value->application_status!="C")
 					<a href="#" type="button"  data-toggle="modal" data-target="#myModalressing{{@$value->id}}" style="margin-left: 5px;"><i class="fa add-round">&#8592;</i></a>
 					@elseif(@$value->tagging_id && @$value->application_status=="C")
@@ -87,7 +87,7 @@
 					<a onclick="return confirm('Are you sure want to delete this lead?');" href="{{route('lead.delete',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
 					<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
 					
-				</td>
+				</td> --}}
 			</tr>
 			
 			{{-- for view --}}

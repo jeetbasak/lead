@@ -41,8 +41,8 @@ $country=DB::table('countries')->get();
 				<p>Let's get started by creating your TaskAffix account</p>
 				@include('admin.include.errors')
 				<div class="e-col">
-					<input type="text" name="reffer_by_email" value="{{@$email}}" >
-					<input type="text" name="reffer_by_id" value="{{@$reffer_id}}">
+					<input type="hidden" name="reffer_by_email" value="{{@$email}}" >
+					<input type="hidden" name="reffer_by_id" value="{{@$reffer_id}}">
 					<input class="form-control" placeholder="Your Full Name" type="text" name="name" id="name">
 				</div>
 				<div class="e-col">

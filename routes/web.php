@@ -41,5 +41,9 @@ Auth::routes();
   Route::get('/target/past','Frontend\Modules\MyTarget\MyTargetController@past_target_list')->name('my.target.past');
   Route::get('/reffer','Frontend\Modules\Share\ShareController@share')->name('my.share');
 
+
+  // profile 
+  Route::get('/profile','Frontend\Modules\MyProfile\MyProfileController@index')->name('user.my.profile');
+  Route::post('/profile/update-profile','Frontend\Modules\MyProfile\MyProfileController@updateProfile')->name('user.my.profile-edit');
  });
 

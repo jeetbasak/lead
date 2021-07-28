@@ -142,7 +142,7 @@
 									<div class="form-group">
 										<label for="search">Select to assing</label>
 										<select class="form-control rm06" name="user_id" >
-											<option selected value="">Select </option>
+											<option selected value="">Select a user </option>
 											@foreach($users as $key=> $user)
 											<option value="{{$user->id}}" @if($user->id==@$value->tagging_id)selected @endif>{{$user->name}}</option>
 											@endforeach

@@ -55,7 +55,7 @@
 				<th scope="col">Month</th>
 				<th scope="col">Target range</th>
 				<th scope="col">My achive</th>
-				<th scope="col">Action</th>
+				{{-- <th scope="col">Action</th> --}}
 			</tr>
 		</thead>
 		<tbody>
@@ -79,9 +79,9 @@
 				
 				<td data-label="Action">
 					
-					<a href="#" style="margin-left: 5px;"><i class="fa fa-edit edit-round"></i></a>
+				{{-- 	<a href="#" style="margin-left: 5px;"><i class="fa fa-edit edit-round"></i></a>
 					<a  href="#" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
-					<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
+					<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a> --}}
 					
 				</td>
 			</tr>

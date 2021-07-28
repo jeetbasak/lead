@@ -57,10 +57,11 @@
                                 <div class="col-md-3 pt-4">
                                     <p>Phone Number : {{@$data->ph}}</p>
                                 </div>
-
+                                @if(@$data->last_qualification!="")
                                 <div class="col-md-3 pt-4">
                                     <p>Last Qualification : {{@$data->last_qualification}}</p>
                                 </div>
+                                @endif
 
                                 <div class="col-md-3 pt-4">
                                     <p>Country : {{@$data->country_user->name}}</p>
@@ -74,6 +75,45 @@
                                 <div class="col-md-3 pt-4">
                                     <p>Status : @if(@$data->status=="AA")Awating Approval @elseif(@$data->status=="A")Active @elseif(@$data->status=="I")Inactive @endif</p>
                                 </div>
+
+                                @if(@$data->work_exp!="")
+                                <div class="col-md-3 pt-4">
+                                    <p>Work Experience : @if(@$data->work_exp=='Y')Yes @else No @endif</p>
+                                </div>
+                                @endif
+
+                                @if(@$data->laptop_access!="")
+                                <div class="col-md-3 pt-4">
+                                    <p>Laptop Access : @if(@$data->laptop_access=='Y')Yes @else No @endif</p>
+                                </div>
+                                @endif
+
+                                @if(@$data->company_ph!="")
+                                <div class="col-md-3 pt-4">
+                                    <p>Company Phone : {{@$data->company_ph}}</p>
+                                </div>
+                                @endif
+
+                                @if(@$data->image!="")
+                                <div class="col-md-12 pt-4">
+                                    <p>Profile Image: <img src="{{ URL::to('storage/app/public/profile')}}/{{@$data->image}}" alt="" style="height: 150px;width: 150px"></p>
+                                </div>
+                                @endif
+
+
+                                 @if(@$data->image!="")
+                                <div class="col-md-12 pt-4">
+                                    <p>Adhar Image: <img src="{{ URL::to('storage/app/public/adhar')}}/{{@$data->adher}}" alt="" style="height: 150px;width: 150px"></p>
+                                </div>
+                                @endif
+
+                                @if(@$data->pan!="")
+                                <div class="col-md-12 pt-4">
+                                    <p>Adhar Image: <img src="{{ URL::to('storage/app/public/pan')}}/{{@$data->pan}}" alt="" style="height: 150px;width: 150px"></p>
+                                </div>
+                                @endif
+
+
                             </div>
                         
 

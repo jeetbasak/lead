@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\UserToTarget;
 class MyProfileController extends Controller
 {
     //
@@ -15,6 +16,7 @@ class MyProfileController extends Controller
     	$data = [];
     	$data['country'] = Country::get();
     	$data['state'] = State::where('country_id',auth()->user()->country_id)->get();
+        $data['users']=User::where('status','A')->orderBy('name','asc')->get();
     	return view('frontend.modules.profile.profile',$data);
     }
 
@@ -33,6 +35,40 @@ class MyProfileController extends Controller
     	$upd['last_qualification'] = $request->qualification;
     	$upd['company_ph'] = $request->company_ph;
     	$upd['laptop_access'] = $request->laptop;
+
+        //ref
+         if ($request->ref){
+            //-----------INCREMENT REFERAL TARGET OF REFERAL USER------------//
+
+            // $UserDetails=User::where('id',$request->id)->first();
+
+            // $referalId=$UserDetails->reference_by;
+            // //dd($referalId);
+            // if(@$referalId){
+
+                $referer_Details=UserToTarget::where('user_id',$request->ref)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->first();
+                if($referer_Details){
+                $prv_target_achive=$referer_Details->user_target_achived;
+
+                $new_achive=$prv_target_achive+1;
+                //dd( $new_achive);
+                $updt=array(
+                    'user_target_achived'=>$new_achive
+                );
+
+               $up1=UserToTarget::where('user_id',$request->ref)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->update($updt);
+
+                //--------------------------end-------------------------
+           
+                 $up2=User::where('id',auth()->user()->id)->update(['reference_by'=>$request->ref]);
+            }
+            else{
+                return back()->with('error','The reffer user do not have any targer under this month');
+            }
+        }
+
+
+
         if ($request->hasFile('profile')){
             //this is for unlink the image
             $unlnk=User::where('id',auth()->user()->id)->first();

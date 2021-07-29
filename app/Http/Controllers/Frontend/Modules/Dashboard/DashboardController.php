@@ -206,7 +206,7 @@ class DashboardController extends Controller
     		$update = User::where('id',$request->id)->update(['reg_status'=>3,'otp'=>0,'status'=>'AA','otp_status'=>'Y','pin_code'=>$request->pin]);
 
 
-            //-----------INCREMENT REFERAL TARGET OF REFERAL USER
+            //-----------INCREMENT REFERAL TARGET OF REFERAL USER------------//
 
             $UserDetails=User::where('id',$request->id)->first();
 
@@ -225,6 +225,8 @@ class DashboardController extends Controller
                 );
 
                 UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->update($updt);
+
+                //--------------------------end-------------------------
                 //dd(UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->first());
                 }else{
                     $UserDetails=User::where('id',$request->id)->delete();

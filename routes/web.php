@@ -35,11 +35,23 @@ Auth::routes();
 
  Route::group(['middleware'=>'auth'],function(){
   Route::get('/home','Frontend\Modules\Dashboard\DashboardController@home')->name('dashboard.home');
+
+  //target
   Route::get('/target','Frontend\Modules\MyTarget\MyTargetController@target_list')->name('my.target');
   Route::get('/target/future','Frontend\Modules\MyTarget\MyTargetController@future_target_list')->name('my.target.future');
 
   Route::get('/target/past','Frontend\Modules\MyTarget\MyTargetController@past_target_list')->name('my.target.past');
   Route::get('/reffer','Frontend\Modules\Share\ShareController@share')->name('my.share');
+
+
+  //lead
+   Route::get('/lead','Frontend\Modules\MyLead\MyLeadController@lead_list')->name('my.lead');
+   Route::post('/lead/change-status','Frontend\Modules\MyLead\MyLeadController@change_status')->name('change.lead.status');
+
+
+
+   //tutorial
+   Route::get('/tutorial','Frontend\Modules\Tutorial\MyTutorialController@list')->name('my.tutorial');
 
  });
 

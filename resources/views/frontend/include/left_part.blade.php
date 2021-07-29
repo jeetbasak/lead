@@ -21,17 +21,17 @@
 		<a class="{{request()->segment(1)=='target'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.target')}}"><i class="fa fa-target"></i><span>My Target</span></a>
 
 
-		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-users-achiv"></i><span>My Monthly Salary</span></a>
+		<a class="{{request()->segment(1)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.lead')}}"><i class="fa fa-users-achiv"></i><span>My Lead</span></a>
 
 		
-		<a class="{{request()->segment(2)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href=""><i class="fa fa-lead"></i><span>My Lead </span></a>
+		<a class="{{request()->segment(2)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href=""><i class="fa fa-lead"></i><span>My Monthly Salary </span></a>
 
         <a class="{{request()->segment(2)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href=""><i class="fa fa-lead"></i><span>My Profile </span></a>
 
 
 		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-reports"></i><span>Reports</span></a>
 
-		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-tutorials"></i><span>Tutorials</span></a>
+		<a class="{{request()->segment(1)=='tutorial'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.tutorial')}}"><i class="fa fa-tutorials"></i><span>Tutorials</span></a>
 
         <a class="{{request()->segment(1)=='reffer'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.share')}}"><i class="fa fa-tutorials"></i><span>Share</span></a>
 

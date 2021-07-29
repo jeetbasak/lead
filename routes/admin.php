@@ -76,4 +76,17 @@ Route::post('/user/update-user','Modules\ManageUser\ManageUserController@updateU
 Route::post('/user/check-email','Modules\ManageUser\ManageUserController@checkEmail')->name('admin.user.check.email');
 Route::get('/user/status/{id}','Modules\ManageUser\ManageUserController@changeStatus')->name('admin.user.change.status');
 Route::get('/user/view/{id}','Modules\ManageUser\ManageUserController@viewUser')->name('admin.user.view');
+
+
+
+
+//turorial
+Route::get('/tutorial','Modules\Tutorial\TutorialController@list')->name('tutorial.list');
+Route::get('/tutorial/add','Modules\Tutorial\TutorialController@add_form')->name('tutorial.add.form');
+Route::post('/tutorial/added','Modules\Tutorial\TutorialController@insert')->name('tutorial.added');
+Route::get('/tutorial/delete/{id}','Modules\Tutorial\TutorialController@delete')->name('tutorial.del');
+Route::get('/tutorial/edit/{id}','Modules\Tutorial\TutorialController@edit_view')->name('tutorial.edit');
+Route::post('/tutorial/update','Modules\Tutorial\TutorialController@update')->name('tutorial.update');
+//Route::get('/tutorial/view/{id}','Modules\Tutorial\TutorialController@view')->name('tutorial.view');
+
 });

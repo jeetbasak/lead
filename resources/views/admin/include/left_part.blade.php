@@ -27,7 +27,11 @@
 
 
 		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-reports"></i><span>Reports</span></a>
-		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-tutorials"></i><span>Tutorials</span></a>
+
+
+		<a class="{{request()->segment(2)=='tutorial'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('tutorial.list')}}"><i class="fa fa-tutorials"></i><span>Tutorials</span></a>
+
+
 		<a class="list-group-item-action left-nav" href="{{ route('admin.logout') }}"
 			onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>

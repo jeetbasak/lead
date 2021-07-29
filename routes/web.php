@@ -44,6 +44,7 @@ Auth::routes();
   Route::get('/reffer','Frontend\Modules\Share\ShareController@share')->name('my.share');
 
 
+
   //lead
    Route::get('/lead','Frontend\Modules\MyLead\MyLeadController@lead_list')->name('my.lead');
    Route::post('/lead/change-status','Frontend\Modules\MyLead\MyLeadController@change_status')->name('change.lead.status');
@@ -52,6 +53,11 @@ Auth::routes();
 
    //tutorial
    Route::get('/tutorial','Frontend\Modules\Tutorial\MyTutorialController@list')->name('my.tutorial');
+
+
+  // profile 
+  Route::get('/profile','Frontend\Modules\MyProfile\MyProfileController@index')->name('user.my.profile');
+  Route::post('/profile/update-profile','Frontend\Modules\MyProfile\MyProfileController@updateProfile')->name('user.my.profile-edit');
 
  });
 

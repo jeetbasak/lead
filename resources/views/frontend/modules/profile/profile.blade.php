@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-<title>Admin | Edit lead</title>
+<title>User | Profile</title>
 @endsection
 @section('left_part')
 @include('admin.include.left_part')
@@ -19,72 +19,54 @@
                     <div class="body-main">
                         <div class="top-row">
                             <div class="task-mg-row">
-                                <h2 class="my-1">Edit Lead</h2>
+                                <h2 class="my-1">Profile</h2>
             
-                                <div class="right-sec">
-                                   <ul>
-                                    <li>
-                                        <a href="#"><i class="fa incomplete-icon"></i> Incomplete task</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa sort-icon"></i> Sort</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa customize-icon"></i> Customize</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="link">Send feedback</a>
-                                    </li>
-                                   </ul>
-                                </div>
                           </div>
                         </div>
             
-                       <form action="{{route('admin.user.update')}}" method="post" id="frm" enctype="multipart/form-data">
+                       <form action="{{route('user.my.profile-edit')}}" method="post" id="frm" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="id" value="{{@$data->id}}">
                         <div class="top-row">
                             <div class="flx-row my-3">
                                 <div class="flx-col">
                                     <label class="form-label">Name</label>
-                                    <input class="form-control" placeholder="Enter name" type="text" name="name" value="{{@$data->name}}">
+                                    <input class="form-control" value="{{auth()->user()->name}}" placeholder="Enter name" type="text" name="name">
                                 </div>
 
-                                
-
+                                {{-- <div class="flx-col">
+                                    <label class="form-label">Email</label>
+                                    <input class="form-control" placeholder="Enter email" value="{{auth()->user()->email}}" type="text" name="email">
+                                </div> --}}
                                 <div class="flx-col">
                                     <label class="form-label">Phone Number</label>
-                                    <input class="form-control" placeholder="Enter email" id="number" type="text" name="ph" value="{{@$data->ph}}">
+                                    <input class="form-control" value="{{auth()->user()->ph}}" placeholder="Enter phone number" type="text" name="ph">
                                 </div>
-                                
-                                <div class="flx-col">
+                                 <div class="flx-col">
                                     <label class="form-label">Address</label>
-                                    <input class="form-control" value="{{@$data->address}}" placeholder="Enter address" type="text" name="address">
+                                    <input class="form-control" value="{{auth()->user()->address}}" placeholder="Enter address" type="text" name="address">
                                 </div>
-
                             </div>
-
-                             <div class="flx-row my-3">
+                            <div class="flx-row my-3">
                                
 
                                 <div class="flx-col">
                                     <label class="form-label">City Name</label>
-                                    <input class="form-control" value="{{@$data->city_name}}" placeholder="Enter city" type="text" name="city">
+                                    <input class="form-control" value="{{auth()->user()->city_name}}" placeholder="Enter city" type="text" name="city">
                                 </div>
 
                                 <div class="flx-col">
                                     <label class="form-label">Pin Code</label>
-                                    <input class="form-control" value="{{@$data->pin_code}}" placeholder="Enter pincode" type="text" name="pin_code">
+                                    <input class="form-control" value="{{auth()->user()->pin_code}}" placeholder="Enter pincode" type="text" name="pin_code">
                                 </div>
 
                                  <div class="flx-col"> 
                                     <label>Any work experience?</label>
                                     <div class="d-flex">
                                         <div class="custom-redio">
-                                            <input class="custom-control-input" @if(@$data->work_exp=="Y") checked @endif type="radio" name="work_exp" value="Y"> <label>Yes</label>
+                                            <input class="custom-control-input" @if(auth()->user()->work_exp=="Y") checked @endif type="radio" name="work_exp" value="Y"> <label>Yes</label>
                                         </div> 
                                         <div class="custom-redio">
-                                            <input class="custom-control-input" @if(@$data->work_exp=="N") checked @endif  type="radio" name="work_exp" value="N"> <label>No</label>
+                                            <input class="custom-control-input" @if(auth()->user()->work_exp=="N") checked @endif  type="radio" name="work_exp" value="N"> <label>No</label>
                                         </div>
                                     </div>                                                     
                                 </div>
@@ -92,16 +74,25 @@
 
                             </div>
 
-
-                        <div class="flx-row my-3">
-                           
+                            <div class="flx-row my-3">
+                            <div class="flx-col"> 
+                                    <label>Any work experience?</label>
+                                    <div class="d-flex">
+                                        <div class="custom-redio">
+                                            <input class="custom-control-input" @if(auth()->user()->work_exp=="Y") checked @endif type="radio" name="work_exp" value="Y"> <label>Yes</label>
+                                        </div> 
+                                        <div class="custom-redio">
+                                            <input class="custom-control-input" @if(auth()->user()->work_exp=="N") checked @endif  type="radio" name="work_exp" value="N"> <label>No</label>
+                                        </div>
+                                    </div>                                                     
+                                </div>
 
                         <div class="flx-col"> 
                              <label class="form-label">Country</label>
                             <select class="form-control form-select" name="country" id="country">
                             <option value="">Select Country</option>
                                 @foreach(@$country as $value)
-                                <option value="{{@$value->id}}" @if(@$data->country_id==@$value->id) selected @endif>{{@$value->name}}</option>
+                                <option value="{{@$value->id}}" @if(auth()->user()->country_id==@$value->id) selected @endif>{{@$value->name}}</option>
                                 @endforeach
                             </select>                                       
                         </div>
@@ -111,50 +102,43 @@
                             <select class="form-control form-select" name="state" id="states">
                                 <option value="" >Select Country</option>
                                 @foreach(@$state as $value)
-                                <option value="{{@$value->id}}" @if(@$data->state_id==@$value->id) selected @endif>{{@$value->name}}</option>
+                                <option value="{{@$value->id}}" @if(auth()->user()->state_id==@$value->id) selected @endif>{{@$value->name}}</option>
                                 @endforeach
                             </select>                                       
-                        </div>
-
-                        <div class="flx-col"> 
-                             <label class="form-label">Your Last Qualification?</label>
-                              <select class="form-control form-select" name="qualification" >
-                             <option selected value="">Select</option>
-                                <option value="Class 10" @if(@$data->last_qualification=='Class 10') selected @endif>Class 10?</option>
-                                <option value="Class 12" @if(@$data->last_qualification=='Class 12') selected @endif>Class 12?</option>
-                                <option value="Graduated?" @if(@$data->last_qualification=='Graduated') selected @endif>Graduated?</option>
-                                </select>                                       
                         </div>
                     </div>
 
 
-                                        <div class="flx-row my-3">
-                         
+                    <div class="flx-row my-3">
+                         <div class="flx-col"> 
+                             <label class="form-label">Your Last Qualification?</label>
+                              <select class="form-control form-select" name="qualification" >
+                             <option selected value="">Select</option>
+                                <option value="Class 10" @if(auth()->user()->last_qualification=='Class 10') selected @endif>Class 10?</option>
+                                <option value="Class 12" @if(auth()->user()->last_qualification=='Class 12') selected @endif>Class 12?</option>
+                                <option value="Graduated?" @if(auth()->user()->last_qualification=='Graduated') selected @endif>Graduated?</option>
+                                </select>                                       
+                        </div>
 
                         <div class="flx-col">
                                     <label class="form-label">Company Phone</label>
-                                    <input class="form-control" value="{{@$data->company_ph}}" placeholder="Enter company number" type="text" name="company_ph">
+                                    <input class="form-control" value="{{auth()->user()->company_ph}}" placeholder="Enter company number" type="text" name="company_ph">
                          </div>
 
                          <div class="flx-col"> 
                                     <label>Laptop Access ?</label>
                                     <div class="d-flex">
                                         <div class="custom-redio">
-                                            <input class="custom-control-input" @if(@$data->laptop_access=="Y") checked @endif checked type="radio" name="laptop" value="Y"> <label>Yes</label>
+                                            <input class="custom-control-input" @if(auth()->user()->laptop_access=="Y") checked @endif checked type="radio" name="laptop" value="Y"> <label>Yes</label>
                                         </div> 
                                         <div class="custom-redio">
-                                            <input class="custom-control-input" @if(@$data->laptop_access=="N") checked @endif  type="radio" name="laptop" value="N"> <label>No</label>
+                                            <input class="custom-control-input" @if(auth()->user()->laptop_access=="N") checked @endif  type="radio" name="laptop" value="N"> <label>No</label>
                                         </div>
                                     </div>                                                     
                                 </div>
-
-                                 <div class="flx-col"> </div>
-
                     </div>
 
-
-
-                                        <div class="flx-row my-3">
+                    <div class="flx-row my-3">
                         <div class="flx-col"> 
                                     <label>Profile Image</label>
                                     <input type="file" class="upload" data-multiple-caption="{count} files selected" multiple="" name="profile" id="file-2" onChange="fun2();" accept="image/*">
@@ -169,9 +153,9 @@
                    </div>  
                     <div class="flx-col">
                      <label>Previous Profile Image</label> 
-                        @if(@$data->image!="")
+                        @if(auth()->user()->image!="")
                         <div style="width: 100%;height: 100px;"> 
-                            <img src="{{ URL::to('storage/app/public/profile')}}/{{@$data->image}}" alt="" style="height: 150px;width: 150px">
+                            <img src="{{ URL::to('storage/app/public/profile')}}/{{auth()->user()->image}}" alt="" style="height: 150px;width: 150px">
                         </div>
                         @else
                         No Image
@@ -202,9 +186,9 @@
                           <div class="flx-col"> 
                             <div class="flx-col">
                              <label>Previous Adhar</label> 
-                                @if(@$data->adher!="")
+                                @if(auth()->user()->adher!="")
                                 <div style="width: 100%;height: 100px;"> 
-                                    <img src="{{ URL::to('storage/app/public/adhar')}}/{{@$data->adher}}" alt="" style="height: 150px;width: 150px">
+                                    <img src="{{ URL::to('storage/app/public/adhar')}}/{{auth()->user()->adher}}" alt="" style="height: 150px;width: 150px">
                                 </div>
                                 @else
                                 No Image
@@ -228,9 +212,9 @@
                           <div class="flx-col"> 
                             <div class="flx-col">
                              <label>Previous Pan</label> 
-                                @if(@$data->pan!="")
+                                @if(auth()->user()->pan!="")
                                 <div style="width: 100%;height: 100px;"> 
-                                    <img src="{{ URL::to('storage/app/public/pan')}}/{{@$data->pan}}" alt="" style="height: 150px;width: 150px">
+                                    <img src="{{ URL::to('storage/app/public/pan')}}/{{auth()->user()->pan}}" alt="" style="height: 150px;width: 150px">
                                 </div>
                                 @else
                                 No Image
@@ -238,11 +222,13 @@
                                  </div>
                          </div>
                     </div>
+                   
+                    </div> 
 
-                                
+                              
 
-                            <div class="flx-row" >
-                                <button type="submit" class="btn btn-primary mb-2" style="margin-top: 25px;"> Edit </button>
+                            <div class="flx-row my-3">
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -277,8 +263,7 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js" integrity="sha512-UdIMMlVx0HEynClOIFSyOrPggomfhBKJE28LKl8yR3ghkgugPnG6iLfRfHwushZl1MOPSY6TsuBDGPK2X4zYKg==" crossorigin="anonymous"></script>
-<script>
- 
+  <script>
         function fun(){
         var i=document.getElementById('file-1').files[0];
         //console.log(i);
@@ -306,7 +291,7 @@
         $(".pan").show();
         $("#img1").attr("src",b);
     }
-    </script>    
+    </script>
 <script>
 $(document).ready(function(){
 
@@ -351,7 +336,7 @@ company_ph:{
 },
 profile:{
    required: function(element){
-            var img ='{{@$data->image}}';
+            var img ='{{auth()->user()->image}}';
             if(img == null || img == "")
             return true;
             else
@@ -365,7 +350,6 @@ messages:{
 });
 });
 </script>
-
     <script type="text/javascript">
   $(document).ready(function(){
     $('#country').on('change',function(e){
@@ -375,7 +359,7 @@ messages:{
       $.ajax({
         url:'{{route('dashboard.get.state')}}',
         type:'GET',
-        data:{country:id,state:'{{@$data->state_id}}'},
+        data:{country:id,state:'{{auth()->user()->state_id}}'},
         success:function(data){
           console.log(data);
           $('#states').html(data.state);

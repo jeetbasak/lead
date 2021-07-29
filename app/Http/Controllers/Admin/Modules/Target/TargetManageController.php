@@ -18,15 +18,15 @@ class TargetManageController extends Controller
 
     public function taregetList()
     {
-    	 $data = [];
+       $data = [];
          
-    	 $data['targets'] = Target::orderBy('year','asc')->orderBy('month_id','asc')/*->with('users_to_target')*/->where('status','A')->get();
+       $data['targets'] = Target::orderBy('year','asc')->orderBy('month_id','asc')/*->with('users_to_target')*/->where('status','A')->get();
          $data['targetTo']=UserToTarget::get();
          //dd($data['targetTo']);
         
          // dd($data['black']);
-         $data['users']=User::where('status','A')->get(); 	
-    	 return view('admin.modules.target.target_list',$data);
+         $data['users']=User::where('status','A')->get();   
+       return view('admin.modules.target.target_list',$data);
     }
 
 
@@ -43,7 +43,7 @@ class TargetManageController extends Controller
 
     public function addView()
     {
-    	return view('admin.modules.target.target_add');
+      return view('admin.modules.target.target_add');
     }
 
 
@@ -60,7 +60,7 @@ class TargetManageController extends Controller
 
     public function insertTarget(Request $request)
     {
-    	$request->validate([
+      $request->validate([
             'year' => 'required',
             'month' => 'required',
             'salary' => 'required',
@@ -119,14 +119,14 @@ class TargetManageController extends Controller
 
     public function getMonth(Request $request)
     {
-     	if (date('Y')==$request->year) {
-    		return view('admin.modules.target.target_year_one');
-		}
+      if (date('Y')==$request->year) {
+        return view('admin.modules.target.target_year_one');
+    }
         else{
-    		return view('admin.modules.target.target_year_two');
-    	}
-		
-	}
+        return view('admin.modules.target.target_year_two');
+      }
+    
+  }
 
 
 

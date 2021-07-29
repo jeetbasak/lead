@@ -1,9 +1,9 @@
-@extends('admin.layouts.app')
+@extends('layouts.app')
 @section('title')
 <title>User | Tutorials</title>
 @endsection
 @section('left_part')
-@include('admin.include.left_part')
+@include('frontend.include.left_part')
 <style>
 .imgsize {
 vertical-align: middle !important;
@@ -35,7 +35,7 @@ height:210px !important;
 				@foreach($tutorial as $data)
 				<li type="button"  data-toggle="modal" data-target="#myModalressing{{@$data->id}}" > <img src="{{$data->thumbnil}}" alt="" class="imgsize">
 					
-					{{--  <a href="https://www.youtube.com/watch?v={{@$data->video_short_url}}" class="paly fancybox-media"><img src="{{url('/')}}/public/admin/assets/images/play.png" alt=""></a>
+					{{--  <a href="https://www.youtube.com/watch?v={{@$data->video_short_url}}" class="paly fancybox-media"><img src="{{url('/')}}/public/frontend/assets/images/play.png" alt=""></a>
 				--}}               </li>
 				<div class="modal" id="myModalressing{{@$data->id}}">
 					<div class="modal-dialog">
@@ -75,12 +75,12 @@ height:210px !important;
 <!-- End Right content here -->
 
 {{-- @section('footer')
-@include('admin.include.footer')
+@include('frontend.include.footer')
 @endsection --}}
 @endsection
 {{-- end content --}}
 @section('script')
-@include('admin.include.script')
+@include('frontend.include.script')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

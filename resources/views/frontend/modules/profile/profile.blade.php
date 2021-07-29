@@ -1,9 +1,9 @@
-@extends('admin.layouts.app')
+@extends('layouts.app')
 @section('title')
 <title>User | Profile</title>
 @endsection
 @section('left_part')
-@include('admin.include.left_part')
+@include('frontend.include.left_part')
 @endsection
 @section('content')
 
@@ -14,7 +14,7 @@
 
 <!-- Start right Content here -->
 <!-- ============================================================== -->
- @include('admin.include.errors')
+ @include('frontend.include.errors')
   <div class="container-fluid">
                     <div class="body-main">
                         <div class="top-row">
@@ -251,12 +251,12 @@
 
 
 {{-- @section('footer')
-@include('admin.include.footer')
+@include('frontend.include.footer')
 @endsection --}}
 @endsection
 {{-- end content --}}
 @section('script')
-@include('admin.include.script')
+@include('frontend.include.script')
  <script type="text/javascript">
    
 </script>

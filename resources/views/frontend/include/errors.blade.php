@@ -1,19 +1,19 @@
 @if(Session::has('success'))
-    <div class="alert alert-success" >
+    <div class="alert alert-success" id="cross" >
      
         <strong>
             {!!Session::get('success')!!}
         </strong>
-         <a href="#" class="close" data-dismiss="alert" style="float: right !important ;">&times;</a>
+         <a href="#" class="close" data-dismiss="alert" style="float: right !important ;" onclick="del()">&times;</a>
     </div>
 @endif
 @if(Session::has('error'))
-    <div class="alert alert-danger" >
+    <div class="alert alert-danger" id="cross" >
      
         <strong>
             {{Session::get('error')}}
         </strong>
-         <a href="#" class="close" data-dismiss="alert" style="float: right !important ;">&times;</a>
+         <a href="#" class="close" data-dismiss="alert" style="float: right !important ;" onclick="del()">&times;</a>
     </div>
 @endif
 @if ($errors->any())
@@ -27,3 +27,11 @@
         </ul>
     </div>
 @endif
+
+<script>
+    function del()
+    {
+        $('#cross').hide();
+    }
+    
+</script>

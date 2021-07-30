@@ -47,7 +47,7 @@
 	</div>
 	<div class="bottom-nav">
 		<ul>
-			<li><a href="#"><i class="fa help-icon">?</i> <span> FAQ</span></a></li>
+			<li><a class="{{request()->segment(2)=='faq'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('faq.list')}}"><i class="fa help-icon">?</i> <span> FAQ</span></a></li>
 			<li><a href="#"><i class="fa term-icon"></i> <span> Terms & condiotion</span></a></li>
 			<li><a href="#"><i class="fa affiliate-icon"></i> <span> Affiliate</span></a></li>
 		</ul>

@@ -97,4 +97,15 @@ Route::post('/tutorial/update','Modules\Tutorial\TutorialController@update')->na
 Route::get('/achivement','Modules\SalaryController@list')->name('achivment.list');
 Route::post('/achivement','Modules\SalaryController@list')->name('achivment.search');
 
+
+
+
+//faq
+Route::get('/faq','Modules\Faq\FaqManageController@faq_list')->name('faq.list');
+Route::get('/faq/add','Modules\Faq\FaqManageController@add_form')->name('faq.add.form');
+Route::post('/faq/insert','Modules\Faq\FaqManageController@insert_faq')->name('insert.faq');
+Route::post('/faq/update','Modules\Faq\FaqManageController@update')->name('update.faq');
+Route::get('/faq/delete/{id}','Modules\Faq\FaqManageController@dlt')->name('faq.dlt');
+
+
 });

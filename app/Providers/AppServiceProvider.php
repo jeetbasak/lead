@@ -36,6 +36,9 @@ class AppServiceProvider extends ServiceProvider
         //dd(date('F'));
 
        //////
+        if((int)date('d')==1){
+
+        
 
         if((int)date('m')==1){
             
@@ -89,6 +92,8 @@ class AppServiceProvider extends ServiceProvider
 
         }
         /////
+
+    }
 
 
     }

@@ -24,7 +24,7 @@ class MyProfileController extends Controller
     {
     	$upd = [];
     	$upd['name'] = $request->name;
-    	$upd['email'] = $request->email;
+    	//$upd['email'] = $request->email;
     	$upd['ph'] = $request->ph;
     	$upd['address'] = $request->address;
     	$upd['city_name'] = $request->city;

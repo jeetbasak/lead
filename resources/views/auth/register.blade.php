@@ -144,7 +144,7 @@ $country=DB::table('countries')->get();
 
                         <div class="e-col"> 
                             <select class="form-control form-select" name="country" id="country">
-                                <option selected>Select Country</option>
+                                <option value="" selected>Select Country</option>
                                 @foreach(@$country as $value)
                                 <option value="{{@$value->id}}">{{@$value->name}}</option>
                                 @endforeach
@@ -153,7 +153,7 @@ $country=DB::table('countries')->get();
 
                         <div class="e-col"> 
                             <select class="form-control form-select" id="states" name="state">
-                                <option selected>Select State</option>
+                                <option value="" selected>Select State</option>
                                 {{-- @foreach(@$country as $value)
                                 <option value="{{@$value->id}}">{{@$value->name}}</option>
                                 @endforeach --}}

@@ -11,7 +11,7 @@ use App\Models\State;
 use App\User;
 use Mail;
 use App\Mail\EmailVerification;
-
+use App\Mail\ContactMail;
 class DashboardController extends Controller
 {
     public function home(){
@@ -203,6 +203,14 @@ class DashboardController extends Controller
             ); 
     		return view('frontend.modules.dashboard.reg_three')->with($w);
     	}else{
+
+            $data = [
+           'name'=>$check->name,
+           'email'=>$check->email,
+           'number'=>$check->ph,
+           ];
+           Mail::send(new ContactMail($data)); 
+
     		$update = User::where('id',$request->id)->update(['reg_status'=>3,'otp'=>0,'status'=>'AA','otp_status'=>'Y','pin_code'=>$request->pin]);
 
 

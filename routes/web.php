@@ -59,5 +59,15 @@ Auth::routes();
   Route::get('/profile','Frontend\Modules\MyProfile\MyProfileController@index')->name('user.my.profile');
   Route::post('/profile/update-profile','Frontend\Modules\MyProfile\MyProfileController@updateProfile')->name('user.my.profile-edit');
 
+
+
+
+
+  //salary
+ Route::get('/salary','Frontend\Modules\MySalary\MySalaryController@my_salary_list')->name('my.salary');
+
+
+
+
  });
 

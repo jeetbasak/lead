@@ -20,7 +20,10 @@
 
 
 		<a class="{{request()->segment(2)=='target'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('admin.target.list')}}"><i class="fa fa-target"></i><span>Target Management</span></a>
-		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-users-achiv"></i><span>Users Achivement</span></a>
+
+
+
+		<a class="{{request()->segment(2)=='achivement'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('achivment.list')}}"><i class="fa fa-users-achiv"></i><span>Users Achivement</span></a>
 
 		
 		<a class="{{request()->segment(2)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('lead.list')}}"><i class="fa fa-lead"></i><span>Lead Management</span></a>

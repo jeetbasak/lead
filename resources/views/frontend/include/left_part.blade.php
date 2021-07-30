@@ -23,9 +23,9 @@
 
 		<a class="{{request()->segment(1)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.lead')}}"><i class="fa fa-users-achiv"></i><span>My Lead</span></a>
 
-		{{-- 
-		<a class="{{request()->segment(2)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href=""><i class="fa fa-lead"></i><span>My Monthly Salary </span></a>
- --}}
+		
+		<a class="{{request()->segment(1)=='salary'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.salary')}}"><i class="fa fa-lead"></i><span>My Monthly Salary </span></a>
+
         <a class="{{request()->segment(1)=='profile'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('user.my.profile')}}"><i class="fa fa-lead"></i><span>My Profile </span></a>
 
 

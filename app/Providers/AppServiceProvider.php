@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
          //                        dd($date);
         //dd(date('F'));
 
-
+       //////
 
         if((int)date('m')==1){
             
@@ -62,9 +62,7 @@ class AppServiceProvider extends ServiceProvider
                   //update target status to expiry
           Target::where('month_id',12)->where('year',(int)date('Y')-1)->update(['status'=>'E']);
 
-          }
-    
-        
+          }        
         }
 
 
@@ -89,8 +87,8 @@ class AppServiceProvider extends ServiceProvider
          Target::where('month_id',(int)date('m')-1)->where('year',(int)date('Y'))->update(['status'=>'E']);
         }
 
-
         }
+        /////
 
 
     }

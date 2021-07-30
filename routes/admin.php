@@ -89,4 +89,12 @@ Route::get('/tutorial/edit/{id}','Modules\Tutorial\TutorialController@edit_view'
 Route::post('/tutorial/update','Modules\Tutorial\TutorialController@update')->name('tutorial.update');
 //Route::get('/tutorial/view/{id}','Modules\Tutorial\TutorialController@view')->name('tutorial.view');
 
+
+
+
+
+//user achivment
+Route::get('/achivement','Modules\SalaryController@list')->name('achivment.list');
+Route::post('/achivement','Modules\SalaryController@list')->name('achivment.search');
+
 });

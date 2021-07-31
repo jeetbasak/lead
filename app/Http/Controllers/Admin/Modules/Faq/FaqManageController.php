@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin\Modules\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Faq;
+use App\Models\Picture;
 use App\User;
+
 
 class FaqManageController extends Controller
 {
@@ -66,6 +68,65 @@ class FaqManageController extends Controller
 
 		Faq::where('id',$id)->update($w);
 		return back()->with('success','Faq no '. $id.' has been Deleted');
+	}
+
+
+
+
+
+	public function picture_list(Request $request){   
+       $data['pics']=Picture::where('status','A')->get();
+       return view('admin.modules.picture.pic_list')->with($data);
+	}
+
+
+
+
+	public function pic_add_form(Request $request){
+        return view('admin.modules.picture.pic_add');
+	}
+
+
+
+	public function insert_pic(Request $request){
+		 if ($request->hasFile('pic')){
+		 	//dd($request->all());
+            //this is for unlink the image
+            // $unlnk=User::where('id',auth()->user()->id)->first();
+            // @$prev_img = $unlnk->image;
+           
+            if(@$prev_img){               
+                @unlink('storage/app/public/profile/'.$prev_img);
+            }
+
+            //this is for upload image
+            $image = $request->pic;
+            $pic = time() . '-' . rand(1000, 9999) . '.' . $image->getClientOriginalExtension();
+            $image->move("storage/app/public/pic",$pic);
+           
+             $pic_ins=new Picture();
+
+			$pic_ins->title= $request->title;
+			$pic_ins->image=$pic;
+
+			$pic_ins->save();
+			return back()->with('success','picture has been added successfully..!');
+
+        }
+	}
+
+
+
+
+
+
+	public function pic_dlt($id){
+		$w=array(
+			'status'=>'D',			
+		);
+
+		Picture::where('id',$id)->update($w);
+		return back()->with('success','Picture no '. $id.' has been Deleted');
 	}
     
 }

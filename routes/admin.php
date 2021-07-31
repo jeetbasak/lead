@@ -108,4 +108,11 @@ Route::post('/faq/update','Modules\Faq\FaqManageController@update')->name('updat
 Route::get('/faq/delete/{id}','Modules\Faq\FaqManageController@dlt')->name('faq.dlt');
 
 
+
+//picture part in faq controller
+Route::get('/picture','Modules\Faq\FaqManageController@picture_list')->name('picture.list');
+Route::get('/picture/add','Modules\Faq\FaqManageController@pic_add_form')->name('pic.add.form');
+Route::post('/picture/insert','Modules\Faq\FaqManageController@insert_pic')->name('insert.pic');
+Route::get('/picture/delete/{id}','Modules\Faq\FaqManageController@pic_dlt')->name('pic.dlt');
+
 });

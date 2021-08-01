@@ -97,4 +97,13 @@ Route::post('/tutorial/update','Modules\Tutorial\TutorialController@update')->na
 Route::get('/achivement','Modules\SalaryController@list')->name('achivment.list');
 Route::post('/achivement','Modules\SalaryController@list')->name('achivment.search');
 
+
+
+
+
+// export
+Route::get('/export-users','Modules\Dashboard\DashboardController@exportUser')->name('admin.export.users');
+Route::get('/export-salary','Modules\Dashboard\DashboardController@exportSalary')->name('admin.export.salary');
+// Report 
+Route::get('/reports','Modules\Dashboard\DashboardController@showReport')->name('admin.manage.report');
 });

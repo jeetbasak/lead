@@ -29,7 +29,7 @@
 		<a class="{{request()->segment(2)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('lead.list')}}"><i class="fa fa-lead"></i><span>Lead Management</span></a>
 
 
-		<a class="list-group-item-action left-nav" href="#"><i class="fa fa-reports"></i><span>Reports</span></a>
+		<a class="{{request()->segment(2)=='reports'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('admin.manage.report')}}"><i class="fa fa-reports"></i><span>Reports</span></a>
 
 
 		<a class="{{request()->segment(2)=='tutorial'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('tutorial.list')}}"><i class="fa fa-tutorials"></i><span>Tutorials</span></a>

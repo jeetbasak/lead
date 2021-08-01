@@ -68,6 +68,9 @@ Auth::routes();
 
 
 
+//faq
+ Route::get('/faq','Frontend\Modules\Faq\FaqController@faq_list')->name('my.faq.list');
+
 
  });
 

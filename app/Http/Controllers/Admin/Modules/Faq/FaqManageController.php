@@ -90,14 +90,19 @@ class FaqManageController extends Controller
 
 	public function insert_pic(Request $request){
 		 if ($request->hasFile('pic')){
+
+		 	$chk=Picture::where('status','A')->count();
+		 	if($chk>4){
+		 		return back()->with('error','You already have 4 active image');
+		 	}
 		 	//dd($request->all());
             //this is for unlink the image
             // $unlnk=User::where('id',auth()->user()->id)->first();
             // @$prev_img = $unlnk->image;
            
-            if(@$prev_img){               
-                @unlink('storage/app/public/profile/'.$prev_img);
-            }
+            // if(@$prev_img){               
+            //     @unlink('storage/app/public/profile/'.$prev_img);
+            // }
 
             //this is for upload image
             $image = $request->pic;

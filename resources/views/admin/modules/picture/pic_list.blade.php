@@ -18,7 +18,7 @@
 		<div class="top-row">
 			<div class="task-mg-row b-b-n">
 				<div class="dropdown">
-					<a href="{{route('pic.add.form')}}" class="add-btn dropdown-toggle" style=" color: white; "><span class="plus">+</span> <div class="br-r">Add Faq</div>
+					<a href="{{route('pic.add.form')}}" class="add-btn dropdown-toggle" style=" color: white; "><span class="plus">+</span> <div class="br-r">Add Picture</div>
 				</a>
 				<span class="caret"></span></button>
 			</div>
@@ -54,7 +54,7 @@
 					<td data-label="Action">
 						
 						
-						<a onclick="return confirm('Are you sure want to delete this faq?');" href="{{route('pic.dlt',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
+						<a onclick="return confirm('Are you sure want to delete this picture?');" href="{{route('pic.dlt',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
 						<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
 						
 					</td>

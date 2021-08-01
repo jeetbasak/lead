@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
-       
+        
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-       
+        
         <style>
         html, body {
         background-color: #fff;
@@ -151,8 +151,6 @@
         </ul>
         
         
-
-
         
         @if (Route::has('login'))
         @auth
@@ -165,19 +163,21 @@
         @endif
         @endauth
         @endif
-
-
-
         
     </div>
+    @php
+    $img=DB::table('picture')->where('status','A')->get();
+    @endphp
     <div class="pro-row">
         <ul>
+            @foreach($img as $val)
             <li>
-                <p>Sales and CRM</p>
-                <img src="{{url('/')}}/public/admin/assets/images/img1.png" alt="">
+                <p>{{$val->title}}</p>
+                <img src="{{url('/')}}/storage/app/public/pic/{{@$val->image}}" alt="" style="width: 100%; height: 175px;">
             </li>
-            <li>
-                <p>Task management</p>
+            @endforeach
+            {{-- <li>
+                <p>Task management  Sales and CRM</p>
                 <img src="{{url('/')}}/public/admin/assets/images/img2.png" alt="">
             </li>
             <li>
@@ -187,7 +187,7 @@
             <li>
                 <p>Software development</p>
                 <img src="{{url('/')}}/public/admin/assets/images/img4.png" alt="">
-            </li>
+            </li> --}}
         </ul>
     </div>
     

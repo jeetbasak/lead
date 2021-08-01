@@ -52,6 +52,7 @@
 				<th scope="col">Year</th>
 				<th scope="col">Month</th>
 				<th scope="col">Target range</th>
+				<th scope="col">Target salary(Rs/-)</th>
 				<th scope="col">My achive</th>
 				{{-- <th scope="col">Action</th> --}}
 			</tr>
@@ -73,6 +74,7 @@
 					<p>Rejected</p>
 				@endif</td> --}}
 				<td data-label="Phone Number">( {{@$value->targett->from_target}} - {{@$value->targett->to_target}} )</td>
+				<td data-label="Name">{{@$value->targett->salary}} rs.</td>
 				<td data-label="Name">{{@$value->user_target_achived}}</td>
 				
 				{{-- <td data-label="Action">

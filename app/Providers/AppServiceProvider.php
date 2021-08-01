@@ -44,21 +44,21 @@ class AppServiceProvider extends ServiceProvider
             
 
             //already inserted or not
-         $check=Salary::where('month_id',12)->where('year',(int)date('Y')-1)->count();
-          if($check<1){
-            $a=UserToTarget::where('target_month',12)->where('target_year',(int)date('Y')-1)->get();
+         @$check=Salary::where('month_id',12)->where('year',(int)date('Y')-1)->count();
+          if(@$check<1){
+            @$a=UserToTarget::where('target_month',12)->where('target_year',(int)date('Y')-1)->get();
 
             foreach($a as $key=> $val){
                     //fetching salary
-                $targetDetails=Target::where('month_id',12)->where('year',(int)date('Y')-1)->where('from_target','<=',$val->user_target_achived)->where('to_target','>=',$val->user_target_achived)->first();
+                @$targetDetails=Target::where('month_id',12)->where('year',(int)date('Y')-1)->where('from_target','<=',$val->user_target_achived)->where('to_target','>=',$val->user_target_achived)->first();
                     
                     //insert data to salary
                     $sal=new Salary();
-                    $sal->user_id=$val->user_id;
-                    $sal->month_id=$val->target_month;
-                    $sal->salary=$targetDetails->salary;
-                    $sal->year=$val->target_year;
-                    $sal->target_achive=$val->user_target_achived;
+                    $sal->user_id=@$val->user_id;
+                    $sal->month_id=@$val->target_month;
+                    $sal->salary=@$targetDetails->salary;
+                    $sal->year=@$val->target_year;
+                    $sal->target_achive=@$val->user_target_achived;
                     $sal->save();
             }
 
@@ -70,9 +70,9 @@ class AppServiceProvider extends ServiceProvider
 
 
         else{
-            $check=Salary::where('month_id',(int)date('m')-1)->where('year',(int)date('Y'))->count();
+            @$check=Salary::where('month_id',(int)date('m')-1)->where('year',(int)date('Y'))->count();
             if($check<1){
-             $a=UserToTarget::where('target_month',(int)date('m')-1)->where('target_year',(int)date('Y'))->get();
+             @$a=UserToTarget::where('target_month',(int)date('m')-1)->where('target_year',(int)date('Y'))->get();
           //dd($a);
          foreach($a as $key=> $val){
 
@@ -80,11 +80,11 @@ class AppServiceProvider extends ServiceProvider
             $targetDetails=Target::where('month_id',(int)date('m')-1)->where('year',(int)date('Y'))->where('from_target','<=',$val->user_target_achived)->where('to_target','>=',$val->user_target_achived)->first();
 
             $sal=new Salary();
-            $sal->user_id=$val->user_id;
-            $sal->month_id=$val->target_month;
-            $sal->salary=$targetDetails->salary;
-            $sal->year=$val->target_year;
-            $sal->target_achive=$val->user_target_achived;
+            $sal->user_id=@$val->user_id;
+            $sal->month_id=@$val->target_month;
+            $sal->salary=@$targetDetails->salary;
+            $sal->year=@$val->target_year;
+            $sal->target_achive=@$val->user_target_achived;
             $sal->save();
          }
          Target::where('month_id',(int)date('m')-1)->where('year',(int)date('Y'))->update(['status'=>'E']);

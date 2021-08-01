@@ -54,6 +54,7 @@
 				<th scope="col">Year</th>
 				<th scope="col">Month</th>
 				<th scope="col">Target range</th>
+				<th scope="col">Target salary(Rs/-)</th>
 				<th scope="col">My achive</th>
 				{{-- <th scope="col">Action</th> --}}
 			</tr>
@@ -65,68 +66,19 @@
 				<td data-label="Name">{{@$value->id}}</td>
 				<td data-label="Name">{{@$value->target_year}}</td>
 				<td data-label="Name">{{@$value->targett->month}}</td>
-				{{-- <td data-label="Mail ID">@if(@$value->application_status=="P")
-					<p>Pending</p>
-					@elseif(@$value->application_status=="IC")
-					<p>Incomplete</p>
-					@elseif(@$value->application_status=="C")
-					<p>Complete</p>
-					@else
-					<p>Rejected</p>
-				@endif</td> --}}
+				
 				<td data-label="Phone Number">( {{@$value->targett->from_target}} - {{@$value->targett->to_target}} )</td>
+				<td data-label="Name">{{@$value->targett->salary}} rs.</td>
 				<td data-label="Name">{{@$value->user_target_achived}}</td>
 				
 				<td data-label="Action">
 					
-				{{-- 	<a href="#" style="margin-left: 5px;"><i class="fa fa-edit edit-round"></i></a>
-					<a  href="#" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
-					<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a> --}}
+				
 					
 				</td>
 			</tr>
 			
-			{{-- for view --}}
-			{{-- <div class="modal" id="myModalview{{@$value->id}}">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">Details of Lead no {{@$value->id}}</h4>
-							
-						</div>
-						<!-- Modal body -->
-						<div class="modal-body">
-							
-							<h5> Name </h5>
-							<p>{{@$value->user_name}}</p>
-							<h5> Email </h5>
-							<p>{{@$value->user_email}}</p>
-							<h5> Address </h5>
-							<p>{{@$value->user_address}}</p>
-							<h5> Mobile no </h5>
-							<p>{{@$value->ph}}</p>
-							<h5> application status </h5>
-							@if(@$value->application_status=="P")
-							<p>Pending</p>
-							@elseif(@$value->application_status=="IC")
-							<p>Incomplete</p>
-							@elseif(@$value->application_status=="C")
-							<p>Complete</p>
-							@else
-							<p>Rejected</p>
-							@endif
-							
-						</div>
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							
-							
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-				</div>
-			</div> --}}
+			
 			@endforeach
 			
 		</tbody>

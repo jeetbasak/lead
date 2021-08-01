@@ -100,14 +100,14 @@ Route::post('/achivement','Modules\SalaryController@list')->name('achivment.sear
 
 
 
-<<<<<<< HEAD
+
 
 // export
 Route::get('/export-users','Modules\Dashboard\DashboardController@exportUser')->name('admin.export.users');
 Route::get('/export-salary','Modules\Dashboard\DashboardController@exportSalary')->name('admin.export.salary');
 // Report 
 Route::get('/reports','Modules\Dashboard\DashboardController@showReport')->name('admin.manage.report');
-=======
+
 //faq
 Route::get('/faq','Modules\Faq\FaqManageController@faq_list')->name('faq.list');
 Route::get('/faq/add','Modules\Faq\FaqManageController@add_form')->name('faq.add.form');
@@ -123,5 +123,5 @@ Route::get('/picture/add','Modules\Faq\FaqManageController@pic_add_form')->name(
 Route::post('/picture/insert','Modules\Faq\FaqManageController@insert_pic')->name('insert.pic');
 Route::get('/picture/delete/{id}','Modules\Faq\FaqManageController@pic_dlt')->name('pic.dlt');
 
->>>>>>> 50ff2babef4b77e5b8c9590190349d548150b9e8
+
 });

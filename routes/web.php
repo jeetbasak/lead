@@ -63,7 +63,7 @@ Auth::routes();
 
 
 
-  //salary
+//salary
  Route::get('/salary','Frontend\Modules\MySalary\MySalaryController@my_salary_list')->name('my.salary');
 
 
@@ -72,7 +72,7 @@ Auth::routes();
  Route::get('/faq','Frontend\Modules\Faq\FaqController@faq_list')->name('my.faq.list');
 
 
- //notification
+//notification
 Route::get('/notification','Frontend\Modules\MyProfile\MyProfileController@notification_list')->name('my.notification');
 
  });

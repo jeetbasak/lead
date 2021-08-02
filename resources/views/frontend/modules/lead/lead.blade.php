@@ -93,13 +93,16 @@
 							<form method="post" action="{{route('change.lead.status')}}">
 								@csrf
 								<div class="e-col">
-									<input type="text" name="lead_id" value="{{@$value->id}}">
+									<input type="hidden" name="lead_id" value="{{@$value->id}}">
 									<select class="form-control form-select" name="status" >
 										<option selected value="">Chnage status</option>
 										<option value="C">Completed</option>
 										<option value="IC">Incompleted</option>
 										<option value="R">Rejected</option>
 									</select>
+									<br>
+									<p>Comment</p>
+									<p><textarea name="comment" style="width: 100%; height: 100px">{{@$value->comment}}</textarea></p>
 								</div>
 								
 								<input type="submit" class="btn btn-primary" value="Change">

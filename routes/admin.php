@@ -108,6 +108,8 @@ Route::get('/export-salary','Modules\Dashboard\DashboardController@exportSalary'
 // Report 
 Route::get('/reports','Modules\Dashboard\DashboardController@showReport')->name('admin.manage.report');
 
+
+
 //faq
 Route::get('/faq','Modules\Faq\FaqManageController@faq_list')->name('faq.list');
 Route::get('/faq/add','Modules\Faq\FaqManageController@add_form')->name('faq.add.form');

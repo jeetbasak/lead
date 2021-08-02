@@ -193,6 +193,10 @@
 								@else
 								<p>Rejected</p>
 								@endif
+								@if(@$value->comment)
+								<h5> Comment </h5>
+								<p>{{@$value->comment}}</p>
+								@endif
 								
 							</div>
 							<!-- Modal footer -->

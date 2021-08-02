@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Target;
 use App\User;
 use App\Models\UserToTarget;
+use App\Models\Notification;
+
 class TargetManageController extends Controller
 {
     
@@ -261,6 +263,18 @@ class TargetManageController extends Controller
                $target->target_year = $request->year;
                $target->save();
                 array_push($data2,$value);
+
+
+            //notification sent code to admin
+            //@$u=User::where('id',$request->user_id)->first();
+            $notification=new Notification();
+
+            $notification->user_type='U';
+            $notification->user_id=@$value;
+            $notification->not_type='New Target';
+            $notification->message='New target given to you from admin';
+
+            $notification->save(); 
              }
            }
            // if (count(@$data)>0) {

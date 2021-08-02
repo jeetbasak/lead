@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\UserToTarget;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\Notification;
 use App\User;
 use Mail;
 use App\Mail\EmailVerification;
@@ -235,6 +236,21 @@ class DashboardController extends Controller
                 UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->update($updt);
 
                 //--------------------------end-------------------------
+
+
+
+                 //notification sent code to user
+                    @$u=User::where('id',$request->id)->first();
+                    @$notification=new Notification();
+
+                    @$notification->user_type='U';
+                    @$notification->user_id=@$referalId;
+                    @$notification->not_type='New Registration from your link';
+                    @$notification->message='New registration from your link of '.@$u->email;
+
+                    @$notification->save();  
+
+
                 //dd(UserToTarget::where('user_id',$referalId)->where('target_month',date('m')+1-1)->where('target_year',date('Y')+1-1)->first());
                 }else{
                     $UserDetails=User::where('id',$request->id)->delete();
@@ -242,6 +258,18 @@ class DashboardController extends Controller
                 }
             }
               //$this->guard()->logout();
+
+            //notification sent code to admin
+            @$u=User::where('id',$request->id)->first();
+            $notification=new Notification();
+
+            $notification->user_type='A';
+            $notification->not_type='New Registration';
+            $notification->message='New registration from '.@$u->email;
+
+            $notification->save();  
+
+
     		return redirect()->route('login');
     	}
 

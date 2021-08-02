@@ -1,9 +1,9 @@
-@extends('admin.layouts.app')
+@extends('layouts.app')
 @section('title')
 <title>Admin | Target list</title>
 @endsection
 @section('left_part')
-@include('admin.include.left_part')
+@include('frontend.include.left_part')
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 @endsection
@@ -16,7 +16,7 @@
 
 <!-- Start right Content here -->
 <!-- ============================================================== -->
-@include('admin.include.errors')
+@include('frontend.include.errors')
 <div class="container-fluid">
   <div class="body-main">
     <div class="top-row">
@@ -110,12 +110,12 @@
 
 
 {{-- @section('footer')
-@include('admin.include.footer')
+@include('frontend.include.footer')
 @endsection --}}
 @endsection
 {{-- end content --}}
 @section('script')
-@include('admin.include.script')
+@include('frontend.include.script')
 {{-- for datatable --}}
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

@@ -10,9 +10,11 @@
 	<div class="list-group list-group-flush">
 		<a class="{{request()->segment(2)=='dashboard'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('admin.dashboard.home')}}"><i class="fa fa-home-b"></i> <span>Home</span></a>
 
+@php
+@$noti=DB::table('notification')->where('is_read','UR1')->where('user_type','A')->count();
+@endphp
 
-
-		<a class="{{request()->segment(2)=='notifications'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('notification.list')}}"><i class="fa fa-bell-n"></i><span>Notifications</span></a>
+		<a class="{{request()->segment(2)=='notifications'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('notification.list')}}"><i class="fa fa-bell-n"></i><span>Notifications <span class="badge" style="background-color: red">{{@$noti}}</span></span></a>
 
 
 

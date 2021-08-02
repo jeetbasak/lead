@@ -72,5 +72,8 @@ Auth::routes();
  Route::get('/faq','Frontend\Modules\Faq\FaqController@faq_list')->name('my.faq.list');
 
 
+ //notification
+Route::get('/notification','Frontend\Modules\MyProfile\MyProfileController@notification_list')->name('notification');
+
  });
 

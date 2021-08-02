@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ManageLead;
 use App\User;
+use App\Models\Notification;
 class LeadController extends Controller
 {
 
@@ -96,6 +97,18 @@ class LeadController extends Controller
       }
       if(@$request->user_id){
       ManageLead::where('id',$request->lead_id)->update(['tagging_id'=>$request->user_id]);
+
+        //notification sent code to admin
+            //@$u=User::where('id',$request->user_id)->first();
+            $notification=new Notification();
+
+            $notification->user_type='U';
+            $notification->user_id=@$request->user_id;
+            $notification->not_type='New Lead';
+            $notification->message='New lead assign to you from admin';
+
+            $notification->save(); 
+
       return back()->with('success','This lead is successfully assigned..!');
       }
       else{
@@ -115,6 +128,17 @@ class LeadController extends Controller
      
       if(@$request->user_id){
       ManageLead::where('id',$request->lead_id)->update(['tagging_id'=>$request->user_id]);
+
+      //notification sent code to admin
+            //@$u=User::where('id',$request->user_id)->first();
+            $notification=new Notification();
+
+            $notification->user_type='U';
+            $notification->user_id=@$request->user_id;
+            $notification->not_type='New Lead';
+            $notification->message='Lead reassign to you from admin';
+
+            $notification->save(); 
       return back()->with('success','This lead is successfully assigned..!');
       }
       else{

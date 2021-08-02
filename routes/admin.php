@@ -126,4 +126,11 @@ Route::post('/picture/insert','Modules\Faq\FaqManageController@insert_pic')->nam
 Route::get('/picture/delete/{id}','Modules\Faq\FaqManageController@pic_dlt')->name('pic.dlt');
 
 
+
+
+
+//admin change password
+Route::get('/dashboard/change-password','Modules\Dashboard\DashboardController@admin_change_password_page')->name('admin.change.password');
+Route::post('/dashboard/update-password','Modules\Dashboard\DashboardController@update')->name('admin.pass.update');
+
 });

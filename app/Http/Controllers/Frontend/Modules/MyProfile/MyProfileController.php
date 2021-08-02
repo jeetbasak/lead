@@ -167,4 +167,41 @@ class MyProfileController extends Controller
         $data['notification']=Notification::orderBy('id','desc')->where('user_type','U')->where('user_id',Auth()->user()->id)->get();
         return view('frontend.modules.notification.notification_list')->with($data);
     }
+
+
+
+
+
+
+    /**
+ *   Method      : change_password_page
+ *   Description : For user change_password_page 
+ *   Author      : Jeet
+ **/
+
+    public function change_password_page(Request $request){
+     return view('frontend.modules.dashboard.change_pass');
+    }
+
+
+
+
+    public function update(Request $request){
+        //dd($request->all());
+        $request->validate([
+           'old_password'        => 'required|string|min:6',
+           'newPassword'=> 'required|min:6|required_with:confirm|same:confirm',
+           'confirm'=>'required|min:6', 
+         ]);
+        //dd(Auth::guard('admin')->id());
+        $oldpassword = $request->input('old_password');
+        if (!\Hash::check($oldpassword,Auth::user()->password)) {
+            return redirect()->back()->with('error','You have entered wrong old password!');
+        }else{
+            $updatepassword = User::where('id',Auth::user()->id)->update([
+                'password'=>\Hash::make($request->input('newPassword'))
+            ]);
+            return redirect()->back()->with('success','Password updated successfully!');
+        }
+    }
 }

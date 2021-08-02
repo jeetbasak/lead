@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-<title>Admin | Target list</title>
+<title>User | Notification list</title>
 @endsection
 @section('left_part')
 @include('frontend.include.left_part')

@@ -8,7 +8,7 @@
 	<div class="sidebar-heading"><span>{{-- TaskAffix --}} {{auth()->user()->name}} <a class="menuclose"><i class="fa fa-close"></i></a></span></div>
 	
 	<div class="list-group list-group-flush">
-		<a class="{{request()->segment(2)=='dashboard'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href=""><i class="fa fa-home-b"></i> <span>Home</span></a>
+		<a class="{{request()->segment(1)=='home'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href=""><i class="fa fa-home-b"></i> <span>Home</span></a>
 
 @php
 @$noti=DB::table('notification')->where('is_read','UR1')->where('user_type','U')->where('user_id',auth()->user()->id)->count();

@@ -75,5 +75,11 @@ Auth::routes();
 //notification
 Route::get('/notification','Frontend\Modules\MyProfile\MyProfileController@notification_list')->name('my.notification');
 
+
+//user change password
+Route::get('/home/change-password','Frontend\Modules\MyProfile\MyProfileController@change_password_page')->name('user.change.password');
+Route::post('/home/update-password','Frontend\Modules\MyProfile\MyProfileController@update')->name('pass.update');
+
+
  });
 

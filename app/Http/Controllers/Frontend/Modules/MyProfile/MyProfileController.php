@@ -165,6 +165,6 @@ class MyProfileController extends Controller
     
 
         $data['notification']=Notification::orderBy('id','desc')->where('user_type','U')->where('user_id',Auth()->user()->id)->get();
-        return view('admin.modules.notification.notification_list')->with($data);
+        return view('frontend.modules.notification.notification_list')->with($data);
     }
 }

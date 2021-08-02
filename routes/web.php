@@ -73,7 +73,7 @@ Auth::routes();
 
 
  //notification
-Route::get('/notification','Frontend\Modules\MyProfile\MyProfileController@notification_list')->name('notification');
+Route::get('/notification','Frontend\Modules\MyProfile\MyProfileController@notification_list')->name('my.notification');
 
  });
 

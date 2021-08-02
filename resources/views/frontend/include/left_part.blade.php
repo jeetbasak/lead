@@ -14,7 +14,7 @@
 @$noti=DB::table('notification')->where('is_read','UR1')->where('user_type','U')->where('user_id',auth()->user()->id)->count();
 @endphp
 
-		<a class="{{request()->segment(2)=='notifications'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('notification')}}"><i class="fa fa-bell-n"></i><span>Notifications <span class="badge" style="background-color: red">{{@$noti}}</span></span></a>
+		<a class="{{request()->segment(1)=='notifications'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.notification')}}"><i class="fa fa-bell-n"></i><span>Notifications <span class="badge" style="background-color: red">{{@$noti}}</span></span></a>
 
 
 

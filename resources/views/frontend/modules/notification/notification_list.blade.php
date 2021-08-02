@@ -38,11 +38,15 @@
           </tr>
         </thead>
         <tbody>
-          
+           @php
+          $i=1;
+
+          @endphp
           @foreach($notification as $key=> $value)
+         
           <tr  @if($value->is_read=="UR2") style="background-color: pink" @endif>
             <td data-label="Select"><input type="checkbox"></td>
-            <td data-label="Name">{{@$value->id}}</td>
+            <td data-label="Name">{{@$i}}</td>
             <td data-label="Mail ID">{{@$value->not_type}}</td>
             <td data-label="Phone Number">{{@$value->created_at->format('Y-m-d')}}</td>
             <td data-label="Action">
@@ -60,7 +64,7 @@
             <div class="modal-content">
               <!-- Modal Header -->
               <div class="modal-header">
-                <h4 class="modal-title">Details notification of {{@$value->id}}</h4>
+                <h4 class="modal-title">Details notification of {{@$i}}</h4>
                 
               </div>
               <!-- Modal body -->
@@ -68,7 +72,7 @@
 
                 
                 
-                <h5>Id</h5>
+                <h5>unique Id</h5>
                 <p>{{$value->id}}</p>
 
                 <h5>Type</h5>
@@ -93,6 +97,9 @@
             </div>
           </div>
         </div>
+        @php
+        $i++;
+         @endphp
             @endforeach
           
         </tbody>

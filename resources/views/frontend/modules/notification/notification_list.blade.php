@@ -75,11 +75,16 @@
                 <h5>unique Id</h5>
                 <p>{{$value->id}}</p>
 
+                <br>
+
                 <h5>Type</h5>
                 <p>{{$value->not_type}}</p>
 
+                <br>
+
                 <h5>Message</h5>
                 <p>{{$value->message}}</p>
+                <br>
 
                 <h5>Date</h5>
                 <p>{{$value->created_at}}</p>

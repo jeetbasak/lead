@@ -273,7 +273,6 @@ class TargetManageController extends Controller
             $notification->user_id=@$value;
             $notification->not_type='New Target';
             $notification->message='New target given to you from admin';
-
             $notification->save(); 
              }
            }

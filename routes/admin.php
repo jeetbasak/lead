@@ -24,6 +24,11 @@ Route::group(['namespace' => 'Admin'], function() {
     // Route::get('email/verify', 'Auth\VerificationController@show')->name('admin.verification.notice');
     // Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('admin.verification.verify');
 
+
+      Route::get('forget-password','Auth\ForgotPasswordController@showForget')->name('admin.forget.password.view');
+      Route::post('forget-password/send-mail','Auth\ForgotPasswordController@sendMail')->name('admin.forget.password');
+      Route::get('reset-password/{vcode}','Auth\ForgotPasswordController@resetpassword')->name('admin.password.confirm');
+      Route::post('reset-password/new-password','Auth\ForgotPasswordController@newPassword')->name('admin.new.password.set');
 });
 
 

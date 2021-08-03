@@ -36,12 +36,60 @@
                         </div>
             
                   
-                        
+                        <div class="row">
+                          <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
+                            <div class="card text-white bg-danger mb-3" style="max-width: 100%;height: 200px">
+                              <div class="card-header">Users</div>
+                              <div class="card-body">
+                                @php 
+                                $users=DB::table('users')->whereIn('status',['A','AA','I'])->count();
+                                @endphp
+                                <h5 class="card-title">Total Users : {{@$users}}</h5>
+                              </div>
+                          </div>
+                        </div>
+
+                          <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
+                            <div class="card text-dark bg-warning mb-3" style="max-width: 100%;height: 200px">
+                              <div class="card-header">Targets</div>
+                              <div class="card-body">
+                                @php 
+                                $targtes=DB::table('target_management')->where('status','!=','D')->count();
+                                @endphp
+                                <h5 class="card-title">Total Number Of Targets : {{@$targtes}}</h5>
+                               </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
+                            <div class="card text-dark bg-info mb-3" style="max-width: 100%;height: 200px">
+                              <div class="card-header">Leads</div>
+                              <div class="card-body">
+                                @php 
+                                $leads=DB::table('lead_management')->where('status','!=','D')->count();
+                                @endphp
+                                <h5 class="card-title">Total Number Of Leads : {{@$leads}} </h5>
+                                
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
+                            <div class="card text-white bg-primary mb-3" style="max-width: 100%;height: 200px">
+                              <div class="card-header">Tutorials</div>
+                              <div class="card-body">
+                                @php 
+                                $tutorial=DB::table('tutorial')->where('status','!=','D')->count();
+                                @endphp
+                                <h5 class="card-title">Total Number Of Tutorials : {{@$tutorial}} </h5>
+                               </div>
+                            </div>
+                          </div>
 
                         
             
                         
-                      </div>
+                    
                 </div>
             </div>
         </div>

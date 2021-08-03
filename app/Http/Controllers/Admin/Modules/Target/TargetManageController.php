@@ -281,10 +281,9 @@ class TargetManageController extends Controller
             
            
             $Mdata['name'] = $user_email->name;
-              $Mdata['email'] = $user_email->email;
-             $Mdata['email_subject'] = "Enquiry from Website";
-             $Mdata['message'] = "  This to notify you that admin has assigned you an target . Please do check that. ";
-            // Mail::send(new TargetUser($Mdata));
+            $Mdata['email'] = $user_email->email;
+            $Mdata['email_subject'] = "Enquiry from Website";
+            $Mdata['message'] = "This to notify you that admin has assigned you an target . Please do check that. ";
              Mail::to($user_email->email)->send(new TargetUser($Mdata));
              }
             

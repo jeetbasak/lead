@@ -138,16 +138,23 @@
     <div class="container l-content">
         <h1>Work without Limits</h1>
         <p>Easily build, run, and scale your dream workflows on one platform. What would you like to manage with monday.com work OS? </p>
+        @php
+
+        $service=DB::table('service')->where('status','A')->get();
+
+        @endphp
         <ul>
-            <li><input type="checkbox"> Project management</li>
-            <li><input type="checkbox"> Sales and CRM</li>
+            @foreach($service as $key=> $val)
+            <li><input type="checkbox"> {{@$val->name}}</li>
+            @endforeach
+           {{--  <li><input type="checkbox"> Sales and CRM</li>
             <li><input type="checkbox"> Marketing</li>
             <li><input type="checkbox"> Creative and Design</li>
             <li><input type="checkbox"> Software development</li>
             <li><input type="checkbox"> Task management</li>
             <li><input type="checkbox"> HR and recruitment</li>
             <li><input type="checkbox"> IT</li>
-            <li><input type="checkbox"> 200+ workflows</li>
+            <li><input type="checkbox"> 200+ workflows</li> --}}
         </ul>
         
         

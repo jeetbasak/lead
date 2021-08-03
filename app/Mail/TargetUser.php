@@ -16,10 +16,10 @@ class TargetUser extends Mailable
      *
      * @return void
      */
-    public $data;
-    public function __construct($data)
+    public $Mdata;
+    public function __construct($Mdata)
     {
-        $this->data = $data;
+        $this->Mdata = $Mdata;
     }
 
     /**
@@ -29,7 +29,7 @@ class TargetUser extends Mailable
      */
      public function build()
     {
-        $subject = $this->data['email_subject'];
+        $subject = $this->Mdata['email_subject'];
         return $this->view('mail.target')->subject($subject)->from(env('MAIL_USERNAME'), env('APP_NAME'));
     }
 }

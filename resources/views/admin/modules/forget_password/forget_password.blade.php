@@ -29,7 +29,7 @@
             <div class="welcome-col">
                 <h2>Forget Password</h2>
                 <p>Please enter your email</p>
-                @include('frontend.include.message')
+                @include('frontend.include.errors')
                 <form method="POST" action="{{ route('admin.forget.password') }}">
                     @csrf
                     {{-- email --}}

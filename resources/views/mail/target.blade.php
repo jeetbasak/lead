@@ -24,16 +24,16 @@
 
             <div style="display:block; overflow:hidden; width:100%;">
 
-                Dear {{@$data['name']}},
+                Dear {{@$Mdata['name']}},
                 <br>
-                This to notify you that admin has assigned you an target . Please do check that. 
+               {{@$Mdata['message']}}
                
 
             </div>
 
             <p style="font-family:Arial; font-size:14px; font-weight:500; color:#363839;margin: 0px 0px 10px 0px;">
                 Regards<br>
-               Jeet
+               
             </p>
 
         </div>

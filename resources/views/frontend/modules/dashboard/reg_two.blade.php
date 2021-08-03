@@ -114,7 +114,7 @@ $country=DB::table('countries')->get();
                         </ul>
                     </div>
                     {{-- 1-////////////////////////////////////////////// --}}
-                    <form method="POST" action="{{ route('register.two') }}" style="margin-left: 120px" id="frm">
+                    <form method="POST" action="{{ route('register.two') }}" class="custom-frm" id="frm">
                         @csrf
                     <div class="welcome-col card2 first-screen show">
                         <h2>Welcome to TaskAffix</h2>

@@ -138,4 +138,13 @@ Route::get('/picture/delete/{id}','Modules\Faq\FaqManageController@pic_dlt')->na
 Route::get('/dashboard/change-password','Modules\Dashboard\DashboardController@admin_change_password_page')->name('admin.change.password');
 Route::post('/dashboard/update-password','Modules\Dashboard\DashboardController@update')->name('admin.pass.update');
 
+
+
+//services
+Route::get('/service','Modules\Service\ServiceController@service_list')->name('service.list');
+ Route::get('/service/add','Modules\Service\ServiceController@ServiceController')->name('service.add.form');
+Route::post('/service/insert','Modules\Service\ServiceController@insert_ser')->name('insert.service');
+Route::get('/service/delete/{id}','Modules\Service\ServiceController@ser_dlt')->name('service.dlt');
+
+
 });

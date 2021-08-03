@@ -13,10 +13,13 @@ $otp_status=$user->otp_status;
 <div class="container-fluid p-0">
     <div class="d-flex signup-bg">
         <div class="left-panel">
-            <div class="logo-col"><h2>TaskAffix</h2></div>
-            @if(@$otp_status!='N')
-            <p> <a href="{{route('go.back',$id)}}" ><span class="fa fa-long-arrow-left"> Go Back</span></a></p>
+               @if(@$otp_status!='N')
+           <p class="back-btn"> <a href="{{route('go.back',$id)}}" ><span class="fa fa-long-arrow-left"> Go Back</span></a> </p>
             @endif
+            <div class="logo-col"><h2>TaskAffix</h2>
+              
+            </div>
+          
             <div class="card1">
                 <p class="up-title">Set up your TaskAffix account</p>
                 <ul id="progressbar" class="text-center">
@@ -38,7 +41,7 @@ $otp_status=$user->otp_status;
         </div>
         @include('admin.include.errors')
         {{-- 1-////////////////////////////////////////////// --}}
-        <form method="POST" action="{{route('verification.reg')}}" style="margin-left: 120px" id="frm">
+        <form method="POST" action="{{route('verification.reg')}}" class="custom-frm" id="frm">
             @csrf
             <div class="welcome-col card2 first-screen show">
                 <h2>Welcome to TaskAffix</h2>

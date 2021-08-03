@@ -1334,12 +1334,12 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   text-align: left;
 }
 .welcome-col h2{
-  font-size: 45px;
+  font-size: 35px;
   font-weight: 600;
   padding-bottom: 15px;
 }
 .welcome-col p{
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
   padding-bottom: 35px;
 }
@@ -1348,6 +1348,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   width: 100%;
   float: left;
   margin-bottom: 15px;
+  text-align: left;
 }
 .e-col small{
   font-size: 13px;
@@ -1368,6 +1369,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   display: inline-block;
   text-align: center;
   margin-top: 30px;
+  border: none;
 }
 .e-col .next-btn:hover{
   background: var(--bs-green);
@@ -1444,13 +1446,14 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 }
 #progressbar li h2{
   text-align: left;
-  font-size: 25px;
+  font-size: 20px;
   color: #4c4c64;
 }
 #progressbar li span{
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   padding-top: 10px;
+  font-weight: 300;
 }
 
 #progressbar li:nth-child(3) {
@@ -1480,7 +1483,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 #progressbar li:after {
   content: '';
   width: 2px;
-  height: 65px;
+  height: 58px;
   background: #4c4c64;
   position: absolute;
   left: 13px;
@@ -1528,6 +1531,12 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 .prev:hover {
   color: #D50000 !important
 }
+.back-btn{
+  position: absolute;
+  top: 28px;
+  right: 27px;
+}
+
 @media screen and (max-width: 912px) {
   .card00 {
       padding-top: 30px
@@ -1605,8 +1614,15 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 .forgot-text{
   color: #14aaf5;
 }
+.custom-frm{
+  padding-left: 120px;
+}
 
 @media (max-width: 991px) {
+  .custom-frm{
+  padding-left: 0;
+  text-align: center;
+}
   .sidebar-heading a {
     display: block;
 }

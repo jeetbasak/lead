@@ -4,6 +4,11 @@
 @endsection
 @section('head')
 @include('frontend.include.head')
+<style>
+    .alert-danger {
+    display: none;
+}
+</style>
 @endsection
 @section('content')
 {{-- <div class="container">

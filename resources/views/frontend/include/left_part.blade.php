@@ -1,5 +1,27 @@
 @section('head')
 @include('admin.include.head')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+ {{-- for share --}}
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
+{{-- for share --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+
+<script>
+        $("#share").jsSocials({
+          url:"{{url('/')}}/register-reffer/{{auth()->user()->email}}/{{auth()->user()->id}}",
+          text:"\n Regester using this refferal link\n",
+            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+        });
+    </script>
 @endsection
 
 
@@ -8,13 +30,13 @@
 	<div class="sidebar-heading"><span>{{-- TaskAffix --}} {{auth()->user()->name}} <a class="menuclose"><i class="fa fa-close"></i></a></span></div>
 	
 	<div class="list-group list-group-flush">
-		<a class="{{request()->segment(1)=='home'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href=""><i class="fa fa-home-b"></i> <span>Home</span></a>
+		<a class="{{request()->segment(1)=='home'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('dashboard.home')}}"><i class="fa fa-home-b"></i> <span>Home</span></a>
 
 @php
 @$noti=DB::table('notification')->where('is_read','UR1')->where('user_type','U')->where('user_id',auth()->user()->id)->count();
 @endphp
 
-		<a class="{{request()->segment(1)=='notifications'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.notification')}}"><i class="fa fa-bell-n"></i><span>Notifications <span class="badge" style="background-color: red">{{@$noti}}</span></span></a>
+		<a class="{{request()->segment(1)=='notification'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.notification')}}"><i class="fa fa-bell-n"></i><span>Notifications <span class="badge" style="background-color: red">{{@$noti}}</span></span></a>
 
 
 
@@ -101,7 +123,28 @@
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">...</button>
                                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                         <ul class="navbar-nav mt-lg-0">
-                                            <li><a href="#" class="share-btn"><i class="fa fa-lock"></i>Share</a></li>
+                                            <li><a href="#" class="share-btn" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock"></i>Share</a></li>
+                                            <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Share with people</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{url('/')}}/register-reffer/{{auth()->user()->email}}/{{auth()->user()->id}}</p>
+           <div id="share"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
                                             <li class="search">
                                                 <form>
                                                     <input type="text" id="myInputTextField">

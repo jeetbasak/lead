@@ -116,7 +116,7 @@ $country=DB::table('countries')->get();
                    
 
                     {{-- 1-////////////////////////////////////////////// --}}
-                    <form method="POST" action="{{ route('register.one') }}" style="margin-left: 120px" id="frm">
+                    <form method="POST" action="{{ route('register.one') }}" class="custom-frm" id="frm">
                         @csrf
                     <div class="welcome-col card2 first-screen show">
                         <h2>Welcome to TaskAffix</h2>
@@ -138,7 +138,7 @@ $country=DB::table('countries')->get();
                                 <option selected value="">Your Last Qualification?</option>
                                 <option value="Class 10">Class 10?</option>
                                 <option value="Class 12">Class 12?</option>
-                                <option value="Graduated?">Graduated?</option>
+                                <option value="Graduated">Graduated?</option>
                             </select>                                       
                         </div>
 

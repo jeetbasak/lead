@@ -29,7 +29,13 @@ Route::get('/', function () {
 
    Route::get('register-reffer/{email}/{id}','Frontend\Modules\Dashboard\DashboardController@reffer_reg')->name('register.reffer');
 
-Auth::routes();
+   Route::get('forget-password','Auth\ForgotPasswordController@showForget')->name('user.forget.password.view');
+   Route::post('forget-password/send-mail','Auth\ForgotPasswordController@sendMail')->name('user.forget.password');
+   Route::get('reset-password/{vcode}','Auth\ForgotPasswordController@resetpassword')->name('password.confirm');
+   Route::post('reset-password/new-password','Auth\ForgotPasswordController@newPassword')->name('user.new.password');
+
+
+  Auth::routes();
 
 //Route::get('/', 'HomeController@index')->name('landing.page');
 

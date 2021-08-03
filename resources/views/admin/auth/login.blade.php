@@ -121,7 +121,7 @@
                                 
                                 {{-- fp --}}
                                 @if (Route::has('admin.password.request'))
-                                <a class="btn btn-link" href="{{ route('admin.password.request') }}">
+                                <a class="btn btn-link" href="{{ route('admin.forget.password.view') }}">
                                     Forgot Your Password?
                                 </a>
                                 @endif

@@ -8,7 +8,8 @@ use App\Models\Target;
 use App\User;
 use App\Models\UserToTarget;
 use App\Models\Notification;
-
+use Mail;
+use App\Mail\TargetUser;
 class TargetManageController extends Controller
 {
     
@@ -274,8 +275,21 @@ class TargetManageController extends Controller
             $notification->not_type='New Target';
             $notification->message='New target given to you from admin';
             $notification->save(); 
+
+
+            // $user_email = User::where('id',$value)->first();
+            
+           
+            // $data['name'] = $user_email->name;
+            //   $data['email'] = $user_email->email;
+            //  $data['email_subject'] = "Enquiry from Website";
+            // // Mail::send(new TargetUser($data));
+            //  Mail::to($user_email->email)->send(new TargetUser($data));
              }
-           }
+            
+            
+
+            }
            // if (count(@$data)>0) {
                foreach (@$data as  $value) {
                    $user = User::where('id',$value)->first();

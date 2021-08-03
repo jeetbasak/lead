@@ -39,7 +39,10 @@
 
 
 
-        <a class="{{request()->segment(2)=='picture'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('picture.list')}}"><i class="fa fa-tutorials"></i><span>Picture Manage</span></a>
+        <a class="{{request()->segment(2)=='picture'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('picture.list')}}"><i class="fa fa-tutorials"></i><span>Picture Management</span></a>
+
+
+         <a class="{{request()->segment(2)=='service'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('service.list')}}"><i class="fa fa-tutorials"></i><span>Service Management</span></a>
 
 
 

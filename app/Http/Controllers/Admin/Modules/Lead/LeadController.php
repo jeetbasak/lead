@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\ManageLead;
 use App\User;
 use App\Models\Notification;
+use Mail;
+use App\Mail\TargetUser;
 class LeadController extends Controller
 {
 
@@ -109,6 +111,17 @@ class LeadController extends Controller
 
             $notification->save(); 
 
+
+            //email 
+            $user_email = User::where('id',$request->user_id)->first();
+            
+           
+            $Mdata['name'] = $user_email->name;
+            $Mdata['email'] = $user_email->email;
+            $Mdata['email_subject'] = "Lead set for you";
+            $Mdata['message'] = "This to notify you that admin has assigned you an Lead . Please do check that. ";
+             Mail::to($user_email->email)->send(new TargetUser($Mdata));
+
       return back()->with('success','This lead is successfully assigned..!');
       }
       else{
@@ -139,6 +152,17 @@ class LeadController extends Controller
             $notification->message='Lead reassign to you from admin';
 
             $notification->save(); 
+
+              //email 
+            $user_email = User::where('id',$request->user_id)->first();
+            
+           
+            $Mdata['name'] = $user_email->name;
+            $Mdata['email'] = $user_email->email;
+            $Mdata['email_subject'] = "Lead set for you";
+            $Mdata['message'] = "This to notify you that admin has assigned you an Lead . Please do check that. ";
+             Mail::to($user_email->email)->send(new TargetUser($Mdata));
+
       return back()->with('success','This lead is successfully assigned..!');
       }
       else{

@@ -171,6 +171,45 @@ class DashboardController extends Controller
     {
       return view('admin.modules.report.manage_report');
     }
+
+
+
+
+
+
+
+
+    /**
+ *   Method      : change_password_page
+ *   Description : For admin change_password_page 
+ *   Author      : Jeet
+ **/
+
+    public function admin_change_password_page(Request $request){
+     return view('admin.modules.dashboard.change_pass');
+    }
+
+
+
+
+    public function update(Request $request){
+        //dd($request->all());
+        $request->validate([
+           'old_password'        => 'required|string|min:6',
+           'newPassword'=> 'required|min:6|required_with:confirm|same:confirm',
+           'confirm'=>'required|min:6', 
+         ]);
+        //dd(Auth::guard('admin')->id());
+        $oldpassword = $request->input('old_password');
+        if (!\Hash::check($oldpassword,Auth::guard('admin')->user()->password)) {
+            return redirect()->back()->with('error','You have entered wrong old password!');
+        }else{
+            $updatepassword = Admin::where('id',Auth::guard('admin')->user()->id)->update([
+                'password'=>\Hash::make($request->input('newPassword'))
+            ]);
+            return redirect()->back()->with('success','Password updated successfully!');
+        }
+    }
    
 
 }

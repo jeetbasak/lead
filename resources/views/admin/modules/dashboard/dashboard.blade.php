@@ -21,44 +21,21 @@
                         <div class="top-row">
                             <div class="task-mg-row">
                                 <div class="dropdown">                                   
-                                    <button class="add-btn dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" type="button" data-toggle="dropdown"><span class="plus">+</span> <div class="br-r">Add task</div>
-                                        <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Phantom</a></li>
-                                        <li><a href="#">Cluster</a></li>
-                                        <li><a href="#">Phantom</a></li>
-                                        <li><a href="#">Cluster</a></li>
-                                    </ul>
+                                   
                                 </div>
             
                                 <div class="right-sec">
                                    <ul>
+                                    
                                     <li>
-                                        <a href="#"><i class="fa incomplete-icon"></i> Incomplete task</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa sort-icon"></i> Sort</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa customize-icon"></i> Customize</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="link">Send feedback</a>
+                                        <a href="{{route('admin.change.password')}}" class="link">Change password</a>
                                     </li>
                                    </ul>
                                 </div>
                           </div>
                         </div>
             
-                       
-                        <div class="top-row">
-                            <div class="t-mid-row">
-                                <div class="name-col">Task name</div>
-                                <div class="date-col">Date</div>
-                                <div class="pro-col">Projects</div>
-                            </div>
-                        </div>
-            
+                  
                         <div class="top-row">
                             <div id="accordionExample">
                                 <div class="accordion-item">

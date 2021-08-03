@@ -277,14 +277,14 @@ class TargetManageController extends Controller
             $notification->save(); 
 
 
-            // $user_email = User::where('id',$value)->first();
+            $user_email = User::where('id',$value)->first();
             
            
-            // $data['name'] = $user_email->name;
-            //   $data['email'] = $user_email->email;
-            //  $data['email_subject'] = "Enquiry from Website";
-            // // Mail::send(new TargetUser($data));
-            //  Mail::to($user_email->email)->send(new TargetUser($data));
+            $Mdata['name'] = $user_email->name;
+              $Mdata['email'] = $user_email->email;
+             $Mdata['email_subject'] = "Enquiry from Website";
+            // Mail::send(new TargetUser($Mdata));
+             Mail::to($user_email->email)->send(new TargetUser($Mdata));
              }
             
             

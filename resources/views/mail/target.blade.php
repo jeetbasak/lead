@@ -24,7 +24,7 @@
 
             <div style="display:block; overflow:hidden; width:100%;">
 
-                Dear {{@$data['name']}},
+                Dear {{@$Mdata['name']}},
                 <br>
                 This to notify you that admin has assigned you an target . Please do check that. 
                

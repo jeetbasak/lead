@@ -36,82 +36,60 @@
                         </div>
             
                   
-                        <div class="top-row">
-                            <div id="accordionExample">
-                                <div class="accordion-item">
-                                  <p class="panel-title" id="headingOne">
-                                    <a class="accordion-toggle" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
-                                        Recently assigned
-                                    </a>
-                                </p>
-                                  <div id="collapseOne" class="accordion-collapse collapse show">
-                                    <div class="t-mid-row b-0">
-                                        <div class="name-col"><i class="fa incomplete-icon"></i> Satish Sarkar</div>
-                                        <div class="date-col dt">Jul-15 today</div>
-                                        <div class="pro-col"><span class="tean-bg"><i class="fa fa-dot"></i> TEAM123</span></div>
-                                    </div>
-                                  </div>
-                                </div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
+                            <div class="card text-white bg-danger mb-3" style="max-width: 100%;height: 200px">
+                              <div class="card-header">Users</div>
+                              <div class="card-body">
+                                @php 
+                                $users=DB::table('users')->whereIn('status',['A','AA','I'])->count();
+                                @endphp
+                                <h5 class="card-title">Total Users : {{@$users}}</h5>
+                              </div>
+                          </div>
+                        </div>
 
-                                <div class="accordion-item">
-                                    <p class="panel-title" id="headingOne">
-                                      <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true">
-                                        Do today
-                                      </a>
-                                  </p>
-                                    <div id="collapseTwo" class="accordion-collapse collapse">
-                                      <div class="t-mid-row b-0">
-                                          <div class="name-col"><i class="fa incomplete-icon"></i> Satish Sarkar</div>
-                                          <div class="date-col dt">Jul-15 today</div>
-                                          <div class="pro-col"><span class="tean-bg"><i class="fa fa-dot"></i> TEAM123</span></div>
-                                      </div>
-                                    </div>
-                                  </div> 
+                          <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
+                            <div class="card text-dark bg-warning mb-3" style="max-width: 100%;height: 200px">
+                              <div class="card-header">Targets</div>
+                              <div class="card-body">
+                                @php 
+                                $targtes=DB::table('target_management')->where('status','!=','D')->count();
+                                @endphp
+                                <h5 class="card-title">Total Number Of Targets : {{@$targtes}}</h5>
+                               </div>
+                            </div>
+                          </div>
 
-                                  <div class="accordion-item">
-                                    <p class="panel-title" id="headingOne">
-                                      <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true">
-                                        Do next week
-                                      </a>
-                                  </p>
-                                    <div id="collapseThree" class="accordion-collapse collapse">
-                                      <div class="t-mid-row b-0">
-                                          <div class="name-col"><i class="fa incomplete-icon"></i> Satish Sarkar</div>
-                                          <div class="date-col dt">Jul-15 today</div>
-                                          <div class="pro-col"><span class="tean-bg"><i class="fa fa-dot"></i> TEAM123</span></div>
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="accordion-item">
-                                    <p class="panel-title" id="headingOne">
-                                      <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true">
-                                        Do later
-                                      </a>
-                                  </p>
-                                    <div id="collapseFour" class="accordion-collapse collapse">
-                                      <div class="t-mid-row b-0">
-                                          <div class="name-col"><i class="fa incomplete-icon"></i> Satish Sarkar</div>
-                                          <div class="date-col dt">Jul-15 today</div>
-                                          <div class="pro-col"><span class="tean-bg"><i class="fa fa-dot"></i> TEAM123</span></div>
-                                      </div>
-                                    </div>
-                                  </div> 
-                               
+                          <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
+                            <div class="card text-dark bg-info mb-3" style="max-width: 100%;height: 200px">
+                              <div class="card-header">Leads</div>
+                              <div class="card-body">
+                                @php 
+                                $leads=DB::table('lead_management')->where('status','!=','D')->count();
+                                @endphp
+                                <h5 class="card-title">Total Number Of Leads : {{@$leads}} </h5>
                                 
                               </div>
-                        </div>
-            
-                        <div class="top-row">
-                            <div class="add-row">
-                                <p><a href="#">+ Add section</a></p>
                             </div>
-                        </div>
+                          </div>
+
+                          <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
+                            <div class="card text-white bg-primary mb-3" style="max-width: 100%;height: 200px">
+                              <div class="card-header">Tutorials</div>
+                              <div class="card-body">
+                                @php 
+                                $tutorial=DB::table('tutorial')->where('status','!=','D')->count();
+                                @endphp
+                                <h5 class="card-title">Total Number Of Tutorials : {{@$tutorial}} </h5>
+                               </div>
+                            </div>
+                          </div>
 
                         
             
                         
-                      </div>
+                    
                 </div>
             </div>
         </div>

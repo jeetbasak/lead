@@ -36,7 +36,7 @@
                         </div>
             
                   
-                        <div class="row">
+{{--                         <div class="row">
                           <div class="col-md-6 col-lg-6 col-sm-12 pt-5">
                             <div class="card text-white bg-danger mb-3" style="max-width: 100%;height: 200px">
                               <div class="card-header">Users</div>
@@ -90,8 +90,71 @@
             
                         
                     
-                </div>
+                </div> --}}
+
+
+
+                    <div class="top-row flx-box-row" style="margin-top: 20px">
+      
+      <div class="card text-dark mb-3" style="height: 170px;">
+        <div class="card-header bg-deepblue text-white">
+          Users
+        </div>
+        @php 
+         $users=DB::table('users')->whereIn('status',['A','AA','I'])->count();
+         @endphp
+        <div class="card-body bg-light ">
+          <h6 class="card-title">Total Users : {{@$users}} </h6>
+         
+          {{-- <a href="#" class="btn btn-success">Go To</a> --}}
+        </div>
+      </div>
+      
+
+      <div class="card mb-3" style="height: 170px;">
+        <div class="card-header text-white bg-success">
+          Targets
+        </div>
+        @php 
+          $targtes=DB::table('target_management')->where('status','!=','D')->count();
+         @endphp
+        <div class="card-body bg-light text-dark">
+          <h6 class="card-title">Total Targets : {{@$targtes}}</h6>
+          {{-- <a href="#" class="btn btn-primary">Go To</a> --}}
+        </div>
+      </div>
+      
+      <div class="card text-dark mb-3" style="height: 170px;">
+        <div class="card-header bg-primary text-white">
+          Leads
+        </div>
+         @php 
+          $leads=DB::table('lead_management')->where('status','!=','D')->count();
+           @endphp
+        <div class="card-body bg-light">
+          <h6 class="card-title">Total Leada : {{@$leads}}</h6>
+          {{-- <a href="#" class="btn btn-primary">Go To</a>
+        --}}                                </div>
+      </div>
+     
+      <div class="card text-dark mb-3" style="height: 170px;">
+        <div class="card-header bg-warning">
+          Turorial
+        </div>
+        @php 
+                                $tutorial=DB::table('tutorial')->where('status','!=','D')->count();
+                                @endphp
+        <div class="card-body bg-light">
+          <h6 class="card-title">Total Tutorials : {{@$tutorial}}</h6>
+          {{-- <a href="#" class="btn btn-danger">Go To</a> --}}
+        </div>
+      </div>
+      
+      
+      
+    </div>
             </div>
+            
         </div>
         <!-- ============================================================== -->
         <!-- End Right content here -->

@@ -132,7 +132,11 @@
           $leads=DB::table('lead_management')->where('status','!=','D')->count();
            @endphp
         <div class="card-body bg-light">
-          <h6 class="card-title">Total Leada : {{@$leads}}</h6>
+          <h6 class="card-title">Total Leads : {{@$leads}}</h6>
+          @php 
+          $complete=DB::table('lead_management')->where('application_status','C')->count();
+           @endphp
+          <h6 class="card-title">Complete Leads : {{@$complete}}</h6>
           {{-- <a href="#" class="btn btn-primary">Go To</a>
         --}}                                </div>
       </div>

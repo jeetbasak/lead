@@ -5,7 +5,7 @@
 @section('left_part')
 @include('admin.include.left_part')
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.1/select2-bootstrap.min.css" integrity="sha512-Y44HZ7AfvVnvFx9SzgZtBVT0+HlCqdyraYJOV6Q1Ft6q7af5OkwPYcpHNiJAYcQfHjlb+yH7+nD9+DnfpXpDhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div class="top-row">
-			<table id="example">
+			<table id="example" class="cell-border">
 				<thead>
 					<tr>
 						<th scope="col"><input type="checkbox"></th>

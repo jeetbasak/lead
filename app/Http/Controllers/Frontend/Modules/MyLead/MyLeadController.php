@@ -16,7 +16,7 @@ class MyLeadController extends Controller
     public function lead_list(Request $request){
  	$userId=Auth::user()->id;
  	//dd(date('Y')+1-1);
- 	$data['leads']=ManageLead::where('tagging_id',$userId)->get();
+ 	$data['leads']=ManageLead::where('tagging_id',$userId)->orderBy('id','desc')->get();
  	return view('frontend.modules.lead.lead')->with($data);
  }
 

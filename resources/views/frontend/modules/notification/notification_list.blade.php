@@ -5,7 +5,7 @@
 @section('left_part')
 @include('frontend.include.left_part')
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 @endsection
 @section('content')
 
@@ -27,9 +27,9 @@
       </div>
     </div>
     <div class="top-row">
-      <table id="example">
-        <thead>
-          <tr>
+      <table id="example" class="cell-border">
+        <thead >
+          <tr >
             <th scope="col"><input type="checkbox"></th>
             <th scope="col">Id</th>
             <th scope="col">Type</th>
@@ -51,7 +51,7 @@
             <td data-label="Phone Number">{{@$value->created_at->format('Y-m-d')}}</td>
             <td data-label="Action">
 
-              <a href="#" type="button"  data-toggle="modal" data-target="#myModal{{@$value->id}}"><i class="fa add-round" onclick="abc({{@$value->id}})">V</i></a>
+              <a href="#" type="button"  data-toggle="modal" data-target="#myModal{{@$value->id}}"><i class="fa fa-eye edit-round" onclick="abc({{@$value->id}})"></i></a>
 
 
              

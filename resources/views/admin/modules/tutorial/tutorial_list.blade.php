@@ -5,7 +5,7 @@
 @section('left_part')
 @include('admin.include.left_part')
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
 
 
@@ -39,7 +39,7 @@
 			</div>
 		</div>
 		<div class="top-row">
-			<table id="example">
+			<table id="example" class="cell-border">
 				<thead>
 					<tr>
 						<th scope="col"><input type="checkbox"></th>

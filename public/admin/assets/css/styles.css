@@ -597,8 +597,9 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 	justify-content: center;
 	align-items: center;
 	font-size: 14px;
-	margin-top: 10px;	
+	/*margin-top: 10px;	*/
 }
+
 .task-nemu p{
 	font-size: 17px;
 	color: #000;
@@ -610,6 +611,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   list-style: none;
   padding: 0;
   margin: 0;
+  margin-top: -5px;
 }
 .task-nemu ul li{
 	padding: 0 15px;
@@ -1051,6 +1053,24 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   font-size: 1.5em;
   margin: .5em 0 .75em;
 }
+table.dataTable tr{
+    border-collapse: inherit !important;  
+    background-color: #fff;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+table.dataTable{
+  border-collapse: inherit !important; 
+}
+.dataTables_length label{
+  display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.dataTables_length .custom-select{
+    margin:0 10px;
+}
+
 .top-row table tr {
   background-color: #fff;
   border: 1px solid #ddd;
@@ -1536,6 +1556,15 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   top: 28px;
   right: 27px;
 }
+.flx-box-row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.flx-box-row .card{
+  width: 49%;
+  }
+
 
 @media screen and (max-width: 912px) {
   .card00 {
@@ -1616,6 +1645,9 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 }
 .custom-frm{
   padding-left: 120px;
+}
+.flx-box-row .card-header{
+  font-size: 20px;
 }
 
 @media (max-width: 991px) {

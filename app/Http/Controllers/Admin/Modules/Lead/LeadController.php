@@ -98,7 +98,7 @@ class LeadController extends Controller
          return back()->with('error','Lead already assigned..!');
       }
       if(@$request->user_id){
-      ManageLead::where('id',$request->lead_id)->update(['tagging_id'=>$request->user_id]);
+      ManageLead::where('id',$request->lead_id)->update(['tagging_id'=>$request->user_id,'application_date'=>date('Y-m-d H:i:s')]);
 
         //notification sent code to admin
             //@$u=User::where('id',$request->user_id)->first();
@@ -140,7 +140,7 @@ class LeadController extends Controller
       //dd($request->all());
      
       if(@$request->user_id){
-      ManageLead::where('id',$request->lead_id)->update(['tagging_id'=>$request->user_id]);
+      ManageLead::where('id',$request->lead_id)->update(['tagging_id'=>$request->user_id,'application_date'=>date('Y-m-d H:i:s')]);
 
       //notification sent code to admin
             //@$u=User::where('id',$request->user_id)->first();

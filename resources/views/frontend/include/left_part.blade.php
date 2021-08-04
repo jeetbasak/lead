@@ -3,7 +3,7 @@
 {{-- for modal --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
 {{-- modal end --}}
 
 
@@ -82,13 +82,13 @@
           <div class="task-img">DE</div>
           <div class="task-nemu">
             <div class="dropdown">
-              <p class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">{{ucfirst(request()->segment(1))}} Management</p>
-              <ul class="dropdown-menu">
+              <p class="nav-link" href="#" role="button">{{ucfirst(request()->segment(1))}} Management</p>
+            {{--   <ul class="dropdown-menu">
                 <li><a href="#">Phantom</a></li>
                 <li><a href="#">Cluster</a></li>
                 <li><a href="#">Phantom</a></li>
                 <li><a href="#">Cluster</a></li>
-              </ul>
+              </ul> --}}
             </div>
             
             <ul>
@@ -138,8 +138,7 @@
                   <input type="text" id="myInputTextField">
                 </form>
               </li>
-              <li><a href="#" class="plus-icon">+</a></li>
-              <li><a href="#" class="user"><div>DE</div></a></li>
+              
             </ul>
           </div>
         </div>
@@ -147,8 +146,8 @@
         
       </div>
     </nav>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
     <script>
         $("#share1").jsSocials({

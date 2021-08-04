@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\UserToTarget;
+use App\Models\ManageLead;
+use App\Models\Salary;
 use App\Models\Country;
 use App\Models\State;
 use App\Models\Notification;
@@ -13,10 +15,19 @@ use App\User;
 use Mail;
 use App\Mail\EmailVerification;
 use App\Mail\ContactMail;
+use Auth;
+
 class DashboardController extends Controller
 {
     public function home(){
-		return view('frontend.modules.dashboard.dashboard');
+        $data['user_to_targets']=UserToTarget::where('user_id',Auth()->user()->id)->where('target_year',(int)date('Y'))->where('target_month',(int)date('m'))->first();
+        //dd($data['user_to_targets'],Auth()->user()->id);
+        $data['total_salary']=Salary::where('user_id',Auth()->user()->id)->sum('salary');
+        $data['Manage_lead']=ManageLead::where('tagging_id',Auth()->user()->id)->where('application_status','C')->count();
+
+        $data['total_achive']=UserToTarget::where('user_id',Auth()->user()->id)->sum('user_target_achived');
+
+		return view('frontend.modules.dashboard.dashboard')->with($data);
     }
 
 

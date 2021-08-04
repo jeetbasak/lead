@@ -71,12 +71,12 @@
 				<td data-label="Action">
 					
 					@if(@$value->application_status!="C")
-					<a href=""  type="button"  data-toggle="modal" data-target="#myModalchange{{@$value->id}}"  style="margin-left: 5px;"><i class="fa add-round" style="background-color: orange">S</i></a>
+					<a href=""  type="button"  data-toggle="modal" data-target="#myModalchange{{@$value->id}}"  style="margin-left: 5px;"><i class="fa fa-edit add-round"></i></a>
 					@else
 					<a href="#" ><i class="fa add-round" style="background-color: lime">&#10003;</i></a>
 					@endif
 					{{-- <a  href=""style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a> --}}
-					<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
+					<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye edit-round"  aria-hidden="true"></i></a>
 				</td>
 			</tr>
 			{{-- for change status --}}

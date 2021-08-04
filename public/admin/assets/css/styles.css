@@ -1126,7 +1126,7 @@ table.dataTable{
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 600;
 }
 .edit-round{
@@ -1965,4 +1965,57 @@ div.dataTables_wrapper div.dataTables_filter {
     color: #cfcfcf;
     text-decoration: none;
      background-color: #27344b;
+}
+
+/*jeet*/
+.file {
+  visibility: hidden;
+  position: absolute;
+}
+.browse{
+  padding: 9px;
+  border-radius: 0 5px 5px 0;
+}
+.uplodimgfilimg{
+  background: var(--bs-light);
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.uplodimgfilimg img{
+  border: solid 1px #ccc;
+  border-radius: 5px;
+}
+.position-text{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.overlay{
+  background: rgba(0, 0, 0, 0.5);
+  height: 150px;
+  width: 150px;
+  position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+}
+.item-center{
+  align-items: center;
+  align-items: center;
+    border: solid 1px #ccc;
+    padding: 15px;
+    background: var(--bs-light);
+}
+.m-t-65{
+  margin-top:65px !important;
 }

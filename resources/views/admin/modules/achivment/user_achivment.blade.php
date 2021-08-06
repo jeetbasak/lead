@@ -20,7 +20,7 @@
 		<span class="caret"></span> --}}
 		<form method="post" action="{{route('achivment.search')}}" id="frm">
 			@csrf
-			<div class="row">
+			<div class="row" style="margin-top: 5px; margin-bottom: 30px">
 				<div class="col-md-4">
 					<label class="form-label">Year</label>
 					<select class="form-control custom_select" id="year" name="year">
@@ -44,7 +44,7 @@
 					
 				</div>
 				<div class="col-md-4">
-					<input type="submit" value="search">
+					<input type="submit" value="search" class="btn btn-primary" style="margin-top: 28px">
 					
 				</div>
 			</div>
@@ -102,7 +102,7 @@
 				
 				<td data-label="Phone Number">{{@$value->target_achive}}</td>
 				<td data-label="Action">
-					<a href="#" type="button"  data-toggle="modal" data-target="#myModal{{@$value->id}}"><i class="fa add-round" >V</i></a>
+					<a href="#" type="button"  data-toggle="modal" data-target="#myModal{{@$value->id}}"><i class="fa fa-eye edit-round"></i></a>
 					{{-- <a href="#"><i class="fa add-round">+</i></a> --}}
 					{{-- <a href="{{route('admin.edit.targets-view',['id'=>@$value->id])}}"><i class="fa fa-edit edit-round"></i></a>
 					<a href="{{route('admin.del.tagets',['id'=>@$value->id])}}" onclick="return confirm('Do you want to delete this target?')"><i class="fa fa-trash-o del-round"></i></a> --}}
@@ -115,7 +115,7 @@
 						<!-- Modal Header -->
 						<div class="modal-header">
 							<h4 class="modal-title">View Details</h4>
-							
+							<button type="button" class="btn btn-danger close-bt" data-dismiss="modal">Close</button>
 						</div>
 						<!-- Modal body -->
 						<div class="modal-body">
@@ -163,12 +163,9 @@
 						
 						
 					</div>
-					<!-- Modal footer -->
-					<div class="modal-footer">
+					<!-- Modal footer -->						
 						
-						
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-					</div>
+					
 				</div>
 			</div>
 		</div>

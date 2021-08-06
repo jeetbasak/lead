@@ -52,7 +52,7 @@
             <td data-label="Phone Number">{{@$value->created_at->format('Y-m-d')}}</td>
             <td data-label="Action">
 
-              <a href="#" type="button"  data-toggle="modal" data-target="#myModal{{@$value->id}}"><i class="fa add-round" onclick="abc({{@$value->id}})">V</i></a>
+              <a href="#" type="button"  data-toggle="modal" data-target="#myModal{{@$value->id}}"><i class="fa fa-eye edit-round" onclick="abc({{@$value->id}})"></i></a>
 
 
              

@@ -39,22 +39,6 @@
 					  {{@$user}}
 					 @endforeach
 					@endif --}}
-					<div class="right-sec">
-                                   <ul>
-                                   {{--  <li>
-                                        <a href="#"><i class="fa incomplete-icon"></i> Incomplete task</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa sort-icon"></i> Sort</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa customize-icon"></i> Customize</a>
-                                    </li> --}}
-                                    <li>
-                                        <a href="{{route('exp.target.list')}}" class="link">Expiry targets</a>
-                                    </li>
-                                   </ul>
-                                </div>
 				
 			</div>
 		</div>
@@ -68,7 +52,7 @@
 						<th scope="col">From Target</th>
 						<th scope="col">To Target</th>
 						<th scope="col">Salary</th>
-						<th scope="col">Action</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -81,63 +65,13 @@
 						<td data-label="Phone Number">{{@$value->from_target}}</td>
 						<td data-label="Phone Number">{{@$value->to_target}}</td>
 						<td data-label="Phone Number">{{@$value->salary}}</td>
-						<td data-label="Action">
+						
 
-							<a href="#" type="button"  data-toggle="modal" data-target="#myModal{{@$value->id}}"><i class="fa add-round" onclick="abc({{@$value->id}})">+</i></a>
+							
 
-
-							{{-- <a href="#"><i class="fa add-round">+</i></a> --}}
-							<a href="{{route('admin.edit.targets-view',['id'=>@$value->id])}}"><i class="fa fa-edit edit-round"></i></a>
-							<a href="{{route('admin.del.tagets',['id'=>@$value->id])}}" onclick="return confirm('Do you want to delete this target?')"><i class="fa fa-trash-o del-round"></i></a>
 						</td>
 				 	</tr>
 
-				 	{{-- for assing --}}
-				<div class="modal" id="myModal{{@$value->id}}">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<!-- Modal Header -->
-							<div class="modal-header">
-								<h4 class="modal-title">Assing Lead no {{@$value->id}}</h4>
-								
-							</div>
-							<!-- Modal body -->
-							<div class="modal-body">
-
-								
-								<form method="post" action="{{route('target.assing')}}">
-									@csrf
-									<input type="hidden" name="target_id" value="{{@$value->id}}">
-									<input type="hidden" name="month" value="{{@$value->month_id}}">
-									<input type="hidden" name="year" value="{{@$value->year}}">
-									<div class="form-group">
-										<label for="search">Select to assing</label>
-										<select class="form-control rm06" name="user_id[]" multiple id="slct1{{@$value->id}}" >
-											{{--  --}}
-											@foreach(@$users as $key=> $user)
-                          
-											<option {{-- selected --}} value="{{$user->id}}" @foreach(@$targetTo as $tt) @if( ($tt->target_month==$value->month_id) && ($tt->user_id==$user->id) && ($tt->target_id==$value->id))selected  @endif @endforeach>{{$user->name}}</option>
-											
-											@endforeach
-										</select>
-
-										
-									</div>
-									<button type="submit" class="btn btn-primary mb-2" style="text-align:  left !important;">Submit</button>
-									
-								</form>
-								
-								
-							</div>
-							<!-- Modal footer -->
-							<div class="modal-footer">
-								
-								
-								<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-							</div>
-						</div>
-					</div>
-				</div>
 				    @endforeach
 					
 				</tbody>

@@ -42,22 +42,18 @@
             
                        <form action="{{route('insert.faq')}}" method="post" id="frm">
                         @csrf
-                        <div class="top-row">
-                            <div class="flx-row my-3">
-                                <div class="flx-col">
-                                    <label class="form-label">Question</label>
+                        <div class="top-row faq-sec">
+                            <div class="form-group my-3">
+                               <label class="form-label">Question:</label>
                                     {{-- <input class="form-control" placeholder="Enter question" type="text" name="name"> --}}
-                                    <textarea name="qus"></textarea>
-                                </div>
+                                    <textarea class="half-height" name="qus"></textarea>
                               
                                 
                             </div>
-                            <div class="flx-row my-3">
-                                <div class="flx-col">
-                                    <label class="form-label">Answer</label>
+                            <div class="form-group my-3">
+                                <label class="form-label">Answer:</label>
                                     {{-- <input class="form-control" placeholder="Enter answer" type="text" name="address"> --}}
-                                    <textarea name="ans"></textarea>
-                                </div>
+                                    <textarea class="full-width" name="ans"></textarea>
                             </div>
 
                             <div class="flx-row my-3">

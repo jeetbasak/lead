@@ -57,7 +57,7 @@
 						--}}
 						<a href="#" type="button"  data-toggle="modal" data-target="#myModaledit{{@$value->id}}" style="margin-left: 5px;"><i class="fa fa-edit edit-round"></i></a>
 						<a onclick="return confirm('Are you sure want to delete this faq?');" href="{{route('faq.dlt',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
-						<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
+						<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye edit-round" aria-hidden="true"></i></a>
 						
 					</td>
 				</tr>
@@ -76,30 +76,35 @@
 								<form method="post" action="{{route('update.faq')}}">
 									@csrf
 									<input type="hidden" name="faq_id" value="{{@$value->id}}">
-									<div class="form-group">
-										<label for="search">Select to assing</label>
-										<textarea id="qus" name="qus">{{@$value->question}}</textarea>
-										<textarea id="ans" name="ans">{{@$value->answer}}</textarea>
+									<div class="form-group popupfaq-sec">
+										<div class="form-group">
+											<label class="form-label" for="search">Question</label>
+											<textarea class="half-height" id="qus" name="qus">{{@$value->question}}</textarea>
+										</div>
 
-										<select class="form-control custom_select" id
+										<div class="form-group my-2">
+											<label class="form-label" for="search">Answer</label>
+											<textarea class="full-width" id="ans" name="ans">{{@$value->answer}}</textarea>
+										</div>
+										<div class="form-group my-2">
+											<label class="form-label" for="search">Status</label>
+											<select class="form-select form-select-lg mb-3" id
                                     ="status" name="status">
                                       <option @if(@$value->status=="A") selected @endif value="A">Active</option>
-                                      <option @if(@$value->status=="I") selected @endif value="I">Deactive</option>
-                                                                            
+                                      <option @if(@$value->status=="I") selected @endif value="I">Deactive</option>                                                                            
                                     </select>
+										</div>
+
+										
 									</div>
-									<input type="submit" class="btn btn-primary mb-2" value="submit">
+									<input type="submit" class="btn btn-primary mb-2 my-1" value="submit">
 									
 								</form>
 								
 								
 							</div>
 							<!-- Modal footer -->
-							<div class="modal-footer">
-								
-								
-								<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-							</div>
+							<button type="button" class="btn btn-danger close-bt" data-dismiss="modal">Close</button>
 						</div>
 					</div>
 				</div>
@@ -119,10 +124,13 @@
 								
 								<h5> id </h5>
 								<p>{{@$value->id}}</p>
+								<br>
 								<h5> Question </h5>
 								<p>{{@$value->question}}</p>
+								<br>
 								<h5> Answer </h5>
 								<p>{{@$value->answer}}</p>
+								<br>
 								
 								<h5> Status </h5>
 								@if(@$value->status=="A")

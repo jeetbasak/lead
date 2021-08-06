@@ -54,7 +54,7 @@
 
                                 <div class="flx-col">
                                     <label class="form-label">Phone Number</label>
-                                    <input class="form-control" placeholder="Enter email" id="number" type="text" name="ph" value="{{@$data->ph}}">
+                                    <input class="form-control" placeholder="Enter mobile" id="number" type="text" name="ph" value="{{@$data->ph}}">
                                 </div>
                                 
                                 <div class="flx-col">
@@ -77,17 +77,11 @@
                                     <input class="form-control" value="{{@$data->pin_code}}" placeholder="Enter pincode" type="text" name="pin_code">
                                 </div>
 
-                                 <div class="flx-col"> 
-                                    <label>Any work experience?</label>
-                                    <div class="d-flex">
-                                        <div class="custom-redio">
-                                            <input class="custom-control-input" @if(@$data->work_exp=="Y") checked @endif type="radio" name="work_exp" value="Y"> <label>Yes</label>
-                                        </div> 
-                                        <div class="custom-redio">
-                                            <input class="custom-control-input" @if(@$data->work_exp=="N") checked @endif  type="radio" name="work_exp" value="N"> <label>No</label>
-                                        </div>
-                                    </div>                                                     
-                                </div>
+                      
+                                  <div class="flx-col">
+                                    <label class="form-label">Company Phone</label>
+                                    <input class="form-control" value="{{@$data->company_ph}}" placeholder="Enter company number" type="number" name="company_ph">
+                         </div>
 
 
                             </div>
@@ -131,10 +125,17 @@
                                         <div class="flx-row my-3">
                          
 
-                        <div class="flx-col">
-                                    <label class="form-label">Company Phone</label>
-                                    <input class="form-control" value="{{@$data->company_ph}}" placeholder="Enter company number" type="text" name="company_ph">
-                         </div>
+                        <div class="flx-col"> 
+                                    <label>Any work experience?</label>
+                                    <div class="d-flex">
+                                        <div class="custom-redio">
+                                            <input class="custom-control-input" @if(@$data->work_exp=="Y") checked @endif type="radio" name="work_exp" value="Y"> <label>Yes</label>
+                                        </div> 
+                                        <div class="custom-redio">
+                                            <input class="custom-control-input" @if(@$data->work_exp=="N") checked @endif  type="radio" name="work_exp" value="N"> <label>No</label>
+                                        </div>
+                                    </div>                                                     
+                                </div> 
 
                          <div class="flx-col"> 
                                     <label>Laptop Access ?</label>
@@ -154,90 +155,189 @@
 
 
 
-                                        <div class="flx-row my-3">
-                        <div class="flx-col"> 
-                                    <label>Profile Image</label>
-                                    <input type="file" class="upload" data-multiple-caption="{count} files selected" multiple="" name="profile" id="file-2" onChange="fun2();" accept="image/*">
-                    </div>  
+{{-- profile image --}}
 
-                     <div class="flx-col"> 
-                            
-                                <div class="uplodimgfilimg profile_img ad_rbn_001" style="display: none;width: 100%;height: 100px;" >
-                                    <img src="" alt=""id="img3"  style="height: 150px;width: 150px" >
-                                </div>
-                               
-                   </div>  
+                {{-- profile --}}
+                <div class="flx-row my-3 item-center m-t-65">
                     <div class="flx-col">
-                     <label>Previous Profile Image</label> 
-                        @if(@$data->image!="")
-                        <div style="width: 100%;height: 100px;"> 
-                            <img src="{{ URL::to('storage/app/public/profile')}}/{{@$data->image}}" alt="" style="height: 150px;width: 150px">
+                        <label>Profile Image</label>
+                        <div class="form-group">
+                            <input type="file" name="profile" id="file-2" onChange="fun2();" accept="image/*" class="file">
+                            <div class="input-group mb-3">
+                                
+                                <input type="text"  class="form-control" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1">
+                                <div class="input-group-append">
+                                    <a class="browse input-group-text btn btn-primary" id="basic-addon2">  Browse</a>
+                                </div>
+                            </div>
                         </div>
-                        @else
-                        No Image
-                        @endif
-                         </div>
-                     </div>
 
-                 
-
-
-
-
-
-
-                    <div class="flx-row" style="margin-top: 100px; margin-bottom: 100px">
-                         <div class="flx-col"> 
-                                    <label>Adhar Image</label>
-                                    <input type="file" class="upload" data-multiple-caption="{count} files selected" multiple="" name="adhar" id="file-1" onChange="fun();" accept="image/*">
-                         </div>  
-                         
-                         <div class="flx-col"> 
-                            
-                                <div class="uplodimgfilimg adhar ad_rbn_001" style="display: none;width: 100%;height: 100px;" >
-                                    <img src="" alt=""id="img2"  style="height: 150px;width: 150px" >
-                                </div>
-                               
-                         </div> 
-                          <div class="flx-col"> 
-                            <div class="flx-col">
-                             <label>Previous Adhar</label> 
-                                @if(@$data->adher!="")
-                                <div style="width: 100%;height: 100px;"> 
-                                    <img src="{{ URL::to('storage/app/public/adhar')}}/{{@$data->adher}}" alt="" style="height: 150px;width: 150px">
-                                </div>
-                                @else
-                                No Image
-                                @endif
-                                 </div>
-                         </div>
-                    </div>  
-
-                    <div class="flx-row my-3" style="margin-top: 100px;">
-                         <div class="flx-col"> 
-                                    <label>Pan Image</label>
-                                    <input type="file" class="upload" data-multiple-caption="{count} files selected" multiple="" name="pan" id="file-3" onChange="fun3();" accept="image/*">
-                         </div>  
-                         <div class="flx-col"> 
-                            
-                                <div class="uplodimgfilimg pan ad_rbn_001" style="display: none;width: 100%;height: 100px;" >
-                                    <img src="" alt=""id="img1"  style="height: 150px;width: 150px" >
-                                </div>
-                               
-                         </div> 
-                          <div class="flx-col"> 
-                            <div class="flx-col">
-                             <label>Previous Pan</label> 
-                                @if(@$data->pan!="")
-                                <div style="width: 100%;height: 100px;"> 
-                                    <img src="{{ URL::to('storage/app/public/pan')}}/{{@$data->pan}}" alt="" style="height: 150px;width: 150px">
-                                </div>
-                                @else
-                                No Image
-                                @endif
-                                 </div>
-                         </div>
                     </div>
+                    <div class="flx-col text-center">
+                        <div class="uplodimgfilimg">
+                            <img src="{{url('/')}}/public/admin/assets/images/noimg.jpg" alt=""  style="height: 150px;width: 150px" id="noimg" >
+                            <div class="profile_img ad_rbn_001" style="display: none;width: 100%;height: 100px;" >
+                                <img src="" alt=""id="img3"  style="height: 150px;width: 150px" >
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="flx-col">
+                        <div class="uplodimgfilimg">
+                            <div class="position-text">
+                                <label>Previous Profile Image</label>
+                            </div>
+                             @if(@$data->image!="")
+                            <div style="width: 100%;height: 100px;">
+                                <div class="overlay"></div>
+                                <img src="{{ URL::to('storage/app/public/profile')}}/{{@$data->image}}" alt="" style="height: 150px;width: 150px">
+                            </div>
+                            @else
+                             <img src="{{url('/')}}/public/admin/assets/images/noimg.jpg" alt=""  style="height: 150px;width: 150px" id="noimg" >
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                {{-- adhar --}}
+                
+               {{--  <div class="flx-row" style="margin-top: 100px; margin-bottom: 100px">
+                    <div class="flx-col">
+                        <label>Adhar Image</label>
+                        <input type="file" class="upload" data-multiple-caption="{count} files selected" multiple="" name="adhar" id="file-1" onChange="fun();" accept="image/*">
+                    </div>
+                    
+                    <div class="flx-col">
+                        
+                        <div class="uplodimgfilimg adhar ad_rbn_001" style="display: none;width: 100%;height: 100px;" >
+                            <img src="" alt=""id="img2"  style="height: 150px;width: 150px" >
+                        </div>
+                        
+                    </div>
+                    <div class="flx-col">
+                        <div class="flx-col">
+                            <label>Previous Adhar</label>
+                            @if(auth()->user()->adher!="")
+                            <div style="width: 100%;height: 100px;">
+                                <img src="{{ URL::to('storage/app/public/adhar')}}/{{auth()->user()->adher}}" alt="" style="height: 150px;width: 150px">
+                            </div>
+                            @else
+                            No Image
+                            @endif
+                        </div>
+                    </div>
+                </div> --}}
+              <div class="flx-row my-3 item-center">
+                    <div class="flx-col">
+                        <label>Adhar card Image</label>
+                        <div class="form-group">
+                            <input type="file" name="adhar" id="file-1" onChange="fun();" accept="image/*" class="file">
+                            <div class="input-group mb-3">
+                                
+                                <input type="text"  class="form-control" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1">
+                                <div class="input-group-append">
+                                    <a class="browse input-group-text btn btn-primary" id="basic-addon2">  Browse</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="flx-col text-center">
+                        <div class="uplodimgfilimg">
+                            <img src="{{url('/')}}/public/admin/assets/images/noimg.jpg" alt=""  style="height: 150px;width: 150px" id="noimg2" >
+                            <div class="adhar ad_rbn_001" style="display: none;width: 100%;height: 100px;" >
+                                <img src="" alt=""id="img2"  style="height: 150px;width: 150px" >
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="flx-col">
+                        <div class="uplodimgfilimg">
+                            <div class="position-text">
+                                <label>Previous Adhar Image</label>
+                            </div>
+                             <div class="overlay"></div>
+                             @if(@$data->adher!="")
+                            <div style="width: 100%;height: 100px;">
+                               
+                                 <img src="{{ URL::to('storage/app/public/adhar')}}/{{@$data->adher}}" alt="" style="height: 150px;width: 150px">
+                            </div>
+                            @else
+                            <img src="{{url('/')}}/public/admin/assets/images/noimg.jpg" alt=""  style="height: 150px;width: 150px" id="noimg" >
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                {{-- pan --}}
+               {{--  <div class="flx-row my-3" style="margin-top: 100px;">
+                    <div class="flx-col">
+                        <label>Pan Image</label>
+                        <input type="file" class="upload" data-multiple-caption="{count} files selected" multiple="" name="pan" id="file-3" onChange="fun3();" accept="image/*">
+                    </div>
+                    <div class="flx-col">
+                        
+                        <div class="uplodimgfilimg pan ad_rbn_001" style="display: none;width: 100%;height: 100px;" >
+                            <img src="" alt=""id="img1"  style="height: 150px;width: 150px" >
+                        </div>
+                        
+                    </div>
+                    <div class="flx-col">
+                        <div class="flx-col">
+                            <label>Previous Pan</label>
+                            @if(auth()->user()->pan!="")
+                            <div style="width: 100%;height: 100px;">
+                                <img src="{{ URL::to('storage/app/public/pan')}}/{{auth()->user()->pan}}" alt="" style="height: 150px;width: 150px">
+                            </div>
+                            @else
+                            No Image
+                            @endif
+                        </div>
+                    </div>
+                </div> --}}
+                 <div class="flx-row my-3 item-center">
+                    <div class="flx-col">
+                        <label>Pan card Image</label>
+                        <div class="form-group">
+                            <input type="file" name="pan" id="file-3" onChange="fun3();" accept="image/*" class="file">
+                            <div class="input-group mb-3">
+                                
+                                <input type="text"  class="form-control" disabled placeholder="Upload File" aria-label="Upload File" aria-describedby="basic-addon1">
+                                <div class="input-group-append">
+                                    <a class="browse input-group-text btn btn-primary" id="basic-addon2">  Browse</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="flx-col text-center">
+                        <div class="uplodimgfilimg">
+                            <img src="{{url('/')}}/public/admin/assets/images/noimg.jpg" alt=""  style="height: 150px;width: 150px" id="noimg3" >
+                            <div class="pan ad_rbn_001" style="display: none;width: 100%;height: 100px;" >
+                                <img src="" alt=""id="img1"  style="height: 150px;width: 150px" >
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="flx-col">
+                        <div class="uplodimgfilimg">
+                            <div class="position-text">
+                                <label>Previous Pan Image</label>
+                            </div>
+                             <div class="overlay"></div>
+                                @if(@$data->pan!="")
+                            <div style="width: 100%;height: 100px;">
+                               
+                                <img src="{{ URL::to('storage/app/public/pan')}}/{{@$data->pan}}" alt="" style="height: 150px;width: 150px">
+                            </div>
+                            @else
+                            <img src="{{url('/')}}/public/admin/assets/images/noimg.jpg" alt=""  style="height: 150px;width: 150px" id="noimg" >
+                            @endif
+                        </div>
+                    </div>
+                </div>
 
                                 
 
@@ -284,6 +384,7 @@
         //console.log(i);
         var b=URL.createObjectURL(i);
         $(".adhar").show();
+        $("#noimg2").hide();
         $("#img2").attr("src",b);
     }
     </script>
@@ -294,6 +395,7 @@
         //console.log(i);
         var b=URL.createObjectURL(i);
         $(".profile_img").show();
+        $("#noimg").hide();
         $("#img3").attr("src",b);
     }
     </script>
@@ -304,6 +406,7 @@
         //console.log(i);
         var b=URL.createObjectURL(i);
         $(".pan").show();
+        $("#noimg3").hide();
         $("#img1").attr("src",b);
     }
     </script>    
@@ -348,6 +451,7 @@ qualification:{
 },
 company_ph:{
     required:true,
+    minlength:10,
 },
 profile:{
    required: function(element){

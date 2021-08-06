@@ -197,6 +197,10 @@
             </li> --}}
         </ul>
     </div>
+
+    <div class="footer">
+        <p>Copyright © taskaffix.com. All Rights Reserved</p>
+    </div>
     
 </div>
 <!-- ============================================================== -->

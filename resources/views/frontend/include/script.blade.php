@@ -31,5 +31,5 @@ $(document).on("change", ".file", function() {
     );
 });
 
-</script>s
+</script>
         

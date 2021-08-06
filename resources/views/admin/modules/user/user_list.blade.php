@@ -60,21 +60,23 @@
 					<a href="{{route('admin.user.edit',$value->id)}}"><i class="fa fa-edit edit-round"></i></a>
 
 					<a onclick="return confirm('Are you sure want to delete this user?');" href="{{route('admin.user.delete',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
+
+					<a href="{{route('admin.user.view',['id'=>@$value->id])}}" type="button"  style="margin-left: 5px; font-size:25px"><i class="fa fa-eye add-round" aria-hidden="true"></i></a>
 					
 					@if(@$value->status=="AA")
 					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px;">Accept</a>
 					@endif
 
 					@if(@$value->status=="I")
-					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px;">Active</a>
+					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px; color: lime">Active</a>
 					@endif
 
 					@if(@$value->status=="A")
-					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px;">Inactive</a>
+					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px; color: red">Inactive</a>
 					@endif
 					
 					
-					<a href="{{route('admin.user.view',['id'=>@$value->id])}}" type="button"  style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
+					
 						
 					</td>
 				</tr>

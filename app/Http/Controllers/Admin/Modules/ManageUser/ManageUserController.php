@@ -43,9 +43,10 @@ class ManageUserController extends Controller
 
     public function updateUser(Request $request)
     {
-        $check = User::where('id','!=',$request->id)->where('ph',$request->number)->where('status','!=','D')->first();
-        if ($check!="") {
-          return redirect()->back()->with('error','Email Already Exists.Try Another');
+        $check = User::where('id','!=',$request->id)->where('ph',$request->ph)->where('status','!=','D')->count();
+        //dd($check);
+        if ($check>0) {
+          return redirect()->back()->with('error','Phone Number Already Exists.Try Another');
         }
         $upd = [];
        $upd['name'] = $request->name;

@@ -69,7 +69,7 @@ Route::get('/target/delete/{id}','Modules\Target\TargetManageController@delTarge
 Route::get('/target/edit/{id}','Modules\Target\TargetManageController@editTargetView')->name('admin.edit.targets-view');
 Route::post('/target/update','Modules\Target\TargetManageController@updateTraget')->name('admin.edit.targets-update');
 Route::post('/target/assing', 'Modules\Target\TargetManageController@assing')->name('target.assing');
-
+Route::get('/target/expiry', 'Modules\Target\TargetManageController@exptaregetList')->name('exp.target.list');
 
 
 

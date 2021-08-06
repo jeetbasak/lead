@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
      return view('welcome');
-});
+})->name('hm');
 
  Route::get('get-state','Frontend\Modules\Dashboard\DashboardController@getstate')->name('dashboard.get.state');
   Route::post('register-secound-step','Frontend\Modules\Dashboard\DashboardController@reg_one')->name('register.one');
@@ -34,6 +34,9 @@ Route::get('/', function () {
    Route::get('reset-password/{vcode}','Auth\ForgotPasswordController@resetpassword')->name('password.confirm');
    Route::post('reset-password/new-password','Auth\ForgotPasswordController@newPassword')->name('user.new.password');
 
+
+ //faq
+ Route::get('/faq','Frontend\Modules\Faq\FaqController@faq_list')->name('faq');
 
   Auth::routes();
 
@@ -74,8 +77,7 @@ Route::get('/', function () {
 
 
 
-//faq
- Route::get('/faq','Frontend\Modules\Faq\FaqController@faq_list')->name('my.faq.list');
+
 
 
 //notification

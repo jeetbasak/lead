@@ -14,7 +14,7 @@
 @$noti=DB::table('notification')->where('is_read','UR1')->where('user_type','A')->count();
 @endphp
 
-		<a class="{{request()->segment(2)=='notifications'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('notification.list')}}"><i class="fa fa-bell-n"></i><span>Notifications <span class="badge" style="background-color: red">{{@$noti}}</span></span></a>
+		<a class="{{request()->segment(2)=='notifications'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('notification.list')}}"><i class="fa fa-bell-n"></i><span>Notifications <span class="badge" style="background-color: red" id="count_noti">{{@$noti}}</span></span></a>
 
 
 
@@ -37,12 +37,17 @@
 		<a class="{{request()->segment(2)=='tutorial'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('tutorial.list')}}"><i class="fa fa-tutorials"></i><span>Tutorials</span></a>
 
 
+        
+        <a class="{{request()->segment(2)=='offer-latter'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('offer.list')}}"><i class="fa fa-tutorials"></i><span>Offer Latter Management</span></a>
 
 
         <a class="{{request()->segment(2)=='picture'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('picture.list')}}"><i class="fa fa-tutorials"></i><span>Picture Management</span></a>
 
 
          <a class="{{request()->segment(2)=='service'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('service.list')}}"><i class="fa fa-tutorials"></i><span>Service Management</span></a>
+
+
+          <a class="{{request()->segment(2)=='banner'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('banner.list')}}"><i class="fa fa-tutorials"></i><span>Banner Management</span></a>
 
 
 
@@ -79,12 +84,12 @@
                                 <div class="task-nemu">
                                     <div class="dropdown">
                                         <p class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">{{ucfirst(request()->segment(2))}} Management</p>                                                      
-                                        <ul class="dropdown-menu">
+                                       {{--  <ul class="dropdown-menu">
                                             <li><a href="#">Phantom</a></li>
                                             <li><a href="#">Cluster</a></li>
                                             <li><a href="#">Phantom</a></li>
                                             <li><a href="#">Cluster</a></li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                 
                                     <ul>
@@ -109,14 +114,14 @@
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">...</button>
                                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                         <ul class="navbar-nav mt-lg-0">
-                                            <li><a href="#" class="share-btn"><i class="fa fa-lock"></i>Share</a></li>
+                                           {{--  <li><a href="#" class="share-btn"><i class="fa fa-lock"></i>Share</a></li> --}}
                                             <li class="search">
                                                 <form>
                                                     <input type="text" id="myInputTextField">
                                                 </form>
                                             </li>
-                                            <li><a href="#" class="plus-icon">+</a></li>                                            
-                                            <li><a href="#" class="user"><div>DE</div></a></li>                                            
+                                            {{-- <li><a href="#" class="plus-icon">+</a></li>                                            
+                                            <li><a href="#" class="user"><div>DE</div></a></li> --}}                                            
                                         </ul>                                
                                     </div>                            
                             </div>
@@ -124,3 +129,28 @@
                         
                     </div>
                 </nav>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+
+$( document ).ready(function() {
+   setInterval(function(){
+        $.ajax({
+        url:'{{route('admin.not.count')}}',
+        type:'GET',
+        
+        success:function(res){
+        $("#count_noti").html(res.noti);
+        //alert(res.noti)
+        
+        }
+        });
+
+
+       
+        }, 5000);
+
+});
+
+</script>

@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('title')
 <title>User | Registration</title>
+@php
+$banner=DB::table('banner')->where('status','A')->first();
+
+@endphp
+<meta property="og:image" content="{{url('/')}}/storage/app/public/banner/{{@$banner->image}}" />
+
 @endsection
 @section('head')
 @include('frontend.include.head')
@@ -29,12 +35,12 @@ $country=DB::table('countries')->get();
 		<div class="login-info">
 			<ul>
 				<li>Already have an account?</li>
-				<li><a class="share-btn" href="#">Sign In</a></li>
+				<li><a class="share-btn" href="{{ route('login') }}">Sign In</a></li>
 			</ul>
 		</div>
 		
 		{{-- 1-////////////////////////////////////////////// --}}
-		<form method="POST" action="{{ route('register.one') }}" style="margin-left: 120px" id="frm2">
+		<form method="POST" action="{{ route('register.one') }}" class="custom-frm" id="frm2">
 			@csrf
 			<div class="welcome-col card2 first-screen show">
 				<h2>Welcome to TaskAffix</h2>

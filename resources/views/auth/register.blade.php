@@ -2,10 +2,15 @@
 
 @section('title')
 <title>User | Registration</title>
+
+{{-- <meta property="og:image" content="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" />
+ --}}
+
 @endsection
 
 @section('head')
 @include('frontend.include.head')
+
 @endsection
 
 @section('content')
@@ -110,7 +115,7 @@ $country=DB::table('countries')->get();
                     <div class="login-info">
                         <ul>
                             <li>Already have an account?</li>
-                            <li><a class="share-btn" href="#">Sign In</a></li>
+                            <li><a class="share-btn" href="{{ route('login') }}">Sign In</a></li>
                         </ul>
                     </div>
                    

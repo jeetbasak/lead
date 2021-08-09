@@ -43,4 +43,11 @@ class NotificationController extends Controller
     	$data['notification']=Notification::orderBy('id','desc')->where('user_type','A')->get();
     	return view('admin.modules.notification.notification_list')->with($data);
     }
+
+
+
+    public function not_count(Request $request){
+        @$noti=Notification::where('is_read','UR1')->where('user_type','A')->count();
+        return response()->json(['noti'=>@$noti]);
+    }
 }

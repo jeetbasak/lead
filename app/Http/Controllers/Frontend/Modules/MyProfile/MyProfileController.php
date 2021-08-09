@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Frontend\Modules\MyProfile;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Models\Country;
 use App\Models\State;
 use App\Models\UserToTarget;
 use App\Models\Notification;
 use Auth;
+use File;
+use Response;
+
 
 
 class MyProfileController extends Controller
@@ -173,6 +177,16 @@ class MyProfileController extends Controller
 
 
 
+    public function not_count(Request $request){
+         @$noti=Notification::where('is_read','UR1')->where('user_type','U')->where('user_id',Auth()->user()->id)->count();
+         return response()->json(['noti'=>@$noti]);
+    }
+
+
+
+
+
+
     /**
  *   Method      : change_password_page
  *   Description : For user change_password_page 
@@ -203,5 +217,15 @@ class MyProfileController extends Controller
             ]);
             return redirect()->back()->with('success','Password updated successfully!');
         }
+    }
+
+
+
+    public function offer_download($id){
+        //dd($id);
+        $img=User::where('id',Auth()->user()->id)->first();
+        $i=$img->offer_latter;
+       $filepath = public_path('/storage/offerlatter/').$i;
+        return Response::download($filepath);
     }
 }

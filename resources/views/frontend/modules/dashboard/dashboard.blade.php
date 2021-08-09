@@ -46,27 +46,34 @@
           <div id="collapseOne" class="accordion-collapse collapse show">
             <div class="t-mid-row b-0">
               <div class="name-col"><i class="fa incomplete-icon"></i> {{@$lead->user_name}} ( Email: {{@$lead->user_email}} , Mobile: {{@$lead->ph}}  )</div>
-              <div class="date-col dt">{{ date('d-M-Y', strtotime($lead->application_date)) }}</div>
-              <div class="pro-col"><span class="tean-bg"><i class="fa fa-dot"></i> TEAM123</span></div>
+              <div class="date-col dt">{{ date('d-M-Y', strtotime(@$lead->application_date)) }}</div>
+              <div class="pro-col"><span class="tean-bg"><i class="fa fa-dot"></i> </span></div>
             </div>
           </div>
         </div>
-        {{--
+        @php
+
+        $user=DB::table('users')->where('id',Auth()->user()->id)->first();
+        $offer=$user->offer_latter;
+
+        @endphp
+        @if($offer)
         <div class="accordion-item">
           <p class="panel-title" id="headingOne">
             <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true">
-              Do today
+              Offer Latter
             </a>
           </p>
           <div id="collapseTwo" class="accordion-collapse collapse">
             <div class="t-mid-row b-0">
-              <div class="name-col"><i class="fa incomplete-icon"></i> Satish Sarkar</div>
-              <div class="date-col dt">Jul-15 today</div>
-              <div class="pro-col"><span class="tean-bg"><i class="fa fa-dot"></i> TEAM123</span></div>
+              <div class="name-col"><i class="fa incomplete-icon"></i><img src="{{ URL::to('public/storage/offerlatter/')}}/{{@$offer}}" alt="" style="height: 150px;width: 200px"></div>
+              
+              <div class="pro-col"><span class="tean-bg"><i class="fa fa-dot"></i> <a href="{{route('download',$user->id)}}">Download</a> </span></div>
             </div>
           </div>
         </div>
-        --}}
+        @endif
+        
         {{--   <div class="accordion-item">
           <p class="panel-title" id="headingOne">
             <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true">

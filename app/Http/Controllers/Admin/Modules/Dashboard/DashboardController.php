@@ -210,6 +210,47 @@ class DashboardController extends Controller
             return redirect()->back()->with('success','Password updated successfully!');
         }
     }
+
+
+
+
+
+
+    public function offer_list(Request $request){
+      $data['users']=User::where('status','A')->get();
+      return view('admin.modules.dashboard.offer_latter')->with($data);
+    }
+
+
+    public function offer_add(Request $request){
+     // dd($request->all());
+      
+       if ($request->offer){
+     
+
+          //this is for upload offer latter
+          $image = $request->offer;
+          $profile = time() . '-' . rand(1000, 9999) . '.' . $image->getClientOriginalExtension();
+          $image->move("public/storage/offerlatter",$profile);
+          User::where('id',$request->user_id)->update(['offer_latter'=>$profile]);
+          return redirect()->back()->with('success','Offer latter added successfully!');
+      }
+    }
+
+
+
+    public function offer_del($id){
+
+     $unlnk=User::where('id',$id)->first();
+            @$prev_img = $unlnk->offer_latter;
+           
+            if(@$prev_img){               
+                @unlink('public/storage/offerlatter/'.$prev_img);
+            }
+      $upd=User::where('id',$id)->update(['offer_latter'=>null]);
+      return redirect()->back()->with('success','Offer latter deleted successfully!');
+      
+    }
    
 
 }

@@ -82,12 +82,17 @@ Route::get('/', function () {
 
 //notification
 Route::get('/notification','Frontend\Modules\MyProfile\MyProfileController@notification_list')->name('my.notification');
-
+Route::get('/notification/count','Frontend\Modules\MyProfile\MyProfileController@not_count')->name('not.count');
 
 //user change password
 Route::get('/home/change-password','Frontend\Modules\MyProfile\MyProfileController@change_password_page')->name('user.change.password');
 Route::post('/home/update-password','Frontend\Modules\MyProfile\MyProfileController@update')->name('pass.update');
 
+
+
+
+//offer latter download
+Route::get('/download/{id}','Frontend\Modules\MyProfile\MyProfileController@offer_download')->name('download');
 
  });
 

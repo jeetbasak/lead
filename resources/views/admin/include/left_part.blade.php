@@ -28,7 +28,7 @@
 		<a class="{{request()->segment(2)=='achivement'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('achivment.list')}}"><i class="fa fa-users-achiv"></i><span>Users Achivement</span></a>
 
 		
-		<a class="{{request()->segment(2)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('lead.list')}}"><i class="fa fa-lead"></i><span>Lead Management</span></a>
+		<a class="{{request()->segment(2)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('lead.list')}}"><i class="fa lead-icon"></i><span>Lead Management</span></a>
 
 
 		<a class="{{request()->segment(2)=='reports'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('admin.manage.report')}}"><i class="fa fa-reports"></i><span>Reports</span></a>
@@ -38,16 +38,16 @@
 
 
         
-        <a class="{{request()->segment(2)=='offer-latter'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('offer.list')}}"><i class="fa fa-tutorials"></i><span>Offer Latter Management</span></a>
+        <a class="{{request()->segment(2)=='offer-latter'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('offer.list')}}"><i class="fa offer-icon"></i><span>Offer Latter Management</span></a>
 
 
-        <a class="{{request()->segment(2)=='picture'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('picture.list')}}"><i class="fa fa-tutorials"></i><span>Picture Management</span></a>
+        <a class="{{request()->segment(2)=='picture'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('picture.list')}}"><i class="fa pic-icon"></i><span>Picture Management</span></a>
 
 
-         <a class="{{request()->segment(2)=='service'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('service.list')}}"><i class="fa fa-tutorials"></i><span>Service Management</span></a>
+         <a class="{{request()->segment(2)=='service'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('service.list')}}"><i class="fa service-icon"></i><span>Service Management</span></a>
 
 
-          <a class="{{request()->segment(2)=='banner'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('banner.list')}}"><i class="fa fa-tutorials"></i><span>Banner Management</span></a>
+          <a class="{{request()->segment(2)=='banner'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('banner.list')}}"><i class="fa banner-icon"></i><span>Banner Management</span></a>
 
 
 

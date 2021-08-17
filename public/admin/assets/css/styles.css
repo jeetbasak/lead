@@ -518,6 +518,54 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 	width: 25px;
 	margin-right:10px;
 }
+.lead-icon{
+  background:url(../images/lead.png) 0 2px no-repeat;
+  height: 25px;
+  width: 25px;
+  /*margin-right:10px;*/
+}
+.mony-icon{
+  background:url(../images/mony.png) 0 5px no-repeat;
+  height: 25px;
+  width: 25px;
+  /*margin-right:10px;*/
+}
+.user-icon{
+  background:url(../images/user.png) 0 4px no-repeat;
+  height: 25px;
+  width: 25px;
+  /*margin-right:10px;*/
+}
+
+/**/
+.banner-icon{
+  background:url(../images/banner-mng.png) 0 4px no-repeat;
+  height: 25px;
+  width: 25px;
+  /*margin-right:10px;*/
+}
+.offer-icon{
+  background:url(../images/offer-letter.png) 0 4px no-repeat;
+  height: 25px;
+  width: 25px;
+  /*margin-right:10px;*/
+}
+.pic-icon{
+  background:url(../images/pic-mng.png) 0 4px no-repeat;
+  height: 25px;
+  width: 25px;
+  /*margin-right:10px;*/
+}
+.service-icon{
+  background:url(../images/service-mng.png) 0 4px no-repeat;
+  height: 25px;
+  width: 25px;
+  /*margin-right:10px;*/
+}
+.fa-sign-out{
+  width: 25px;
+  font-size: 17px;
+}
 .left-nav{
   display: flex;
   align-items: center;
@@ -598,6 +646,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 	align-items: center;
 	font-size: 14px;
 	/*margin-top: 10px;	*/
+  overflow: hidden;
 }
 
 .task-nemu p{
@@ -1023,13 +1072,21 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 	background:#e8ecee;
 	width: 23.1%;
 	height: 247px;
-	display: flex;
 	align-items: center;
 	justify-content: center;	
 	margin: 10px;
 	padding: 10px;
-	border-radius: 5px;		
+	border-radius: 5px;	
+  text-align: center;	
 }
+.grid-view-list li img{
+  width: 100%;
+  margin-right: 10px;
+  }
+.grid-view-list li h4{
+  font-size: 17px;
+  padding-bottom: 10px;
+  }
 .grid-view-list li:hover{
 	box-shadow: 0 0 15px #a2a2a2;	
 	-webkit-transition: box-shadow 0.3s ease-in-out 0s;

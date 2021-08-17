@@ -61,7 +61,7 @@
         <div class="accordion-item">
           <p class="panel-title" id="headingOne">
             <a class="accordion-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true">
-              Offer Latter
+              Offer Letter
             </a>
           </p>
           <div id="collapseTwo" class="accordion-collapse collapse">

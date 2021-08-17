@@ -38,8 +38,12 @@
                 </div>
               </div>
 <!-- Sidebar-->
+@php
+@$splitName = explode(' ',  Auth::user()->name, 2);
+@$first_name = $splitName[0];
+@endphp
 <div class="border-end bg-deepblue" id="sidebar-wrapper">
-  <div class="sidebar-heading"><span>{{-- TaskAffix --}} {{auth()->user()->name}} <a class="menuclose"><i class="fa fa-close"></i></a></span></div>
+  <div class="sidebar-heading"><span>{{-- TaskAffix --}}Hello  {{@$first_name}} <a class="menuclose"><i class="fa fa-close"></i></a></span></div>
   
   <div class="list-group list-group-flush">
     <a class="{{request()->segment(1)=='home'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('dashboard.home')}}"><i class="fa fa-home-b"></i> <span>Home</span></a>
@@ -55,13 +59,13 @@
     <a class="{{request()->segment(1)=='target'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.target')}}"><i class="fa fa-target"></i><span>My Target</span></a>
 
 
-    <a class="{{request()->segment(1)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.lead')}}"><i class="fa fa-users-achiv"></i><span>My Lead</span></a>
+    <a class="{{request()->segment(1)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.lead')}}"><i class="fa lead-icon"></i><span>My Lead</span></a>
 
     
-    <a class="{{request()->segment(1)=='salary'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.salary')}}"><i class="fa fa-lead"></i><span>My Monthly Salary </span></a>
+    <a class="{{request()->segment(1)=='salary'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.salary')}}"><i class="fa mony-icon"></i><span>My Monthly Salary </span></a>
 
 
-    <a class="{{request()->segment(1)=='profile'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('user.my.profile')}}"><i class="fa fa-lead"></i><span>My Profile </span></a>
+    <a class="{{request()->segment(1)=='profile'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('user.my.profile')}}"><i class="fa user-icon"></i><span>My Profile </span></a>
 
     {{-- 
     <a class="list-group-item-action left-nav" href="#"><i class="fa fa-reports"></i><span>Reports</span></a> --}}
@@ -102,7 +106,7 @@
       <div id="sidebarToggle"><a onclick="w3_open()"><i class="fa fa-bars"></i></a></div>
       <div class="flx-row">
         <div class="head-left">
-          <div class="task-img">DE</div>
+          <div class="task-img"><img src="{{url('/')}}/storage/app/public/profile/{{Auth::user()->image}}" style="width:100%;height:50px !important " alt="DP"></div>
           <div class="task-nemu">
             <div class="dropdown">
               <p class="nav-link" href="#" role="button">{{ucfirst(request()->segment(1))}} Management</p>

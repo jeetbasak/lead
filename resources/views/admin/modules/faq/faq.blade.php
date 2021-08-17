@@ -31,7 +31,7 @@
 			<thead>
 				<tr>
 					<th scope="col"><input type="checkbox"></th>
-					<th scope="col">id</th>
+					{{-- <th scope="col">id</th> --}}
 					<th scope="col">question</th>
 					<th scope="col">status</th>
 					<th scope="col">Action</th>
@@ -42,7 +42,7 @@
 				@foreach($faq as $key=> $value)
 				<tr>
 					<td data-label="Select"><input type="checkbox"></td>
-					<td data-label="Name">{{@$value->id}}</td>
+					{{-- <td data-label="Name">{{@$value->id}}</td> --}}
 					<td data-label="Name">{{@$value->question}}</td>
 					<td data-label="Mail ID">@if(@$value->status=="A")
 						<p>Active</p>

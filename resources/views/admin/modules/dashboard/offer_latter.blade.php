@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-<title>Admin | User Offer Latter</title>
+<title>Admin | User Offer Letter</title>
 @endsection
 @section('left_part')
 @include('admin.include.left_part')
@@ -33,7 +33,7 @@
 					<th scope="col"><input type="checkbox"></th>
 					<th scope="col">Name</th>
 					<th scope="col">Email</th>
-					<th scope="col">Offer Latter</th>
+					<th scope="col">Offer Letter</th>
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
@@ -79,7 +79,7 @@
 								<h5> Email </h5>
 								<p>{{@$value->email}}</p>
 								<br>
-								<p>Offer latter</p>
+								<p>Offer letter</p>
 								<img src="{{ URL::to('public/storage/offerlatter/')}}/{{@$value->offer_latter}}" alt="" style="height: 150px;width: 200px">
 							</div>
 							<!-- Modal footer -->
@@ -96,7 +96,7 @@
 						<div class="modal-content">
 							<!-- Modal Header -->
 							<div class="modal-header">
-								<h4 class="modal-title">Add Offer Latter </h4>
+								<h4 class="modal-title">Add Offer Letter </h4>
 								
 							</div>
 							<!-- Modal body -->
@@ -106,7 +106,7 @@
 									@csrf
 									<input type="hidden" name="user_id" value="{{@$value->id}}">
 									<div class="flx-col" style="width: 100%">
-										<label>Upload Offer Latter For {{@$value->name}}</label>
+										<label>Upload Offer Letter For {{@$value->name}}</label>
 										<div class="form-group">
 											<input type="file" name="offer" id="file-2{{@$value->id}}" onChange="fun2({{$value->id}});" accept="image/*" class="file">
 											<div class="input-group mb-3">

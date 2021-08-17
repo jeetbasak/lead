@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\Salary;
+use App\Models\UserToTarget;
+use App\Models\ManageLead;
+
 class ManageUserController extends Controller
 {
     //
@@ -23,8 +27,19 @@ class ManageUserController extends Controller
     	if ($check==null) {
     		return redirect()->back();
     	}
-    	$delete = User::where('id',$id)->where('status','!=','D')->update(['status'=>'D']);
-    	return redirect()->back()->with('error','User Deleted Successfully');
+      //chek that user is active or not 
+      $chk1=Salary::where('user_id',$id)->count();
+      $chk2=UserToTarget::where('user_id',$id)->count();
+      $chk3=ManageLead::where('tagging_id',$id)->count();
+
+      if(@$chk1>0 || @$chk2>0 || @$chk3>0){
+        return redirect()->back()->with('error','This user is in active way. You can not delete this user..!');
+      }else{
+      $delete = User::where('id',$id)->where('status','!=','D')->update(['status'=>'D']);
+      return redirect()->back()->with('success','User Deleted Successfully');
+      }
+
+    	
     }
 
     public function editView($id)

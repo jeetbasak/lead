@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Admin;
 use App\User;
+use App\Models\Notification;
 use App\Models\Salary;
 class DashboardController extends Controller
 {
@@ -233,6 +234,18 @@ class DashboardController extends Controller
           $profile = time() . '-' . rand(1000, 9999) . '.' . $image->getClientOriginalExtension();
           $image->move("public/storage/offerlatter",$profile);
           User::where('id',$request->user_id)->update(['offer_latter'=>$profile]);
+
+          //notification sent code to user
+            @$u=User::where('id',$request->user_id)->first();
+            $notification=new Notification();
+
+            $notification->user_type='U';
+            $notification->user_id=@$request->user_id;
+            $notification->not_type='Offer latter';
+            $notification->message='Admin has sent your offer latter.!';
+
+            $notification->save(); 
+
           return redirect()->back()->with('success','Offer latter added successfully!');
       }
     }

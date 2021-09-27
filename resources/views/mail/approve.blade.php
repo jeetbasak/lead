@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Verification Email</title>
+    <title>Approval Email</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -24,16 +24,10 @@
 
             <div style="display:block; overflow:hidden; width:100%;">
 
-                Hello {{$data['name']}},
+                Dear {{@$Mdata['name']}},
                 <br>
-                Your Verification code is:{{$data['vcode']}}
-                <br>
-                Your password is:{{$data['password']}}
-
-                <p>
-                    Your registration successfully
-                    
-                </p>
+               {{@$Mdata['message']}}
+               
 
             </div>
 

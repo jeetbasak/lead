@@ -5,7 +5,7 @@
 
 <!-- Sidebar-->
 <div class="border-end bg-deepblue" id="sidebar-wrapper">
-	<div class="sidebar-heading"><span>TaskAffix  <a class="menuclose"><i class="fa fa-close"></i></a></span></div>
+	<div class="sidebar-heading"><a class="logo" href="{{route('admin.dashboard.home')}}"><img src="{{url('/')}}/public/admin/assets/images/logo-task.png"></a>  <a class="menuclose"><i class="fa fa-close"></i></a></div>
 	
 	<div class="list-group list-group-flush">
 		<a class="{{request()->segment(2)=='dashboard'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('admin.dashboard.home')}}"><i class="fa fa-home-b"></i> <span>Home</span></a>
@@ -67,7 +67,7 @@
 	<div class="bottom-nav">
 		<ul>
 			<li><a class="{{request()->segment(2)=='faq'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('faq.list')}}"><i class="fa help-icon">?</i> <span> FAQ</span></a></li>
-			<li><a href="#"><i class="fa term-icon"></i> <span> Terms & condiotion</span></a></li>
+			<li><a href="{{route('tc')}}"><i class="fa term-icon"></i> <span> Terms & condiotion</span></a></li>
 		
 		</ul>
 	</div>

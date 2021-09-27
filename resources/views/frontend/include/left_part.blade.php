@@ -43,7 +43,7 @@
 @$first_name = $splitName[0];
 @endphp
 <div class="border-end bg-deepblue" id="sidebar-wrapper">
-  <div class="sidebar-heading"><span>{{-- TaskAffix --}}Hello  {{@$first_name}} <a class="menuclose"><i class="fa fa-close"></i></a></span></div>
+ <div class="sidebar-heading"><a class="logo" href="{{route('dashboard.home')}}"><img src="{{url('/')}}/public/admin/assets/images/logo-task.png"></a>  <a class="menuclose"><i class="fa fa-close"></i></a></div>
   
   <div class="list-group list-group-flush">
     <a class="{{request()->segment(1)=='home'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('dashboard.home')}}"><i class="fa fa-home-b"></i> <span>Home</span></a>
@@ -59,7 +59,7 @@
     <a class="{{request()->segment(1)=='target'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.target')}}"><i class="fa fa-target"></i><span>My Target</span></a>
 
 
-    <a class="{{request()->segment(1)=='lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.lead')}}"><i class="fa lead-icon"></i><span>My Lead</span></a>
+    <a class="{{request()->segment(1)=='my-lead'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.lead')}}"><i class="fa lead-icon"></i><span>My Lead</span></a>
 
     
     <a class="{{request()->segment(1)=='salary'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.salary')}}"><i class="fa mony-icon"></i><span>My Monthly Salary </span></a>
@@ -93,7 +93,7 @@
   <div class="bottom-nav">
     <ul>
       {{-- <li><a class="{{request()->segment(1)=='faq'?'list-group-item-action left-nav custom_active':'list-group-item-action left-nav'}}" href="{{route('my.faq.list')}}"><i class="fa help-icon">?</i> <span> FAQ</span></a></li> --}}
-      <li><a href="#"><i class="fa term-icon"></i> <span> Terms & condiotion</span></a></li>
+      <li><a href="{{route('tc')}}"><i class="fa term-icon"></i> <span> Terms & condiotion</span></a></li>
      
     </ul>
   </div>
@@ -134,11 +134,14 @@
             </ul>
           </div>
         </div>
+         <span style="margin-top: 12px;color: black;text-align: left;font-size: 20px" > <b>Hello  {{@$first_name}}</b></span>
         <div class="head-right">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">...</button>
+         
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mt-lg-0">
-              <li><a href="#" class="share-btn" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock"></i>Share</a></li>
+            
+              <li><a href="#" class="share-btn" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock" style="color:lime"></i>Share</a></li>
               <!-- Modal -->
              
               <li class="search">

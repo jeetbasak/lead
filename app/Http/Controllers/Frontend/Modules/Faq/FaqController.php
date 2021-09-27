@@ -15,4 +15,10 @@ class FaqController extends Controller
 		$data['faq']=Faq::where('status','A')->get();
 		return view('frontend.modules.faq.faq')->with($data);
 	}
+
+
+	public function tc(Request $request){
+		//$data['faq']=Faq::where('status','A')->get();
+		return view('frontend.modules.faq.tc');
+	}
 }

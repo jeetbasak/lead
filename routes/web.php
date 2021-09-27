@@ -37,6 +37,9 @@ Route::get('/', function () {
 
  //faq
  Route::get('/faq','Frontend\Modules\Faq\FaqController@faq_list')->name('faq');
+//tc
+   Route::get('/about-us','Frontend\Modules\Faq\FaqController@tc')->name('tc');
+
 
   Auth::routes();
 
@@ -55,8 +58,8 @@ Route::get('/', function () {
 
 
   //lead
-   Route::get('/lead','Frontend\Modules\MyLead\MyLeadController@lead_list')->name('my.lead');
-   Route::post('/lead/change-status','Frontend\Modules\MyLead\MyLeadController@change_status')->name('change.lead.status');
+   Route::get('/my-lead','Frontend\Modules\MyLead\MyLeadController@lead_list')->name('my.lead');
+   Route::post('/my-lead/change-status','Frontend\Modules\MyLead\MyLeadController@change_status')->name('change.lead.status');
 
 
 

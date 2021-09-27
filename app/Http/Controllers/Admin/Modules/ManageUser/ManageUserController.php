@@ -10,6 +10,8 @@ use App\Models\State;
 use App\Models\Salary;
 use App\Models\UserToTarget;
 use App\Models\ManageLead;
+use Mail;
+use App\Mail\ApprovalMail;
 
 class ManageUserController extends Controller
 {
@@ -150,6 +152,17 @@ class ManageUserController extends Controller
        }
        if ($data->status=="AA") {
          $update =  User::where('id',$id)->where('status','!=','D')->update(['status'=>'A']);
+
+         $user_email = User::where('id',$id)->first();
+
+         //mail sent
+        $Mdata['name'] = $user_email->name;
+        $Mdata['email'] = $user_email->email;
+        $Mdata['email_subject'] = "Admin Approve You";
+        $Mdata['message'] = "This to notify you that admin has approve your account . Now you can login. ";
+         Mail::to($user_email->email)->send(new ApprovalMail($Mdata));
+         
+
          return redirect()->back()->with('success','User Activated Successfully');
        }
         if ($data->status=="A") {

@@ -30,11 +30,12 @@
 					<div class="container">
 						<div class="flx-row p-3 p-l-r-0">
 							<div class="head-left">
-								<h2 class="logo"><a href="{{route('hm')}}">TaskAffix</a></h2>
+								<h2 class="logo"><a href="{{route('hm')}}"><img src="{{url('/')}}/public/admin/assets/images/TaskAffix.png" style="width: 110px;padding: 0px 0px;"></a></h2>
 								<button class="navbar-toggler lnd-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
 								<div class="collapse navbar-collapse lnd-drop" id="navbarSupportedContent">
 									<ul class="navbar-nav mt-lg-0 login-menu">
 										<li><a href="{{route('faq')}}">Faq</a></li>
+										<li><a href="{{route('tc')}}">Terms & conditions</a></li>
 										
 									</ul>
 								</div>

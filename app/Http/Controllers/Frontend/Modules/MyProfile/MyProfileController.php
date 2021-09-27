@@ -24,7 +24,7 @@ class MyProfileController extends Controller
     	$data = [];
     	$data['country'] = Country::get();
     	$data['state'] = State::where('country_id',auth()->user()->country_id)->get();
-        $data['users']=User::where('status','A')->orderBy('name','asc')->get();
+        $data['users']=User::where('status','A')->orderBy('name','asc')->where('id','!=',Auth()->user()->id)->get();
     	return view('frontend.modules.profile.profile',$data);
     }
 

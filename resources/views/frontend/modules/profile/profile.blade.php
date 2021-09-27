@@ -383,8 +383,9 @@ name:{
 required:true,
 minlength:3,
 },
-ref:{
+pin_code:{
 required:true,
+minlength:6,
 },
 email:{
 required:true,

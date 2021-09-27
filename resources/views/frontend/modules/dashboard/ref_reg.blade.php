@@ -87,7 +87,7 @@ $country=DB::table('countries')->get();
 				<label id="chk-error" class="error" for="chk"></label>
 				<div class="e-col">
 					
-					<input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to register with this email id?');">
+					<input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to register with this email id? if yes,Press ok. an email will sent to your mail , please also check your spam folder. Thanks from Taskaffix');">
 				</div>
 			</div>
 		</form>

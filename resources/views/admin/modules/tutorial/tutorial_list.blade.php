@@ -61,7 +61,7 @@
 						
 						<td data-label="Action">
 
-							<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}"><i class="fa add-round" onclick="abc({{@$value->id}})">V</i></a>
+							<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}"><i class="fa fa-eye edit-round" onclick="abc({{@$value->id}})"></i></a>
 
 
 							{{-- <a href="#"><i class="fa add-round">+</i></a> --}}

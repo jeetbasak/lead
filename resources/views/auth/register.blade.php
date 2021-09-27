@@ -2,10 +2,15 @@
 
 @section('title')
 <title>User | Registration</title>
+
+{{-- <meta property="og:image" content="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" />
+ --}}
+
 @endsection
 
 @section('head')
 @include('frontend.include.head')
+
 @endsection
 
 @section('content')
@@ -110,7 +115,7 @@ $country=DB::table('countries')->get();
                     <div class="login-info">
                         <ul>
                             <li>Already have an account?</li>
-                            <li><a class="share-btn" href="#">Sign In</a></li>
+                            <li><a class="share-btn" href="{{ route('login') }}">Sign In</a></li>
                         </ul>
                     </div>
                    
@@ -170,7 +175,7 @@ $country=DB::table('countries')->get();
                         <label id="chk-error" class="error" for="chk"></label>
                         <div class="e-col">                            
                           {{--   <a  class="next-btn next-button" href="#">Next Step</a> --}}
-                          <input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to register with this email id?');">                          
+                          <input type="submit" value="Next Step" class="next-btn" onclick="return confirm('Are you sure want to register with this email id? if yes,Press ok. an email will sent to your mail , please also check your spam folder. Thanks from Taskaffix');">                          
                         </div>                       
                     </div>
                 </form>

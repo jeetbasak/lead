@@ -55,7 +55,7 @@
 						
 						
 						<a onclick="return confirm('Are you sure want to delete this picture?');" href="{{route('pic.dlt',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
-						<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye" aria-hidden="true"></i></a>
+						<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye edit-round" aria-hidden="true"></i></a>
 						
 					</td>
 				</tr>
@@ -72,13 +72,15 @@
 							<!-- Modal body -->
 							<div class="modal-body">
 								
-								<h5> id </h5>
+								<h5> Id </h5>
 								<p>{{@$value->id}}</p>
-								<h5> title </h5>
+								<br>
+								<h5> Title </h5>
 								<p>{{@$value->title}}</p>
-								<h5> image </h5>
-								<p><img src="{{url('/')}}/storage/app/public/pic/{{@$value->image}}" style="width: 400px; height: 250px"></p>
-								
+								<br>
+								<h5> Image </h5>
+								<p><img src="{{url('/')}}/storage/app/public/pic/{{@$value->image}}" style="width: 350px; height: 200px"></p>
+								<br>
 								<h5> Status </h5>
 								@if(@$value->status=="A")
 								<p>Active</p>

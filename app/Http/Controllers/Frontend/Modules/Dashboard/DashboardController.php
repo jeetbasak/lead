@@ -281,7 +281,7 @@ class DashboardController extends Controller
             $notification->save();  
 
 
-    		return redirect()->route('login');
+    		return redirect()->route('login')->with('success','Admin will aprove you, untill that time , you can not login.!');
     	}
 
     }

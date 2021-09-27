@@ -33,16 +33,16 @@ height:210px !important;
 		<div class="top-row">
 			<ul class="grid-view-list">
 				@foreach($tutorial as $data)
-				<li type="button"  data-toggle="modal" data-target="#myModalressing{{@$data->id}}" > <img src="{{$data->thumbnil}}" alt="" class="imgsize">
-					
-					{{--  <a href="https://www.youtube.com/watch?v={{@$data->video_short_url}}" class="paly fancybox-media"><img src="{{url('/')}}/public/frontend/assets/images/play.png" alt=""></a>
-				--}}               </li>
+				<li type="button"  data-toggle="modal" data-target="#myModalressing{{@$data->id}}" > 
+					<h4>{{@$data->title}}</h4>
+					<img src="{{$data->thumbnil}}" alt="" class="">
+			    </li>
 				<div class="modal" id="myModalressing{{@$data->id}}">
 					<div class="modal-dialog">
 						<div class="modal-content" style="width:600px">
 							<!-- Modal Header -->
 							<div class="modal-header">
-								<h4 class="modal-title"> title: {{@$data->title}}</h4>
+								<h4 class="modal-title"> TITLE: {{@$data->title}}</h4>
 								
 							</div>
 							<!-- Modal body -->

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('title')
-<title>Admin | User List</title>
+<title>Admin | Banner list</title>
 @endsection
 @section('left_part')
 @include('admin.include.left_part')
@@ -18,9 +18,7 @@
 		<div class="top-row">
 			<div class="task-mg-row b-b-n">
 				<div class="dropdown">
-
-					{{-- <a href="{{route('lead.add.form')}}" class="add-btn dropdown-toggle" style=" color: white; ">	<button class="add-btn dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" type="button"><span class="plus">+</span> <div class="br-r">Add Lead</div> --}}
-
+					<a href="{{route('banner.add.form')}}" class="add-btn dropdown-toggle" style=" color: white; "><span class="plus">+</span> <div class="br-r">Add Banner</div>
 				</a>
 				<span class="caret"></span></button>
 			</div>
@@ -33,73 +31,74 @@
 			<thead>
 				<tr>
 					<th scope="col"><input type="checkbox"></th>
-					<th scope="col">Name</th>
-					<th scope="col">Email</th>
-					<th>Status</th>
+					<th scope="col">id</th>
+					<th scope="col">Title</th>
+					<th scope="col">status</th>
 					<th scope="col">Action</th>
+					
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($users as $key=> $value)
+				@foreach($banner as $key=> $value)
 				<tr>
 					<td data-label="Select"><input type="checkbox"></td>
-					<td data-label="Name">{{@$value->name}}</td>
-					<td data-label="Name">{{@$value->email}}</td>
-					<td>
-						@if(@$value->status=="AA")
-						Awating Approval
-						@elseif(@$value->status=="A")
-						Active
-						@elseif(@$value->status=="I")
-						Inactive
-						@endif
-					</td>
+					<td data-label="Name">{{@$value->id}}</td>
+					<td data-label="Name">{{@$value->title}}</td>
+					<td data-label="Mail ID">@if(@$value->status=="A")
+						<p>Active</p>
+						@else
+						<p>Inactive</p>
+						
+					@endif</td>
+					
 					<td data-label="Action">
-					
-
-					<a href="{{route('admin.user.edit',$value->id)}}"><i class="fa fa-edit edit-round"></i></a>
-
-					<a onclick="return confirm('Are you sure want to delete this user?');" href="{{route('admin.user.delete',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
-
-					<a href="{{route('admin.user.view',['id'=>@$value->id])}}" type="button"  style="margin-left: 5px; font-size:25px"><i class="fa fa-eye add-round" aria-hidden="true"></i></a>
-					
-					@if(@$value->status=="AA")
-					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px;">Accept</a>
-					@endif
-
-					@if(@$value->status=="I")
-					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px; color: lime">Active</a>
-					@endif
-
-					@if(@$value->status=="A")
-					<a onclick="return confirm('Are you sure want to active this user?');" href="{{route('admin.user.change.status',$value->id)}}" style="margin-left: 5px; color: red">Inactive</a>
-					@endif
-					
-					
-					
+						@if(@$value->status=="A")
+						<a style="margin-left: 5px;"><i class="fa add-round" style="background-color: lime">&#10003;</i></a>
+						@else
+						<a onclick="return confirm('Are you sure want to active this banner?');" href="{{route('banner.active',$value->id)}}" style="margin-left: 5px;"><i class="fa add-round" style="background-color: orange">+</i></a>
+						@endif
+						<a href="#" type="button"  data-toggle="modal" data-target="#myModalview{{@$value->id}}" style="margin-left: 5px; font-size:25px"><i class="fa fa-eye edit-round" aria-hidden="true"></i></a>
+						@if(@$value->status!="A")
+						<a onclick="return confirm('Are you sure want to delete this banner?');" href="{{route('banner.dlt',$value->id)}}" style="margin-left: 5px;"><i class="fa fa-trash-o del-round"></i></a>
+						@endif
 						
 					</td>
 				</tr>
 				
-				
-				{{-- for view user --}}
+				{{-- for view --}}
 				<div class="modal" id="myModalview{{@$value->id}}">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<!-- Modal Header -->
 							<div class="modal-header">
-								<h4 class="modal-title">User Details</h4>
+								<h4 class="modal-title">Details of picture no {{@$value->id}}</h4>
 								
 							</div>
 							<!-- Modal body -->
 							<div class="modal-body">
-								<h5> Name </h5>
-								<p>{{@$value->name}}</p>
-								<h5> Email </h5>
-								<p>{{@$value->email}}</p>
+								
+								<h5> Id </h5>
+								<p>{{@$value->id}}</p>
+								<br>
+								<h5> Title </h5>
+								<p>{{@$value->title}}</p>
+								<br>
+								<h5> Image </h5>
+								<p><img src="{{url('/')}}/storage/app/public/banner/{{@$value->image}}" style="width: 350px; height: 200px"></p>
+								<br>
+								<h5> Status </h5>
+								@if(@$value->status=="A")
+								<p>Active</p>
+								@else
+								<p>inactive</p>
+								
+								@endif
+								
 							</div>
 							<!-- Modal footer -->
 							<div class="modal-footer">
+								
+								
 								<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 							</div>
 						</div>

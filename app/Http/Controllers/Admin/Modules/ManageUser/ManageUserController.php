@@ -7,6 +7,12 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\Salary;
+use App\Models\UserToTarget;
+use App\Models\ManageLead;
+use Mail;
+use App\Mail\ApprovalMail;
+
 class ManageUserController extends Controller
 {
     //
@@ -23,8 +29,19 @@ class ManageUserController extends Controller
     	if ($check==null) {
     		return redirect()->back();
     	}
-    	$delete = User::where('id',$id)->where('status','!=','D')->update(['status'=>'D']);
-    	return redirect()->back()->with('error','User Deleted Successfully');
+      //chek that user is active or not 
+      $chk1=Salary::where('user_id',$id)->count();
+      $chk2=UserToTarget::where('user_id',$id)->count();
+      $chk3=ManageLead::where('tagging_id',$id)->count();
+
+      if(@$chk1>0 || @$chk2>0 || @$chk3>0){
+        return redirect()->back()->with('error','This user is in active way. You can not delete this user..!');
+      }else{
+      $delete = User::where('id',$id)->where('status','!=','D')->update(['status'=>'D']);
+      return redirect()->back()->with('success','User Deleted Successfully');
+      }
+
+    	
     }
 
     public function editView($id)
@@ -43,9 +60,10 @@ class ManageUserController extends Controller
 
     public function updateUser(Request $request)
     {
-        $check = User::where('id','!=',$request->id)->where('ph',$request->number)->where('status','!=','D')->first();
-        if ($check!="") {
-          return redirect()->back()->with('error','Email Already Exists.Try Another');
+        $check = User::where('id','!=',$request->id)->where('ph',$request->ph)->where('status','!=','D')->count();
+        //dd($check);
+        if ($check>0) {
+          return redirect()->back()->with('error','Phone Number Already Exists.Try Another');
         }
         $upd = [];
        $upd['name'] = $request->name;
@@ -134,6 +152,17 @@ class ManageUserController extends Controller
        }
        if ($data->status=="AA") {
          $update =  User::where('id',$id)->where('status','!=','D')->update(['status'=>'A']);
+
+         $user_email = User::where('id',$id)->first();
+
+         //mail sent
+        $Mdata['name'] = $user_email->name;
+        $Mdata['email'] = $user_email->email;
+        $Mdata['email_subject'] = "Admin Approve You";
+        $Mdata['message'] = "This to notify you that admin has approve your account . Now you can login. ";
+         Mail::to($user_email->email)->send(new ApprovalMail($Mdata));
+         
+
          return redirect()->back()->with('success','User Activated Successfully');
        }
         if ($data->status=="A") {

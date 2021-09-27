@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
      return view('welcome');
-});
+})->name('hm');
 
  Route::get('get-state','Frontend\Modules\Dashboard\DashboardController@getstate')->name('dashboard.get.state');
   Route::post('register-secound-step','Frontend\Modules\Dashboard\DashboardController@reg_one')->name('register.one');
@@ -35,6 +35,12 @@ Route::get('/', function () {
    Route::post('reset-password/new-password','Auth\ForgotPasswordController@newPassword')->name('user.new.password');
 
 
+ //faq
+ Route::get('/faq','Frontend\Modules\Faq\FaqController@faq_list')->name('faq');
+//tc
+   Route::get('/about-us','Frontend\Modules\Faq\FaqController@tc')->name('tc');
+
+
   Auth::routes();
 
 //Route::get('/', 'HomeController@index')->name('landing.page');
@@ -52,8 +58,8 @@ Route::get('/', function () {
 
 
   //lead
-   Route::get('/lead','Frontend\Modules\MyLead\MyLeadController@lead_list')->name('my.lead');
-   Route::post('/lead/change-status','Frontend\Modules\MyLead\MyLeadController@change_status')->name('change.lead.status');
+   Route::get('/my-lead','Frontend\Modules\MyLead\MyLeadController@lead_list')->name('my.lead');
+   Route::post('/my-lead/change-status','Frontend\Modules\MyLead\MyLeadController@change_status')->name('change.lead.status');
 
 
 
@@ -74,18 +80,22 @@ Route::get('/', function () {
 
 
 
-//faq
- Route::get('/faq','Frontend\Modules\Faq\FaqController@faq_list')->name('my.faq.list');
+
 
 
 //notification
 Route::get('/notification','Frontend\Modules\MyProfile\MyProfileController@notification_list')->name('my.notification');
-
+Route::get('/notification/count','Frontend\Modules\MyProfile\MyProfileController@not_count')->name('not.count');
 
 //user change password
 Route::get('/home/change-password','Frontend\Modules\MyProfile\MyProfileController@change_password_page')->name('user.change.password');
 Route::post('/home/update-password','Frontend\Modules\MyProfile\MyProfileController@update')->name('pass.update');
 
+
+
+
+//offer latter download
+Route::get('/download/{id}','Frontend\Modules\MyProfile\MyProfileController@offer_download')->name('download');
 
  });
 

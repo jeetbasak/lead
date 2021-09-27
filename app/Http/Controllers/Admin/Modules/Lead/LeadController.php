@@ -84,8 +84,14 @@ class LeadController extends Controller
 
     public function delete_lead($id){
     	//dd($id);
+      //already assign or not
+      $chk=ManageLead::where('id',$id)->where('tagging_id','!=','')->first();
+      if($chk){
+          return back()->with('error','Lead can not be deleted as its already assign..!');
+      }else{
     	ManageLead::where('id',$id)->update(['status'=>'D']);
         return back()->with('success','Lead deleted..!');
+      }
     }
 
 

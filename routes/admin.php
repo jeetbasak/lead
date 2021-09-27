@@ -43,6 +43,7 @@ Route::get('/dashboard', 'Modules\Dashboard\DashboardController@dashboard')->nam
 
 //notification
 Route::get('/notifications', 'Modules\Notification\NotificationController@notification_list')->name('notification.list');
+Route::get('/notification/admin/count','Modules\Notification\NotificationController@not_count')->name('admin.not.count');
 
 
 //lead manage start
@@ -69,7 +70,7 @@ Route::get('/target/delete/{id}','Modules\Target\TargetManageController@delTarge
 Route::get('/target/edit/{id}','Modules\Target\TargetManageController@editTargetView')->name('admin.edit.targets-view');
 Route::post('/target/update','Modules\Target\TargetManageController@updateTraget')->name('admin.edit.targets-update');
 Route::post('/target/assing', 'Modules\Target\TargetManageController@assing')->name('target.assing');
-
+Route::get('/target/expiry', 'Modules\Target\TargetManageController@exptaregetList')->name('exp.target.list');
 
 
 
@@ -145,6 +146,23 @@ Route::get('/service','Modules\Service\ServiceController@service_list')->name('s
  Route::get('/service/add','Modules\Service\ServiceController@ServiceController')->name('service.add.form');
 Route::post('/service/insert','Modules\Service\ServiceController@insert_ser')->name('insert.service');
 Route::get('/service/delete/{id}','Modules\Service\ServiceController@ser_dlt')->name('service.dlt');
+
+
+//offer latter
+Route::get('/offer-latter','Modules\Dashboard\DashboardController@offer_list')->name('offer.list');
+Route::post('/offer-latter/add','Modules\Dashboard\DashboardController@offer_add')->name('offer.add');
+Route::get('/offer-latter/del/{id}','Modules\Dashboard\DashboardController@offer_del')->name('offer.del');
+
+
+
+
+//banner part in faq controller
+Route::get('/banner','Modules\Faq\FaqManageController@banner_list')->name('banner.list');
+Route::get('/banner/add','Modules\Faq\FaqManageController@banner_add_form')->name('banner.add.form');
+ Route::post('/banner/insert','Modules\Faq\FaqManageController@insert_banner')->name('insert.banner');
+ Route::get('/banner/delete/{id}','Modules\Faq\FaqManageController@banner_dlt')->name('banner.dlt');
+Route::get('/banner/active/{id}','Modules\Faq\FaqManageController@banner_active')->name('banner.active');
+
 
 
 });

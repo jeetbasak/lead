@@ -35,6 +35,18 @@ class TargetManageController extends Controller
 
 
 
+   public function exptaregetList()
+    {
+       $data = [];
+         
+       $data['targets'] = Target::orderBy('year','asc')->orderBy('month_id','asc')/*->with('users_to_target')*/->where('status','E')->get();
+         $data['targetTo']=UserToTarget::get();
+        
+       return view('admin.modules.target.expire_target',$data);
+    }
+
+
+
 
 
 

@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Salary;
 use App\Models\Target;
 use App\Models\UserToTarget;
-
+use App\Models\Reminder;
+use Mail;
+use App\Mail\TargetReminder;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -94,6 +96,21 @@ class AppServiceProvider extends ServiceProvider
         /////
 
     }
+
+
+
+     $check = Reminder::where('month',date('m'))->where('year',date('Y'))->first();
+     if (@$check==null) {
+         $register = new Reminder;
+         $register->month = date('m');
+         $register->year = date('Y');
+         $register->save();
+         if (date('d')==25) {
+             $data = [];
+            Mail::send(new TargetReminder($data));
+         }
+     }
+
 
 
     }

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Notification Email</title>
+    <title>Reminder Email</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -26,14 +26,7 @@
 
                 Dear Admin,
                 <br>
-                A new user is registered . Here are the details
-                <br>
-                Name :{{$data['name']}}
-                <br>
-                Email : {{$data['email']}}
-                <br>
-                Phone Number : {{$data['number']}} 
-               
+                It's 25th day of the month.If you have not created any target please make a one.Thank you.
 
             </div>
 
